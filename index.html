@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Raksha Bandhan Quiz</title>
+  <title>RC & RS Raksha Bandhan Quiz</title>
   <link href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700;800&display=swap" rel="stylesheet">
   <style>
@@ -34,7 +35,7 @@
 
     .container {
       padding: 2rem;
-      max-width: 800px;
+      max-width: 1200px;
       margin: auto;
       background-color: rgba(255, 255, 255, 0.95);
       border-radius: 20px;
@@ -125,19 +126,66 @@
       position: relative;
     }
 
-    .question input {
+    .dual-input-container {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .input-section {
+      flex: 1;
+      text-align: center;
+    }
+
+    .input-section h4 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: #8e24aa;
+      font-weight: bold;
+    }
+
+    .rc-section h4 {
+      color: #2196f3;
+    }
+
+    .rs-section h4 {
+      color: #ff9800;
+    }
+
+    .input-section input {
       font-size: 1.2rem;
       padding: 1rem;
       border: 3px solid #ff4081;
       border-radius: 15px;
       background: linear-gradient(45deg, #fff, #fce4ec);
       transition: all 0.3s ease;
+      width: 100%;
+      box-sizing: border-box;
     }
 
-    .question input:focus {
-      border-color: #e91e63;
-      box-shadow: 0 0 20px rgba(233, 30, 99, 0.3);
+    .rc-section input {
+      border-color: #2196f3;
+      background: linear-gradient(45deg, #fff, #e3f2fd);
+    }
+
+    .rs-section input {
+      border-color: #ff9800;
+      background: linear-gradient(45deg, #fff, #fff3e0);
+    }
+
+    .input-section input:focus {
       transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(233, 30, 99, 0.3);
+    }
+
+    .rc-section input:focus {
+      border-color: #1976d2;
+      box-shadow: 0 0 20px rgba(33, 150, 243, 0.3);
+    }
+
+    .rs-section input:focus {
+      border-color: #f57c00;
+      box-shadow: 0 0 20px rgba(255, 152, 0, 0.3);
     }
 
     .next-btn {
@@ -153,6 +201,9 @@
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .next-btn:hover {
@@ -211,18 +262,45 @@
       padding: 2rem;
     }
 
-    .rakhi-choice img {
-      width: 120px;
-      height: 120px;
+    .dual-rakhi-container {
+      display: flex;
+      gap: 3rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .rakhi-section {
+      flex: 1;
+      text-align: center;
+    }
+
+    .rakhi-section h4 {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      color: #8e24aa;
+      font-weight: bold;
+    }
+
+    .rc-rakhi h4 {
+      color: #2196f3;
+    }
+
+    .rs-rakhi h4 {
+      color: #ff9800;
+    }
+
+    .rakhi-section img {
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
-      margin: 1rem;
+      margin: 0.5rem;
       cursor: pointer;
       transition: all 0.5s ease;
       border: 4px solid transparent;
       position: relative;
     }
 
-    .rakhi-choice img:hover {
+    .rakhi-section img:hover {
       transform: scale(1.3) rotate(360deg);
       border-color: #ff4081;
       box-shadow: 0 0 30px rgba(255, 64, 129, 0.6);
@@ -465,13 +543,77 @@
       font-weight: bold;
       margin: 0;
     }
+
+    .dual-answers {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .answer-section {
+      flex: 1;
+    }
+
+    .rc-answers {
+      border-left-color: #2196f3;
+    }
+
+    .rs-answers {
+      border-left-color: #ff9800;
+    }
+
+    .final-result {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .result-section {
+      flex: 1;
+      text-align: center;
+    }
+
+    .result-section h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .rc-result h3 {
+      color: #2196f3;
+    }
+
+    .rs-result h3 {
+      color: #ff9800;
+    }
+
+    .result-section img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 4px solid;
+      margin: 1rem 0;
+    }
+
+    .rc-result img {
+      border-color: #2196f3;
+    }
+
+    .rs-result img {
+      border-color: #ff9800;
+    }
+
+    .tying-image {
+      width: 250px !important;
+      height: auto !important;
+      border-radius: 15px !important;
+      margin: 1rem 0 !important;
+    }
   </style>
 </head>
 
 <body>
   <main class="container">
-    <h1 class="title">🎉 Raksha Bandhan Quiz 🎉</h1>
-    <p class="subtitle">How well do you know me? Let's test your detective-sense! 🤪</p>
+    <h1 class="title">🎉 RC & RS Raksha Bandhan Quiz 🎉</h1>
+    <p class="subtitle">How well do you know RC and RS? Let's test your detective skills! 🤪</p>
 
     <button class="play-btn" onclick="startQuiz()">Start the Drama! 🎉🎭</button>
 
@@ -482,91 +624,194 @@
       <p id="progress" style="text-align: center; font-weight: bold; color: #8e24aa;"></p>
 
       <div class="question" id="q1">
-        <h3>🧁 What is my favorite dessert?</h3>
-        <input type="text" id="a1" placeholder="Think hard, detective! 🤔">
+        <h3>🧁 What is their favorite dessert?</h3>
+        <div class="dual-input-container">
+          <div class="input-section rc-section">
+            <h4>RC's Answer</h4>
+            <input type="text" id="rc_a1" placeholder="Think hard about RC! 🤔">
+          </div>
+          <div class="input-section rs-section">
+            <h4>RS's Answer</h4>
+            <input type="text" id="rs_a1" placeholder="Think hard about RS! 🤔">
+          </div>
+        </div>
         <button class="next-btn" onclick="next('q1','q2')">Next Challenge! ✨</button>
         <button class="skip-btn" onclick="skipToNext('q1','q2')">Skip to Next Question ➡️</button>
         <button class="skip-btn" onclick="skipToEnd()">Skip to the end 🚀</button>
       </div>
 
       <div class="question" id="q2">
-        <h3>📚 What subject did I hate in school?</h3>
-        <input type="text" id="a2" placeholder="Well! that is not easy to guess 😤">
+        <h3>📚 What subject did they hate in school?</h3>
+        <div class="dual-input-container">
+          <div class="input-section rc-section">
+            <h4>RC's Answer</h4>
+            <input type="text" id="rc_a2" placeholder="RC hated which subject? 😤">
+          </div>
+          <div class="input-section rs-section">
+            <h4>RS's Answer</h4>
+            <input type="text" id="rs_a2" placeholder="RS hated which subject? 😤">
+          </div>
+        </div>
         <button class="next-btn" onclick="next('q2','q3')">Keep Going! 🚀</button>
         <button class="skip-btn" onclick="skipToNext('q2','q3')">Skip to Next Question ➡️</button>
         <button class="skip-btn" onclick="skipToEnd()">Skip to the end 🚀</button>
       </div>
 
       <div class="question" id="q3">
-        <h3>🎬 Which movie can I watch over and over and over?</h3>
-        <input type="text" id="a3" placeholder="There are many! Guess any one!🎭">
+        <h3>🎬 Which movie can they watch over and over?</h3>
+        <div class="dual-input-container">
+          <div class="input-section rc-section">
+            <h4>RC's Answer</h4>
+            <input type="text" id="rc_a3" placeholder="RC's favorite movie! 🎭">
+          </div>
+          <div class="input-section rs-section">
+            <h4>RS's Answer</h4>
+            <input type="text" id="rs_a3" placeholder="RS's favorite movie! 🎭">
+          </div>
+        </div>
         <button class="next-btn" onclick="next('q3','q4')">Next! 💫</button>
         <button class="skip-btn" onclick="skipToNext('q3','q4')">Skip to Next Question ➡️</button>
         <button class="skip-btn" onclick="skipToEnd()">Skip to the end 🚀</button>
       </div>
 
       <div class="question" id="q4">
-        <h3>🍕 What's my go-to-comfort food?</h3>
-        <input type="text" id="a4" placeholder="What do I always talk fondly of? 🤤">
+        <h3>🍕 What's their go-to comfort food?</h3>
+        <div class="dual-input-container">
+          <div class="input-section rc-section">
+            <h4>RC's Answer</h4>
+            <input type="text" id="rc_a4" placeholder="RC's comfort food? 🤤">
+          </div>
+          <div class="input-section rs-section">
+            <h4>RS's Answer</h4>
+            <input type="text" id="rs_a4" placeholder="RS's comfort food? 🤤">
+          </div>
+        </div>
         <button class="next-btn" onclick="next('q4','q5')">Continue! ⭐</button>
         <button class="skip-btn" onclick="skipToNext('q4','q5')">Skip to Next Question ➡️</button>
         <button class="skip-btn" onclick="skipToEnd()">Skip to the end 🚀</button>
       </div>
 
       <div class="question" id="q5">
-        <h3>🕺💃 My favorite actor or actress growing up was?</h3>
-        <input type="text" id="a5" placeholder="Ohho! Majedar question hai ye! 🎤">
+        <h3>🕺💃 Their favorite actor or actress growing up was?</h3>
+        <div class="dual-input-container">
+          <div class="input-section rc-section">
+            <h4>RC's Answer</h4>
+            <input type="text" id="rc_a5" placeholder="RC's favorite actor! 🎤">
+          </div>
+          <div class="input-section rs-section">
+            <h4>RS's Answer</h4>
+            <input type="text" id="rs_a5" placeholder="RS's favorite actor! 🎤">
+          </div>
+        </div>
         <button class="next-btn" onclick="next('q5','q6')">Next! 🎶</button>
         <button class="skip-btn" onclick="skipToNext('q5','q6')">Skip to Next Question ➡️</button>
         <button class="skip-btn" onclick="skipToEnd()">Skip to the end 🚀</button>
       </div>
 
       <div class="question" id="q6">
-        <h3>🌈 My most used emoji is?</h3>
-        <input type="text" id="a6" placeholder="Look around my chats for clues! 🧠">
+        <h3>🌈 Their most used emoji is?</h3>
+        <div class="dual-input-container">
+          <div class="input-section rc-section">
+            <h4>RC's Answer</h4>
+            <input type="text" id="rc_a6" placeholder="RC's favorite emoji! 🧠">
+          </div>
+          <div class="input-section rs-section">
+            <h4>RS's Answer</h4>
+            <input type="text" id="rs_a6" placeholder="RS's favorite emoji! 🧠">
+          </div>
+        </div>
         <button class="next-btn" onclick="next('q6','q7')">Almost there! 🔮</button>
         <button class="skip-btn" onclick="skipToNext('q6','q7')">Skip to Next Question ➡️</button>
         <button class="skip-btn" onclick="skipToEnd()">Skip to the end 🚀</button>
       </div>
 
       <div class="question" id="q7">
-        <h3>🏃‍♀️ What's my secret talent?</h3>
-        <input type="text" id="a7" placeholder="Batao? Batao? 🤐">
+        <h3>🏃‍♀️ What's their secret talent?</h3>
+        <div class="dual-input-container">
+          <div class="input-section rc-section">
+            <h4>RC's Answer</h4>
+            <input type="text" id="rc_a7" placeholder="RC's secret talent? 🤐">
+          </div>
+          <div class="input-section rs-section">
+            <h4>RS's Answer</h4>
+            <input type="text" id="rs_a7" placeholder="RS's secret talent? 🤐">
+          </div>
+        </div>
         <button class="next-btn" onclick="next('q7','q8')">Keep going! 😎</button>
         <button class="skip-btn" onclick="skipToNext('q7','q8')">Skip to Next Question ➡️</button>
         <button class="skip-btn" onclick="skipToEnd()">Skip to the end 🚀</button>
       </div>
 
       <div class="question" id="q8">
-        <h3>🧘 What's one thing I always do when I’m stressed or sad?</h3>
-        <input type="text" id="a8" placeholder="Where do I waste all my time? 🤭">
+        <h3>🧘 What do they do when stressed or sad?</h3>
+        <div class="dual-input-container">
+          <div class="input-section rc-section">
+            <h4>RC's Answer</h4>
+            <input type="text" id="rc_a8" placeholder="RC's stress relief? 🤭">
+          </div>
+          <div class="input-section rs-section">
+            <h4>RS's Answer</h4>
+            <input type="text" id="rs_a8" placeholder="RS's stress relief? 🤭">
+          </div>
+        </div>
         <button class="next-btn" onclick="next('q8','q9')">Almost done! 📸</button>
         <button class="skip-btn" onclick="skipToNext('q8','q9')">Skip to Next Question ➡️</button>
         <button class="skip-btn" onclick="skipToEnd()">Skip to the end 🚀</button>
       </div>
 
       <div class="question" id="q9">
-        <h3>🎵 A song that always lifts my mood is?</h3>
-        <input type="text" id="a9" placeholder="Think about my personality! 🎉">
+        <h3>🎵 A song that always lifts their mood is?</h3>
+        <div class="dual-input-container">
+          <div class="input-section rc-section">
+            <h4>RC's Answer</h4>
+            <input type="text" id="rc_a9" placeholder="RC's mood lifter! 🎉">
+          </div>
+          <div class="input-section rs-section">
+            <h4>RS's Answer</h4>
+            <input type="text" id="rs_a9" placeholder="RS's mood lifter! 🎉">
+          </div>
+        </div>
         <button class="next-btn" onclick="next('q9','q10')">Last question! 🎈</button>
         <button class="skip-btn" onclick="skipToNext('q9','q10')">Skip to Next Question ➡️</button>
         <button class="skip-btn" onclick="skipToEnd()">Skip to the end 🚀</button>
       </div>
 
       <div class="question" id="q10">
-        <h3>⚡ If I could teleport anywhere right now, where would I go?</h3>
-        <input type="text" id="a10" placeholder="Easy one it is! 🦉">
+        <h3>⚡ If they could teleport anywhere right now, where would they go?</h3>
+        <div class="dual-input-container">
+          <div class="input-section rc-section">
+            <h4>RC's Answer</h4>
+            <input type="text" id="rc_a10" placeholder="RC's dream destination! 🦉">
+          </div>
+          <div class="input-section rs-section">
+            <h4>RS's Answer</h4>
+            <input type="text" id="rs_a10" placeholder="RS's dream destination! 🦉">
+          </div>
+        </div>
         <button class="next-btn" onclick="next('q10','rakhi')">Final Challenge! 🌙</button>
         <button class="skip-btn" onclick="skipToNext('q10','rakhi')">Skip to Next Question ➡️</button>
         <button class="skip-btn" onclick="skipToEnd()">Skip to the end 🚀</button>
       </div>
 
       <div class="question" id="rakhi">
-        <h3>Choose a Rakhi for me! 🎁✨</h3>
-        <div class="rakhi-choice">
-          <img src="attached_assets/Rakhi1.webp" onclick="tieRakhi(this, 'Rakhi1')" alt="Silver Rakhi with Rudraksha">
-          <img src="attached_assets/Rakhi2.webp" onclick="tieRakhi(this, 'Rakhi2')" alt="Golden Ganesha Rakhi">
-          <img src="attached_assets/Rakhi3.webp" onclick="tieRakhi(this, 'Rakhi3')" alt="Golden Lotus Rakhi">
+        <h3>Choose Rakhis for RC and RS! 🎁✨</h3>
+        <div class="dual-rakhi-container">
+          <div class="rakhi-section rc-rakhi">
+            <h4>Choose for RC</h4>
+            <div>
+              <img src="attached_assets/Rakhi1.webp" onclick="selectRakhi('rc', this, 'Rakhi1')" alt="Silver Rakhi with Rudraksha">
+              <img src="attached_assets/Rakhi2.webp" onclick="selectRakhi('rc', this, 'Rakhi2')" alt="Golden Ganesha Rakhi">
+              <img src="attached_assets/Rakhi3.webp" onclick="selectRakhi('rc', this, 'Rakhi3')" alt="Golden Lotus Rakhi">
+            </div>
+          </div>
+          <div class="rakhi-section rs-rakhi">
+            <h4>Choose for RS</h4>
+            <div>
+              <img src="attached_assets/Rakhi1.webp" onclick="selectRakhi('rs', this, 'Rakhi1')" alt="Silver Rakhi with Rudraksha">
+              <img src="attached_assets/Rakhi2.webp" onclick="selectRakhi('rs', this, 'Rakhi2')" alt="Golden Ganesha Rakhi">
+              <img src="attached_assets/Rakhi3.webp" onclick="selectRakhi('rs', this, 'Rakhi3')" alt="Golden Lotus Rakhi">
+            </div>
+          </div>
         </div>
         <div id="final-msg"></div>
       </div>
@@ -591,46 +836,81 @@
     const feedbackPopup = document.getElementById('feedbackPopup');
 
     const wrongFeedbacks = [
-      "Really? {answer}? That's your detective work? 🕵️‍♂️😂",
-      "Oh please! {answer}? You clearly don't know me AT ALL! 🙄✨",
-      "Seriously? {answer}? Did you even TRY? 🤦‍♀️",
+      "Really? That's your detective work? 🕵️‍♂️😂",
+      "Oh please! You clearly don't know them AT ALL! 🙄✨",
+      "Seriously? Did you even TRY? 🤦‍♀️",
       "Wrong! Try harder next time! 😒",
       "Nope! Better luck with the next question! 🙃"
     ];
 
     const correctFeedbacks = [
       "Perfect! Bravo! You are more observant than I think! 👏✨",
-      "Wow! Good job! You actually know me! 😍",
+      "Wow! Good job! You actually know them! 😍",
       "Excellent detective work! You got it right! 🕵️‍♂️🎉",
       "Amazing! You're paying attention! I'm impressed! 💯",
-      "Spot on! You really DO know me well! ❤️"
+      "Spot on! You really DO know them well! ❤️"
     ];
 
-    // All possible correct answers for each question (up to 10 answers each)
+    // All possible correct answers for each question (RC: A1-A10, RS: B1-B10)
     const correctAnswers = {
-      'q1': ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10'],
-      'q2': ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10'],
-      'q3': ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10'],
-      'q4': ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10'],
-      'q5': ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10'],
-      'q6': ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10'],
-      'q7': ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10'],
-      'q8': ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10'],
-      'q9': ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10'],
-      'q10': ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10']
+      'q1': {
+        'rc': ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10'],
+        'rs': ['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B9', 'B10']
+      },
+      'q2': {
+        'rc': ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10'],
+        'rs': ['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B9', 'B10']
+      },
+      'q3': {
+        'rc': ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10'],
+        'rs': ['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B9', 'B10']
+      },
+      'q4': {
+        'rc': ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10'],
+        'rs': ['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B9', 'B10']
+      },
+      'q5': {
+        'rc': ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10'],
+        'rs': ['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B9', 'B10']
+      },
+      'q6': {
+        'rc': ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10'],
+        'rs': ['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B9', 'B10']
+      },
+      'q7': {
+        'rc': ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10'],
+        'rs': ['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B9', 'B10']
+      },
+      'q8': {
+        'rc': ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10'],
+        'rs': ['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B9', 'B10']
+      },
+      'q9': {
+        'rc': ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10'],
+        'rs': ['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B9', 'B10']
+      },
+      'q10': {
+        'rc': ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10'],
+        'rs': ['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B9', 'B10']
+      }
     };
 
     const questionTexts = {
-      'q1': '🧁 What is my favorite dessert?',
-      'q2': '📚 What subject did I hate in school?',
-      'q3': '🎬 Which movie can I watch over and over and over?',
-      'q4': '🍕 What\'s my go-to-comfort food?',
-      'q5': '🕺💃 My favorite actor or actress growing up was?',
-      'q6': '🌈 My most used emoji is?',
-      'q7': '🏃‍♀️ What\'s my secret talent?',
-      'q8': '🧘 What\'s one thing I always do when I’m stressed or sad?',
-      'q9': '🎵 A song that always lifts my mood is?',
-      'q10': '⚡ If I could teleport anywhere right now, where would I go?'
+      'q1': '🧁 What is their favorite dessert?',
+      'q2': '📚 What subject did they hate in school?',
+      'q3': '🎬 Which movie can they watch over and over?',
+      'q4': '🍕 What\'s their go-to comfort food?',
+      'q5': '🕺💃 Their favorite actor or actress growing up was?',
+      'q6': '🌈 Their most used emoji is?',
+      'q7': '🏃‍♀️ What\'s their secret talent?',
+      'q8': '🧘 What do they do when stressed or sad?',
+      'q9': '🎵 A song that always lifts their mood is?',
+      'q10': '⚡ If they could teleport anywhere right now, where would they go?'
+    };
+
+    let selectedRakhis = {
+      'rc': null,
+      'rs': null
     };
 
     function startQuiz() {
@@ -657,41 +937,55 @@
     }
 
     function next(currentId, nextId) {
-      const answer = document.getElementById(currentId.replace('q', 'a')).value.trim().toLowerCase();
-      const possibleAnswers = correctAnswers[currentId];
+      const rcAnswer = document.getElementById(`rc_${currentId.replace('q', 'a')}`).value.trim().toLowerCase();
+      const rsAnswer = document.getElementById(`rs_${currentId.replace('q', 'a')}`).value.trim().toLowerCase();
+      
+      const rcPossibleAnswers = correctAnswers[currentId]['rc'];
+      const rsPossibleAnswers = correctAnswers[currentId]['rs'];
 
-      if (answer) {
-        const isCorrect = possibleAnswers.some(correctAns =>
-          answer.includes(correctAns.toLowerCase()) || correctAns.toLowerCase().includes(answer)
-        );
-        showFeedback(answer, possibleAnswers, isCorrect);
+      let feedback = '';
+      let isCorrect = false;
 
-        setTimeout(() => {
-          document.getElementById(currentId).classList.remove('active');
-          if (nextId === 'rakhi') {
-            showQuestion(nextId, 11);
-          } else {
-            let num = parseInt(nextId.replace('q', ''));
-            showQuestion(nextId, num);
-          }
-        }, 2500);
+      // Check RC answer
+      const isRcCorrect = rcPossibleAnswers.some(correctAns =>
+        rcAnswer.includes(correctAns.toLowerCase()) || correctAns.toLowerCase().includes(rcAnswer)
+      );
+
+      // Check RS answer
+      const isRsCorrect = rsPossibleAnswers.some(correctAns =>
+        rsAnswer.includes(correctAns.toLowerCase()) || correctAns.toLowerCase().includes(rsAnswer)
+      );
+
+      if (isRcCorrect && isRsCorrect) {
+        feedback = "Amazing! You got both RC and RS right! 🎉🎉";
+        isCorrect = true;
+      } else if (isRcCorrect) {
+        feedback = "Good job on RC! But RS answer needs work! 😊😅";
+        isCorrect = true;
+      } else if (isRsCorrect) {
+        feedback = "Good job on RS! But RC answer needs work! 😊😅";
+        isCorrect = true;
       } else {
-        showFeedback("nothing", possibleAnswers, false);
+        feedback = "Oops! Both answers need some detective work! 🕵️‍♂️";
+        isCorrect = false;
       }
+
+      showFeedback(feedback, isCorrect);
+
+      setTimeout(() => {
+        document.getElementById(currentId).classList.remove('active');
+        if (nextId === 'rakhi') {
+          showQuestion(nextId, 11);
+        } else {
+          let num = parseInt(nextId.replace('q', ''));
+          showQuestion(nextId, num);
+        }
+      }, 2500);
     }
 
-    function showFeedback(answer, possibleAnswers, isCorrect) {
-      let feedback;
-
-      if (isCorrect) {
-        feedback = correctFeedbacks[Math.floor(Math.random() * correctFeedbacks.length)];
-        feedbackPopup.className = 'feedback-popup correct-feedback';
-      } else {
-        feedback = wrongFeedbacks[Math.floor(Math.random() * wrongFeedbacks.length)];
-        feedbackPopup.className = 'feedback-popup wrong-feedback';
-      }
-
-      feedbackPopup.innerHTML = feedback.replace('{answer}', answer || 'NOTHING');
+    function showFeedback(message, isCorrect) {
+      feedbackPopup.innerHTML = message;
+      feedbackPopup.className = isCorrect ? 'feedback-popup correct-feedback' : 'feedback-popup wrong-feedback';
       feedbackPopup.style.display = 'block';
 
       setTimeout(() => {
@@ -699,32 +993,56 @@
       }, 2500);
     }
 
-    function tieRakhi(el, rakhiName) {
+    function selectRakhi(person, el, rakhiName) {
+      selectedRakhis[person] = {
+        element: el,
+        name: rakhiName
+      };
+
+      // Visual feedback
+      createSparkles(el);
+
+      // Check if both rakhis are selected
+      if (selectedRakhis.rc && selectedRakhis.rs) {
+        setTimeout(() => {
+          showFinalResult();
+        }, 1000);
+      }
+    }
+
+    function showFinalResult() {
       // Hide rakhi selection screen
       document.getElementById('rakhi').classList.remove('active');
 
-      // Determine the tying image
-      let tyingImage;
-      if (rakhiName === 'Rakhi1') {
-        tyingImage = 'attached_assets/Rakhi1_tying.webp';
-      } else if (rakhiName === 'Rakhi2') {
-        tyingImage = 'attached_assets/Rakhi2_tying.webp';
-      } else if (rakhiName === 'Rakhi3') {
-        tyingImage = 'attached_assets/Rakhi3_tying.webp';
-      }
+      // Determine the tying images
+      let rcTyingImage = `attached_assets/${selectedRakhis.rc.name}_tying.webp`;
+      let rsTyingImage = `attached_assets/${selectedRakhis.rs.name}_tying.webp`;
 
       // Set the content inside the final slide
       const finalSlide = document.getElementById('final-slide');
       finalSlide.innerHTML = `
-        <h2 style="text-align: center;">❤️ Awww! You chose this one! I like it! ❤️</h2>
-        <div style="text-align: center;">
-          <img src="${el.src}" style="width:150px;border-radius:50%;border:6px solid #ff9800;box-shadow: 0 0 20px rgba(255,152,0,0.6);margin: 1rem;" />
-          <div style="margin-top: 2rem;">
-            <img src="${tyingImage}" style="width:300px;border-radius:15px;border:4px solid #ff4081;box-shadow: 0 10px 30px rgba(0,0,0,0.3);margin: 1rem 0;" alt="Tying ${rakhiName}"/>
+        <h2 style="text-align: center;">❤️ Perfect Choices! They'll love these! ❤️</h2>
+        <div class="final-result">
+          <div class="result-section rc-result">
+            <h3>RC's Rakhi</h3>
+            <img src="${selectedRakhis.rc.element.src}" />
+            <div>
+              <img src="${rcTyingImage}" class="tying-image" alt="Tying ${selectedRakhis.rc.name} for RC"/>
+            </div>
+            <p style="color: #2196f3; font-weight: bold;">RC is ready for some sibling love! 💙</p>
           </div>
-          <p style="color: #e91e63; font-weight: bold;">Even from miles away, you're still my favorite human punching bag! 😂</p>
-          <p style="color: #8e24aa;">But also my favorite person to annoy... I mean, LOVE! 💛</p>
-          <p style="color: #ff5722; font-size: 1.4rem;">Happy Raksha Bandhan! ✨</p>
+          <div class="result-section rs-result">
+            <h3>RS's Rakhi</h3>
+            <img src="${selectedRakhis.rs.element.src}" />
+            <div>
+              <img src="${rsTyingImage}" class="tying-image" alt="Tying ${selectedRakhis.rs.name} for RS"/>
+            </div>
+            <p style="color: #ff9800; font-weight: bold;">RS is all set for the celebration! 🧡</p>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 2rem;">
+          <p style="color: #e91e63; font-size: 1.4rem; font-weight: bold;">Happy Raksha Bandhan! ✨</p>
+          <p style="color: #8e24aa;">Even from miles away, bonds remain strong! 💛</p>
           <button class="reveal-btn" onclick="playAgain()">Play Again! 🔄</button>
           <div id="revealConfirm1" style="margin-top: 1rem;">
             <button class="reveal-btn" onclick="showRevealConfirm2()">Reveal All Answers 🧐</button>
@@ -742,7 +1060,7 @@
           <div id="revealConfirm4" style="display:none;">
             <p>😩 Come on! play again and get it right!</p>
             <button class="reveal-btn" onclick="revealAnswersFinal()">Nope, Reveal Them!</button>
-            <button class="reveal-btn" onclick="playAgain()">Fine, I’ll guess again 🔄</button>
+            <button class="reveal-btn" onclick="playAgain()">Fine, I'll guess again 🔄</button>
           </div>
           <div id="finalAnswerReveal" style="display: none; margin-top: 2rem;"></div>
         </div>
@@ -822,57 +1140,6 @@
       createEmojiBurst('🚀', '💨', '⚡');
     }
 
-    function showConfirmStep2() {
-      document.getElementById('confirmStep1').style.display = 'none';
-      document.getElementById('confirmStep2').style.display = 'block';
-    }
-
-    function showConfirmStep3() {
-      document.getElementById('confirmStep2').style.display = 'none';
-      document.getElementById('confirmStep3').style.display = 'block';
-    }
-
-    function showFinalConfirm() {
-      document.getElementById('confirmStep3').style.display = 'none';
-      document.getElementById('finalConfirm').style.display = 'block';
-    }
-
-    function revealAnswers() {
-      const allAnswersDiv = document.getElementById('allAnswers');
-      let answersHTML = '<div class="answers-list"><h3 style="text-align: center; color: #e91e63;">🎯 All My Possible Answers! 🎯</h3>';
-
-      Object.keys(correctAnswers).forEach(questionId => {
-        const questionText = questionTexts[questionId];
-        const answers = correctAnswers[questionId];
-
-        answersHTML += `
-          <div class="answer-item">
-            <h4>${questionText}</h4>
-            <p>${answers.join(', ')}</p>
-          </div>
-        `;
-      });
-
-      answersHTML += '</div>';
-      allAnswersDiv.innerHTML = answersHTML;
-      allAnswersDiv.style.display = 'block';
-
-      // Hide all confirmation steps
-      document.getElementById('confirmStep1').style.display = 'none';
-      document.getElementById('confirmStep2').style.display = 'none';
-      document.getElementById('confirmStep3').style.display = 'none';
-      document.getElementById('finalConfirm').style.display = 'none';
-    }
-
-    function playAgain() {
-      // Reset the quiz
-      location.reload();
-    }
-
-    function hideRevealSection() {
-      document.querySelector('.reveal-section').style.display = 'none';
-    }
-
     function showRevealConfirm2() {
       document.getElementById('revealConfirm1').style.display = 'none';
       document.getElementById('revealConfirm2').style.display = 'block';
@@ -897,16 +1164,24 @@
 
     function revealAnswersFinal() {
       const finalContainer = document.getElementById('finalAnswerReveal');
-      let answersHTML = '<div class="answers-list"><h3 style="text-align: center; color: #e91e63;">🎯 All My Possible Answers! 🎯</h3>';
+      let answersHTML = '<div class="answers-list"><h3 style="text-align: center; color: #e91e63;">🎯 All Correct Answers! 🎯</h3>';
 
       Object.keys(correctAnswers).forEach(questionId => {
         const questionText = questionTexts[questionId];
-        const answers = correctAnswers[questionId];
+        const rcAnswers = correctAnswers[questionId]['rc'];
+        const rsAnswers = correctAnswers[questionId]['rs'];
 
         answersHTML += `
           <div class="answer-item">
             <h4>${questionText}</h4>
-            <p>${answers.join(', ')}</p>
+            <div class="dual-answers">
+              <div class="answer-section rc-answers">
+                <p><strong>RC:</strong> ${rcAnswers.join(', ')}</p>
+              </div>
+              <div class="answer-section rs-answers">
+                <p><strong>RS:</strong> ${rsAnswers.join(', ')}</p>
+              </div>
+            </div>
           </div>
         `;
       });
@@ -919,6 +1194,10 @@
       document.getElementById('revealConfirm4').style.display = 'none';
     }
 
+    function playAgain() {
+      // Reset the quiz
+      location.reload();
+    }
 
     // Auto-create ambient sparkles
     setInterval(() => {
