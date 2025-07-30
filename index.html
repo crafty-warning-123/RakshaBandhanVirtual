@@ -292,6 +292,10 @@
       color: #2196f3;
     }
 
+    .self-rakhi h4 {
+      color: #9c27b0;
+    }
+
     .rakhi-section img {
       width: 300px;
       height: 300px;
@@ -632,6 +636,14 @@
       border-color: #2196f3;
     }
 
+    .self-result h3 {
+      color: #9c27b0;
+    }
+
+    .self-result img {
+      border-color: #9c27b0;
+    }
+
     .tying-image {
       width: 250px !important;
       height: auto !important;
@@ -873,6 +885,27 @@
                 alt="Golden Lotus Rakhi">
             </div>
           </div>
+          <div class="rakhi-section self-rakhi">
+            <h4>Choose a Rakhi for Yourself</h4>
+            <div>
+              <img src="attached_assets/Rakhi1.webp" onclick="selectRakhi('self', this, 'Rakhi1')"
+                alt="Silver Rakhi with Rudraksha">
+              <img src="attached_assets/Rakhi2.webp" onclick="selectRakhi('self', this, 'Rakhi2')"
+                alt="Golden Ganesha Rakhi">
+              <img src="attached_assets/Rakhi3.webp" onclick="selectRakhi('self', this, 'Rakhi3')"
+                alt="Golden Lotus Rakhi">
+              <img src="attached_assets/Rakhi4.webp" onclick="selectRakhi('self', this, 'Rakhi4')"
+                alt="Golden Lotus Rakhi">
+              <img src="attached_assets/Rakhi5.webp" onclick="selectRakhi('self', this, 'Rakhi5')"
+                alt="Silver Rakhi with Rudraksha">
+              <img src="attached_assets/Rakhi6.webp" onclick="selectRakhi('self', this, 'Rakhi6')"
+                alt="Golden Ganesha Rakhi">
+              <img src="attached_assets/Rakhi7.webp" onclick="selectRakhi('self', this, 'Rakhi7')"
+                alt="Golden Lotus Rakhi">
+              <img src="attached_assets/Rakhi8.webp" onclick="selectRakhi('self', this, 'Rakhi8')"
+                alt="Golden Lotus Rakhi">
+            </div>
+          </div>
         </div>
         <div id="final-msg"></div>
       </div>
@@ -971,7 +1004,8 @@
 
     let selectedRakhis = {
       'rc': null,
-      'rs': null
+      'rs': null,
+      'self': null
     };
 
     function startQuiz() {
@@ -1147,8 +1181,8 @@
       // Visual feedback
       createSparkles(el);
 
-      // Check if both rakhis are selected
-      if (selectedRakhis.rc && selectedRakhis.rs) {
+      // Check if all three rakhis are selected
+      if (selectedRakhis.rc && selectedRakhis.rs && selectedRakhis.self) {
         setTimeout(() => {
           showFinalResult();
         }, 1000);
@@ -1162,6 +1196,7 @@
       // Determine the tying images
       let rcTyingImage = `attached_assets/${selectedRakhis.rc.name}_tying.webp`;
       let rsTyingImage = `attached_assets/${selectedRakhis.rs.name}_tying.webp`;
+      let selfTyingImage = `attached_assets/${selectedRakhis.self.name}_tying.webp`;
 
       // Set the content inside the final slide
       const finalSlide = document.getElementById('final-slide');
@@ -1183,6 +1218,16 @@
               <img src="${rsTyingImage}" class="tying-image" alt="Tying ${selectedRakhis.rs.name} for Rajat"/>
             </div>
             <p style="color: #2196f3; font-weight: bold;">Jordar! 💙</p>
+          </div>
+        </div>
+        <div class="final-result" style="justify-content: center; margin-top: 2rem;">
+          <div class="result-section self-result">
+            <h3>Your Rakhi</h3>
+            <img src="${selectedRakhis.self.element.src}" />
+            <div>
+              <img src="${selfTyingImage}" class="tying-image" alt="Tying ${selectedRakhis.self.name} for yourself"/>
+            </div>
+            <p style="color: #9c27b0; font-weight: bold;">Perfect choice! 💜</p>
           </div>
         </div>
         <div style="text-align: center; margin-top: 2rem;">
