@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700;800&display=swap" rel="stylesheet">
   <style>
     body {
-      background: linear-gradient(45deg, #ff9a9e, #fecfef, #fecfef, #ff9a9e);
+      background: linear-gradient(45deg, #8e24aa, #ff9800, #ff7043, #9c27b0);
       background-size: 400% 400%;
       animation: gradientShift 8s ease infinite;
       font-family: 'Baloo 2', cursive;
@@ -48,7 +48,7 @@
       text-align: center;
       font-size: 2.5rem;
       font-weight: 800;
-      color: #e91e63;
+      color: #8e24aa;
       text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
       animation: dramaticZoom 2s ease-out;
       margin-bottom: 1rem;
@@ -73,7 +73,7 @@
     .subtitle {
       text-align: center;
       font-size: 1.3rem;
-      color: #ff5722;
+      color: #ff9800;
       font-weight: 700;
       animation: slideInFromBottom 2s ease-out 0.5s both;
       margin-bottom: 2rem;
@@ -119,7 +119,7 @@
 
     .question h3 {
       font-size: 1.8rem;
-      color: #8e24aa;
+      color: #9c27b0;
       text-align: center;
       margin-bottom: 1.5rem;
       position: relative;
@@ -139,16 +139,16 @@
     .input-section h4 {
       font-size: 1.3rem;
       margin-bottom: 1rem;
-      color: #8e24aa;
+      color: #9c27b0;
       font-weight: bold;
     }
 
     .rc-section h4 {
-      color: #2196f3;
+      color: #e91e63;
     }
 
     .rs-section h4 {
-      color: #ff9800;
+      color: #2196f3;
     }
 
     .input-section input {
@@ -163,13 +163,13 @@
     }
 
     .rc-section input {
-      border-color: #2196f3;
-      background: linear-gradient(45deg, #fff, #e3f2fd);
+      border-color: #e91e63;
+      background: linear-gradient(45deg, #fff, #fce4ec);
     }
 
     .rs-section input {
-      border-color: #ff9800;
-      background: linear-gradient(45deg, #fff, #fff3e0);
+      border-color: #2196f3;
+      background: linear-gradient(45deg, #fff, #e3f2fd);
     }
 
     .input-section input:focus {
@@ -178,17 +178,17 @@
     }
 
     .rc-section input:focus {
+      border-color: #c2185b;
+      box-shadow: 0 0 20px rgba(233, 30, 99, 0.3);
+    }
+
+    .rs-section input:focus {
       border-color: #1976d2;
       box-shadow: 0 0 20px rgba(33, 150, 243, 0.3);
     }
 
-    .rs-section input:focus {
-      border-color: #f57c00;
-      box-shadow: 0 0 20px rgba(255, 152, 0, 0.3);
-    }
-
     .next-btn {
-      background: linear-gradient(45deg, #ff4081, #e91e63);
+      background: linear-gradient(45deg, #9c27b0, #ff9800);
       color: white;
       font-weight: bold;
       padding: 1rem 2rem;
@@ -207,7 +207,7 @@
 
     .next-btn:hover {
       transform: scale(1.1);
-      box-shadow: 0 10px 25px rgba(233, 30, 99, 0.4);
+      box-shadow: 0 10px 25px rgba(156, 39, 176, 0.4);
     }
 
     .next-btn:before {
@@ -226,7 +226,7 @@
     }
 
     .play-btn {
-      background: linear-gradient(45deg, #ff9800, #f57c00);
+      background: linear-gradient(45deg, #9c27b0, #ff9800);
       color: white;
       font-weight: bold;
       padding: 1.5rem 3rem;
@@ -239,7 +239,7 @@
       margin-left: auto;
       margin-right: auto;
       animation: pulse 2s infinite;
-      box-shadow: 0 10px 30px rgba(245, 124, 0, 0.4);
+      box-shadow: 0 10px 30px rgba(156, 39, 176, 0.4);
     }
 
     @keyframes pulse {
@@ -280,16 +280,16 @@
     .rakhi-section h4 {
       font-size: 1.5rem;
       margin-bottom: 2rem;
-      color: #8e24aa;
+      color: #9c27b0;
       font-weight: bold;
     }
 
     .rc-rakhi h4 {
-      color: #2196f3;
+      color: #e91e63;
     }
 
     .rs-rakhi h4 {
-      color: #ff9800;
+      color: #2196f3;
     }
 
     .rakhi-section img {
@@ -305,8 +305,8 @@
 
     .rakhi-section img:hover {
       transform: scale(1.3) rotate(360deg);
-      border-color: #ff4081;
-      box-shadow: 0 0 30px rgba(255, 64, 129, 0.6);
+      border-color: #9c27b0;
+      box-shadow: 0 0 30px rgba(156, 39, 176, 0.6);
     }
 
     .rakhi-section img.selected {
@@ -427,7 +427,7 @@
 
     .progress-fill {
       height: 100%;
-      background: linear-gradient(45deg, #ff4081, #e91e63);
+      background: linear-gradient(45deg, #9c27b0, #ff9800);
       border-radius: 10px;
       transition: width 0.8s ease;
       width: 0%;
@@ -468,11 +468,11 @@
 
     @keyframes glow {
       from {
-        text-shadow: 0 0 5px #ff4081;
+        text-shadow: 0 0 5px #9c27b0;
       }
 
       to {
-        text-shadow: 0 0 20px #ff4081, 0 0 30px #e91e63;
+        text-shadow: 0 0 20px #9c27b0, 0 0 30px #ff9800;
       }
     }
 
@@ -983,6 +983,7 @@
       // Only show progress text for the first 10 questions
       if (id.startsWith('q')) {
         progress.innerText = `Question ${num} of 10 - You got this! 💪`;
+      progress.style.color = '#9c27b0';
         progressFill.style.width = `${(num / 10) * 100}%`;
       } else {
         progress.innerText = '';
@@ -1208,6 +1209,9 @@
 
       // Show the final slide
       finalSlide.classList.add('active');
+      
+      // Scroll to top of page
+      window.scrollTo({ top: 0, behavior: 'smooth' });
 
       // Optional: Confetti explosion
       for (let i = 0; i < 50; i++) {
@@ -1216,7 +1220,7 @@
     }
 
     function createConfetti() {
-      const colors = ['#ff4081', '#e91e63', '#ffeb3b', '#4caf50', '#2196f3', '#ff9800'];
+      const colors = ['#9c27b0', '#ff9800', '#8e24aa', '#ff7043', '#2196f3', '#e91e63'];
       for (let i = 0; i < 20; i++) {
         const confetti = document.createElement('div');
         confetti.className = 'confetti';
