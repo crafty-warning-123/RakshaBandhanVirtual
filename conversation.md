@@ -1,0 +1,1 @@
+The user provided a full HTML + JS Rakhi quiz and requested to create a simple Replit project for it.
