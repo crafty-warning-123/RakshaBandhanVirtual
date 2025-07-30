@@ -7,20 +7,933 @@
   <title>Raksha Bandhan Quiz</title>
   <link href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: linear-gradient(45deg, #ff9a9e, #fecfef, #fecfef, #ff9a9e);
+      background-size: 400% 400%;
+      animation: gradientShift 8s ease infinite;
+      font-family: 'Baloo 2', cursive;
+      margin: 0;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .container {
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      margin-top: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #e91e63;
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+      animation: dramaticZoom 2s ease-out;
+      margin-bottom: 1rem;
+    }
+
+    @keyframes dramaticZoom {
+      0% {
+        transform: scale(0.3) rotate(-10deg);
+        opacity: 0;
+      }
+
+      50% {
+        transform: scale(1.2) rotate(5deg);
+      }
+
+      100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+      }
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 1.3rem;
+      color: #ff5722;
+      font-weight: 700;
+      animation: slideInFromBottom 2s ease-out 0.5s both;
+      margin-bottom: 2rem;
+    }
+
+    @keyframes slideInFromBottom {
+      0% {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .question {
+      display: none;
+      animation: bounceIn 0.8s ease-out forwards;
+      position: relative;
+    }
+
+    .question.active {
+      display: block;
+    }
+
+    @keyframes bounceIn {
+      0% {
+        transform: scale(0.3) translateY(-100px);
+        opacity: 0;
+      }
+
+      50% {
+        transform: scale(1.1) translateY(10px);
+      }
+
+      100% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .question h3 {
+      font-size: 1.8rem;
+      color: #8e24aa;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .question input {
+      font-size: 1.2rem;
+      padding: 1rem;
+      border: 3px solid #ff4081;
+      border-radius: 15px;
+      background: linear-gradient(45deg, #fff, #fce4ec);
+      transition: all 0.3s ease;
+    }
+
+    .question input:focus {
+      border-color: #e91e63;
+      box-shadow: 0 0 20px rgba(233, 30, 99, 0.3);
+      transform: scale(1.05);
+    }
+
+    .next-btn {
+      background: linear-gradient(45deg, #ff4081, #e91e63);
+      color: white;
+      font-weight: bold;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 25px;
+      margin-top: 1.5rem;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .next-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 25px rgba(233, 30, 99, 0.4);
+    }
+
+    .next-btn:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.5s;
+    }
+
+    .next-btn:hover:before {
+      left: 100%;
+    }
+
+    .play-btn {
+      background: linear-gradient(45deg, #ff9800, #f57c00);
+      color: white;
+      font-weight: bold;
+      padding: 1.5rem 3rem;
+      border: none;
+      border-radius: 30px;
+      margin-top: 2rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      animation: pulse 2s infinite;
+      box-shadow: 0 10px 30px rgba(245, 124, 0, 0.4);
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .rakhi-choice {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .rakhi-choice img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin: 1rem;
+      cursor: pointer;
+      transition: all 0.5s ease;
+      border: 4px solid transparent;
+      position: relative;
+    }
+
+    .rakhi-choice img:hover {
+      transform: scale(1.3) rotate(360deg);
+      border-color: #ff4081;
+      box-shadow: 0 0 30px rgba(255, 64, 129, 0.6);
+    }
+
+    .feedback-popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: linear-gradient(45deg, #ffeb3b, #ffc107);
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #e65100;
+      text-align: center;
+      animation: popIn 0.5s ease-out;
+      display: none;
+      max-width: 400px;
+    }
+
+    @keyframes popIn {
+      0% {
+        transform: translate(-50%, -50%) scale(0.3);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+      }
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #ff4081;
+      animation: confettiFall 3s linear infinite;
+    }
+
+    @keyframes confettiFall {
+      0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(circle, #fff, #ff4081);
+      border-radius: 50%;
+      animation: sparkle 2s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes sparkle {
+
+      0%,
+      100% {
+        opacity: 0;
+        transform: scale(0);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    #final-msg {
+      display: none;
+      font-size: 1.3rem;
+      text-align: center;
+      margin-top: 2rem;
+      color: #4e342e;
+      animation: heartBeat 2s ease-in-out infinite;
+    }
+
+    @keyframes heartBeat {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: #ffcdd2;
+      border-radius: 10px;
+      margin: 1rem 0;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(45deg, #ff4081, #e91e63);
+      border-radius: 10px;
+      transition: width 0.8s ease;
+      width: 0%;
+    }
+
+    .emoji-burst {
+      position: absolute;
+      font-size: 2rem;
+      animation: emojiBurst 2s ease-out forwards;
+      pointer-events: none;
+    }
+
+    @keyframes emojiBurst {
+      0% {
+        transform: scale(0) rotate(0deg);
+        opacity: 1;
+      }
+
+      50% {
+        transform: scale(1.5) rotate(180deg);
+        opacity: 0.8;
+      }
+
+      100% {
+        transform: scale(0.5) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 3rem;
+      font-style: italic;
+      color: #8e24aa;
+      font-size: 1.1rem;
+      animation: glow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 5px #ff4081;
+      }
+
+      to {
+        text-shadow: 0 0 20px #ff4081, 0 0 30px #e91e63;
+      }
+    }
+
+    .correct-feedback {
+      background: linear-gradient(45deg, #4caf50, #66bb6a) !important;
+      color: white !important;
+    }
+
+    .wrong-feedback {
+      background: linear-gradient(45deg, #f44336, #ef5350) !important;
+      color: white !important;
+    }
+
+    .reveal-section {
+      margin-top: 2rem;
+      padding: 2rem;
+      background: linear-gradient(45deg, #e3f2fd, #f3e5f5);
+      border-radius: 15px;
+      border: 3px solid #9c27b0;
+    }
+
+    .reveal-btn {
+      background: linear-gradient(45deg, #9c27b0, #673ab7);
+      color: white;
+      font-weight: bold;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 25px;
+      margin: 1rem;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .reveal-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(156, 39, 176, 0.4);
+    }
+
+    .skip-btn {
+      background: linear-gradient(45deg, #607d8b, #455a64);
+      color: white;
+      font-weight: bold;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 20px;
+      margin: 1rem 0 0 1rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .skip-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(96, 125, 139, 0.4);
+    }
+
+    .answers-list {
+      margin-top: 2rem;
+      text-align: left;
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .answer-item {
+      margin: 1rem 0;
+      padding: 1rem;
+      background: linear-gradient(45deg, #fff3e0, #fce4ec);
+      border-radius: 10px;
+      border-left: 4px solid #ff4081;
+    }
+
+    .answer-item h4 {
+      color: #8e24aa;
+      margin-bottom: 0.5rem;
+    }
+
+    .answer-item p {
+      color: #5e35b1;
+      font-weight: bold;
+      margin: 0;
+    }
+  </style>
 </head>
 
 <body>
   <main class="container">
     <h1 class="title">🎉 Raksha Bandhan Quiz 🎉</h1>
     <p class="subtitle">How well do you know me? Let's test your detective-sense! 🤪</p>
+
     <button class="play-btn" onclick="startQuiz()">Start the Drama! 🎉🎭</button>
-    <div id="quiz" style="display: none;"></div>
+
+    <div id="quiz" style="display: none;">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <p id="progress" style="text-align: center; font-weight: bold; color: #8e24aa;"></p>
+
+      <div class="question" id="q1">
+        <h3>🧁 What is my favorite dessert?</h3>
+        <input type="text" id="a1" placeholder="Think hard, detective! 🤔">
+        <button class="next-btn" onclick="next('q1','q2')">Next Challenge! ✨</button>
+        <button class="skip-btn" onclick="skipToNext('q1','q2')">Skip to Next Question ➡️</button>
+        <button class="skip-btn" onclick="skipToEnd()">Skip to the end 🚀</button>
+      </div>
+
+      <div class="question" id="q2">
+        <h3>📚 What subject did I hate in school?</h3>
+        <input type="text" id="a2" placeholder="Well! that is not easy to guess 😤">
+        <button class="next-btn" onclick="next('q2','q3')">Keep Going! 🚀</button>
+        <button class="skip-btn" onclick="skipToNext('q2','q3')">Skip to Next Question ➡️</button>
+        <button class="skip-btn" onclick="skipToEnd()">Skip to the end 🚀</button>
+      </div>
+
+      <div class="question" id="q3">
+        <h3>🎬 Which movie can I watch over and over and over?</h3>
+        <input type="text" id="a3" placeholder="There are many! Guess any one!🎭">
+        <button class="next-btn" onclick="next('q3','q4')">Next! 💫</button>
+        <button class="skip-btn" onclick="skipToNext('q3','q4')">Skip to Next Question ➡️</button>
+        <button class="skip-btn" onclick="skipToEnd()">Skip to the end 🚀</button>
+      </div>
+
+      <div class="question" id="q4">
+        <h3>🍕 What's my go-to-comfort food?</h3>
+        <input type="text" id="a4" placeholder="What do I always talk fondly of? 🤤">
+        <button class="next-btn" onclick="next('q4','q5')">Continue! ⭐</button>
+        <button class="skip-btn" onclick="skipToNext('q4','q5')">Skip to Next Question ➡️</button>
+        <button class="skip-btn" onclick="skipToEnd()">Skip to the end 🚀</button>
+      </div>
+
+      <div class="question" id="q5">
+        <h3>🕺💃 My favorite actor or actress growing up was?</h3>
+        <input type="text" id="a5" placeholder="Ohho! Majedar question hai ye! 🎤">
+        <button class="next-btn" onclick="next('q5','q6')">Next! 🎶</button>
+        <button class="skip-btn" onclick="skipToNext('q5','q6')">Skip to Next Question ➡️</button>
+        <button class="skip-btn" onclick="skipToEnd()">Skip to the end 🚀</button>
+      </div>
+
+      <div class="question" id="q6">
+        <h3>🌈 My most used emoji is?</h3>
+        <input type="text" id="a6" placeholder="Look around my chats for clues! 🧠">
+        <button class="next-btn" onclick="next('q6','q7')">Almost there! 🔮</button>
+        <button class="skip-btn" onclick="skipToNext('q6','q7')">Skip to Next Question ➡️</button>
+        <button class="skip-btn" onclick="skipToEnd()">Skip to the end 🚀</button>
+      </div>
+
+      <div class="question" id="q7">
+        <h3>🏃‍♀️ What's my secret talent?</h3>
+        <input type="text" id="a7" placeholder="Batao? Batao? 🤐">
+        <button class="next-btn" onclick="next('q7','q8')">Keep going! 😎</button>
+        <button class="skip-btn" onclick="skipToNext('q7','q8')">Skip to Next Question ➡️</button>
+        <button class="skip-btn" onclick="skipToEnd()">Skip to the end 🚀</button>
+      </div>
+
+      <div class="question" id="q8">
+        <h3>🧘 What's one thing I always do when I’m stressed or sad?</h3>
+        <input type="text" id="a8" placeholder="Where do I waste all my time? 🤭">
+        <button class="next-btn" onclick="next('q8','q9')">Almost done! 📸</button>
+        <button class="skip-btn" onclick="skipToNext('q8','q9')">Skip to Next Question ➡️</button>
+        <button class="skip-btn" onclick="skipToEnd()">Skip to the end 🚀</button>
+      </div>
+
+      <div class="question" id="q9">
+        <h3>🎵 A song that always lifts my mood is?</h3>
+        <input type="text" id="a9" placeholder="Think about my personality! 🎉">
+        <button class="next-btn" onclick="next('q9','q10')">Last question! 🎈</button>
+        <button class="skip-btn" onclick="skipToNext('q9','q10')">Skip to Next Question ➡️</button>
+        <button class="skip-btn" onclick="skipToEnd()">Skip to the end 🚀</button>
+      </div>
+
+      <div class="question" id="q10">
+        <h3>⚡ If I could teleport anywhere right now, where would I go?</h3>
+        <input type="text" id="a10" placeholder="Easy one it is! 🦉">
+        <button class="next-btn" onclick="next('q10','rakhi')">Final Challenge! 🌙</button>
+        <button class="skip-btn" onclick="skipToNext('q10','rakhi')">Skip to Next Question ➡️</button>
+        <button class="skip-btn" onclick="skipToEnd()">Skip to the end 🚀</button>
+      </div>
+
+      <div class="question" id="rakhi">
+        <h3>Choose a Rakhi for me! 🎁✨</h3>
+        <div class="rakhi-choice">
+          <img src="attached_assets/Rakhi1.webp" onclick="tieRakhi(this, 'Rakhi1')" alt="Silver Rakhi with Rudraksha">
+          <img src="attached_assets/Rakhi2.webp" onclick="tieRakhi(this, 'Rakhi2')" alt="Golden Ganesha Rakhi">
+          <img src="attached_assets/Rakhi3.webp" onclick="tieRakhi(this, 'Rakhi3')" alt="Golden Lotus Rakhi">
+        </div>
+        <div id="final-msg"></div>
+      </div>
+
+      <div class="question" id="final-slide">
+        <!-- This will be filled dynamically with rakhi tying content -->
+      </div>
+      
+    </div>
   </main>
+
   <footer class="footer">
     <p>💛 Made with love, chaos, and way too much emotion 💛</p>
   </footer>
+
   <div id="feedbackPopup" class="feedback-popup"></div>
-  <script src="script.js"></script>
+
+  <script>
+    const progress = document.getElementById('progress');
+    const progressFill = document.getElementById('progressFill');
+    const quiz = document.getElementById('quiz');
+    const feedbackPopup = document.getElementById('feedbackPopup');
+
+    const wrongFeedbacks = [
+      "Really? {answer}? That's your detective work? 🕵️‍♂️😂",
+      "Oh please! {answer}? You clearly don't know me AT ALL! 🙄✨",
+      "Seriously? {answer}? Did you even TRY? 🤦‍♀️",
+      "Wrong! Try harder next time! 😒",
+      "Nope! Better luck with the next question! 🙃"
+    ];
+
+    const correctFeedbacks = [
+      "Perfect! Bravo! You are more observant than I think! 👏✨",
+      "Wow! Good job! You actually know me! 😍",
+      "Excellent detective work! You got it right! 🕵️‍♂️🎉",
+      "Amazing! You're paying attention! I'm impressed! 💯",
+      "Spot on! You really DO know me well! ❤️"
+    ];
+
+    // All possible correct answers for each question (up to 10 answers each)
+    const correctAnswers = {
+      'q1': ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10'],
+      'q2': ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10'],
+      'q3': ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10'],
+      'q4': ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10'],
+      'q5': ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10'],
+      'q6': ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10'],
+      'q7': ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10'],
+      'q8': ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10'],
+      'q9': ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10'],
+      'q10': ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10']
+    };
+
+    const questionTexts = {
+      'q1': '🧁 What is my favorite dessert?',
+      'q2': '📚 What subject did I hate in school?',
+      'q3': '🎬 Which movie can I watch over and over and over?',
+      'q4': '🍕 What\'s my go-to-comfort food?',
+      'q5': '🕺💃 My favorite actor or actress growing up was?',
+      'q6': '🌈 My most used emoji is?',
+      'q7': '🏃‍♀️ What\'s my secret talent?',
+      'q8': '🧘 What\'s one thing I always do when I’m stressed or sad?',
+      'q9': '🎵 A song that always lifts my mood is?',
+      'q10': '⚡ If I could teleport anywhere right now, where would I go?'
+    };
+
+    function startQuiz() {
+      document.querySelector('.play-btn').style.display = 'none';
+      quiz.style.display = 'block';
+      createConfetti();
+      showQuestion('q1', 1);
+    }
+
+    function showQuestion(id, num) {
+      document.getElementById(id).classList.add('active');
+
+      // Only show progress text for the first 10 questions
+      if (id.startsWith('q')) {
+        progress.innerText = `Question ${num} of 10 - You got this! 💪`;
+        progressFill.style.width = `${(num/10) * 100}%`;
+      } else {
+        progress.innerText = '';
+        progressFill.style.width = '100%';
+      }
+
+      // Add ta-da effect
+      createEmojiBurst('🎉', '✨', '💥');
+    }
+
+    function next(currentId, nextId) {
+      const answer = document.getElementById(currentId.replace('q', 'a')).value.trim().toLowerCase();
+      const possibleAnswers = correctAnswers[currentId];
+
+      if (answer) {
+        const isCorrect = possibleAnswers.some(correctAns =>
+          answer.includes(correctAns.toLowerCase()) || correctAns.toLowerCase().includes(answer)
+        );
+        showFeedback(answer, possibleAnswers, isCorrect);
+
+        setTimeout(() => {
+          document.getElementById(currentId).classList.remove('active');
+          if (nextId === 'rakhi') {
+            showQuestion(nextId, 11);
+          } else {
+            let num = parseInt(nextId.replace('q', ''));
+            showQuestion(nextId, num);
+          }
+        }, 2500);
+      } else {
+        showFeedback("nothing", possibleAnswers, false);
+      }
+    }
+
+    function showFeedback(answer, possibleAnswers, isCorrect) {
+      let feedback;
+
+      if (isCorrect) {
+        feedback = correctFeedbacks[Math.floor(Math.random() * correctFeedbacks.length)];
+        feedbackPopup.className = 'feedback-popup correct-feedback';
+      } else {
+        feedback = wrongFeedbacks[Math.floor(Math.random() * wrongFeedbacks.length)];
+        feedbackPopup.className = 'feedback-popup wrong-feedback';
+      }
+
+      feedbackPopup.innerHTML = feedback.replace('{answer}', answer || 'NOTHING');
+      feedbackPopup.style.display = 'block';
+
+      setTimeout(() => {
+        feedbackPopup.style.display = 'none';
+      }, 2500);
+    }
+
+    function tieRakhi(el, rakhiName) {
+      // Hide rakhi selection screen
+      document.getElementById('rakhi').classList.remove('active');
+
+      // Determine the tying image
+      let tyingImage;
+      if (rakhiName === 'Rakhi1') {
+        tyingImage = 'attached_assets/Rakhi1_tying.webp';
+      } else if (rakhiName === 'Rakhi2') {
+        tyingImage = 'attached_assets/Rakhi2_tying.webp';
+      } else if (rakhiName === 'Rakhi3') {
+        tyingImage = 'attached_assets/Rakhi3_tying.webp';
+      }
+
+      // Set the content inside the final slide
+      const finalSlide = document.getElementById('final-slide');
+      finalSlide.innerHTML = `
+        <h2 style="text-align: center;">❤️ Awww! You chose this one! I like it! ❤️</h2>
+        <div style="text-align: center;">
+          <img src="${el.src}" style="width:150px;border-radius:50%;border:6px solid #ff9800;box-shadow: 0 0 20px rgba(255,152,0,0.6);margin: 1rem;" />
+          <div style="margin-top: 2rem;">
+            <img src="${tyingImage}" style="width:300px;border-radius:15px;border:4px solid #ff4081;box-shadow: 0 10px 30px rgba(0,0,0,0.3);margin: 1rem 0;" alt="Tying ${rakhiName}"/>
+          </div>
+          <p style="color: #e91e63; font-weight: bold;">Even from miles away, you're still my favorite human punching bag! 😂</p>
+          <p style="color: #8e24aa;">But also my favorite person to annoy... I mean, LOVE! 💛</p>
+          <p style="color: #ff5722; font-size: 1.4rem;">Happy Raksha Bandhan! ✨</p>
+          <button class="reveal-btn" onclick="playAgain()">Play Again! 🔄</button>
+          <div id="revealConfirm1" style="margin-top: 1rem;">
+            <button class="reveal-btn" onclick="showRevealConfirm2()">Reveal All Answers 🧐</button>
+          </div>
+          <div id="revealConfirm2" style="display:none;">
+            <p>🙄 You sure you want to reveal the answers?</p>
+            <button class="reveal-btn" onclick="showRevealConfirm3()">Yes</button>
+            <button class="reveal-btn" onclick="cancelReveal()">No</button>
+          </div>
+          <div id="revealConfirm3" style="display:none;">
+            <p>😤 Are you really sure that you want to spoil it?</p>
+            <button class="reveal-btn" onclick="showRevealConfirm4()">Yes</button>
+            <button class="reveal-btn" onclick="cancelReveal()">No</button>
+          </div>
+          <div id="revealConfirm4" style="display:none;">
+            <p>😩 Come on! play again and get it right!</p>
+            <button class="reveal-btn" onclick="revealAnswersFinal()">Nope, Reveal Them!</button>
+            <button class="reveal-btn" onclick="playAgain()">Fine, I’ll guess again 🔄</button>
+          </div>
+          <div id="finalAnswerReveal" style="display: none; margin-top: 2rem;"></div>
+        </div>
+      `;
+
+      // Show the final slide
+      finalSlide.classList.add('active');
+
+      // Optional: Confetti explosion
+      for(let i = 0; i < 50; i++) {
+        setTimeout(() => createConfetti(), i * 100);
+      }
+    }
+
+    function createConfetti() {
+      const colors = ['#ff4081', '#e91e63', '#ffeb3b', '#4caf50', '#2196f3', '#ff9800'];
+      for (let i = 0; i < 20; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * 100 + '%';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.animationDelay = Math.random() * 2 + 's';
+        document.body.appendChild(confetti);
+
+        setTimeout(() => confetti.remove(), 3000);
+      }
+    }
+
+    function createSparkles(element) {
+      const rect = element.getBoundingClientRect();
+      for (let i = 0; i < 10; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.style.left = rect.left + Math.random() * rect.width + 'px';
+        sparkle.style.top = rect.top + Math.random() * rect.height + 'px';
+        document.body.appendChild(sparkle);
+
+        setTimeout(() => sparkle.remove(), 2000);
+      }
+    }
+
+    function createEmojiBurst(...emojis) {
+      emojis.forEach((emoji, index) => {
+        const burst = document.createElement('div');
+        burst.className = 'emoji-burst';
+        burst.innerHTML = emoji;
+        burst.style.left = Math.random() * 100 + '%';
+        burst.style.top = Math.random() * 50 + '%';
+        burst.style.animationDelay = index * 0.2 + 's';
+        document.body.appendChild(burst);
+
+        setTimeout(() => burst.remove(), 2000);
+      });
+    }
+
+    function skipToNext(currentId, nextId) {
+      // Hide current question without checking answer
+      document.getElementById(currentId).classList.remove('active');
+
+      // Show next question
+      if (nextId === 'rakhi') {
+        showQuestion(nextId, 11);
+      } else {
+        let num = parseInt(nextId.replace('q', ''));
+        showQuestion(nextId, num);
+      }
+
+      createEmojiBurst('⏭️', '💨', '🎯');
+    }
+
+    function skipToEnd() {
+      // Hide current question
+      document.querySelectorAll('.question.active').forEach(q => q.classList.remove('active'));
+
+      // Show rakhi selection
+      showQuestion('rakhi', 11);
+      createEmojiBurst('🚀', '💨', '⚡');
+    }
+
+    function showConfirmStep2() {
+      document.getElementById('confirmStep1').style.display = 'none';
+      document.getElementById('confirmStep2').style.display = 'block';
+    }
+
+    function showConfirmStep3() {
+      document.getElementById('confirmStep2').style.display = 'none';
+      document.getElementById('confirmStep3').style.display = 'block';
+    }
+
+    function showFinalConfirm() {
+      document.getElementById('confirmStep3').style.display = 'none';
+      document.getElementById('finalConfirm').style.display = 'block';
+    }
+
+    function revealAnswers() {
+      const allAnswersDiv = document.getElementById('allAnswers');
+      let answersHTML = '<div class="answers-list"><h3 style="text-align: center; color: #e91e63;">🎯 All My Possible Answers! 🎯</h3>';
+
+      Object.keys(correctAnswers).forEach(questionId => {
+        const questionText = questionTexts[questionId];
+        const answers = correctAnswers[questionId];
+
+        answersHTML += `
+          <div class="answer-item">
+            <h4>${questionText}</h4>
+            <p>${answers.join(', ')}</p>
+          </div>
+        `;
+      });
+
+      answersHTML += '</div>';
+      allAnswersDiv.innerHTML = answersHTML;
+      allAnswersDiv.style.display = 'block';
+
+      // Hide all confirmation steps
+      document.getElementById('confirmStep1').style.display = 'none';
+      document.getElementById('confirmStep2').style.display = 'none';
+      document.getElementById('confirmStep3').style.display = 'none';
+      document.getElementById('finalConfirm').style.display = 'none';
+    }
+
+    function playAgain() {
+      // Reset the quiz
+      location.reload();
+    }
+
+    function hideRevealSection() {
+      document.querySelector('.reveal-section').style.display = 'none';
+    }
+
+    function showRevealConfirm2() {
+      document.getElementById('revealConfirm1').style.display = 'none';
+      document.getElementById('revealConfirm2').style.display = 'block';
+    }
+
+    function showRevealConfirm3() {
+      document.getElementById('revealConfirm2').style.display = 'none';
+      document.getElementById('revealConfirm3').style.display = 'block';
+    }
+
+    function showRevealConfirm4() {
+      document.getElementById('revealConfirm3').style.display = 'none';
+      document.getElementById('revealConfirm4').style.display = 'block';
+    }
+
+    function cancelReveal() {
+      document.getElementById('revealConfirm1').style.display = 'block';
+      document.getElementById('revealConfirm2').style.display = 'none';
+      document.getElementById('revealConfirm3').style.display = 'none';
+      document.getElementById('revealConfirm4').style.display = 'none';
+    }
+
+    function revealAnswersFinal() {
+      const finalContainer = document.getElementById('finalAnswerReveal');
+      let answersHTML = '<div class="answers-list"><h3 style="text-align: center; color: #e91e63;">🎯 All My Possible Answers! 🎯</h3>';
+
+      Object.keys(correctAnswers).forEach(questionId => {
+        const questionText = questionTexts[questionId];
+        const answers = correctAnswers[questionId];
+
+        answersHTML += `
+          <div class="answer-item">
+            <h4>${questionText}</h4>
+            <p>${answers.join(', ')}</p>
+          </div>
+        `;
+      });
+
+      answersHTML += '</div>';
+      finalContainer.innerHTML = answersHTML;
+      finalContainer.style.display = 'block';
+
+      // Hide confirm buttons
+      document.getElementById('revealConfirm4').style.display = 'none';
+    }
+
+
+    // Auto-create ambient sparkles
+    setInterval(() => {
+      if (Math.random() > 0.7) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.style.left = Math.random() * 100 + '%';
+        sparkle.style.top = Math.random() * 100 + '%';
+        sparkle.style.animationDuration = (Math.random() * 2 + 1) + 's';
+        document.body.appendChild(sparkle);
+
+        setTimeout(() => sparkle.remove(), 2000);
+      }
+    }, 1000);
+  </script>
 </body>
+
 </html>
