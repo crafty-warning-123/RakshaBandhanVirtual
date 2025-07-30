@@ -1,3 +1,4 @@
+html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -859,7 +860,7 @@
         'rs': ['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B9', 'B10']
       },
       'q2': {
-        'rc': ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10'],
+        'rc': ['C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'C8', 'A9', 'A10'],
         'rs': ['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B9', 'B10']
       },
       'q3': {
@@ -938,8 +939,45 @@
     }
 
     function next(currentId, nextId) {
-      const rcAnswer = document.getElementById(`rc_${currentId.replace('q', 'a')}`).value.trim().toLowerCase();
-      const rsAnswer = document.getElementById(`rs_${currentId.replace('q', 'a')}`).value.trim().toLowerCase();
+      const rcAnswer = document.getElementById(`rc_${currentId.replace('q', 'a')}`).value.trim();
+      const rsAnswer = document.getElementById(`rs_${currentId.replace('q', 'a')}`).value.trim();
+
+      // Check if answers are empty
+      if (!rcAnswer && !rsAnswer) {
+        const emptyBothFeedbacks = [
+          "Seriously? You're just clicking buttons now? 🤦‍♀️",
+          "Did you fall asleep? Enter SOMETHING! 😴",
+          "Hello? Anyone home? Type some answers! 🏠👋",
+          "Are we playing 'guess the blank space'? 🤔",
+          "Even a random guess is better than nothing! 🎲"
+        ];
+        showFeedback(getRandomFeedback(emptyBothFeedbacks), false);
+        return;
+      }
+
+      if (!rcAnswer) {
+        const emptyRcFeedbacks = [
+          "RC's feelings are hurt! You forgot about her! 💔",
+          "Radhika is waiting... and waiting... and waiting... ⏰",
+          "One guess down, one to go! Don't leave RC hanging! 🤷‍♀️",
+          "RC: 'Am I invisible to you?' 👻",
+          "Half the job done is like half-cooked food! 🍝"
+        ];
+        showFeedback(getRandomFeedback(emptyRcFeedbacks), false);
+        return;
+      }
+
+      if (!rsAnswer) {
+        const emptyRsFeedbacks = [
+          "RS is giving you the silent treatment now! 😤",
+          "Rajat: 'Do I not exist in your world?' 🤨",
+          "You remembered RC but forgot RS? Selective memory much? 🧠",
+          "RS is probably doing push-ups waiting for your answer! 💪",
+          "One answer without the other is like tea without sugar! ☕"
+        ];
+        showFeedback(getRandomFeedback(emptyRsFeedbacks), false);
+        return;
+      }
 
       const rcPossibleAnswers = correctAnswers[currentId]['rc'];
       const rsPossibleAnswers = correctAnswers[currentId]['rs'];
@@ -947,27 +985,63 @@
       let feedback = '';
       let isCorrect = false;
 
-      // Check RC answer
+      // Check RC answer - exact match with sample answers
       const isRcCorrect = rcPossibleAnswers.some(correctAns =>
-        rcAnswer.includes(correctAns.toLowerCase()) || correctAns.toLowerCase().includes(rcAnswer)
+        rcAnswer.toLowerCase() === correctAns.toLowerCase()
       );
 
-      // Check RS answer
+      // Check RS answer - exact match with sample answers
       const isRsCorrect = rsPossibleAnswers.some(correctAns =>
-        rsAnswer.includes(correctAns.toLowerCase()) || correctAns.toLowerCase().includes(rsAnswer)
+        rsAnswer.toLowerCase() === correctAns.toLowerCase()
       );
 
       if (isRcCorrect && isRsCorrect) {
-        feedback = "Amazing! You got both RC and RS right! 🎉🎉";
+        const bothCorrectFeedbacks = [
+          "WHOA! You nailed both! Are you secretly stalking them? 🕵️‍♂️✨",
+          "Perfect score! You're officially promoted to 'Best Friend Detective'! 🏆",
+          "Both right?! Someone's been paying attention! I'm impressed! 👏",
+          "Double bulls-eye! You're like Sherlock Holmes but funnier! 🔍😂",
+          "RC and RS are doing a happy dance right now! 💃🕺",
+          "Plot twist: You actually DO know them! Mind = blown! 🤯"
+        ];
+        feedback = getRandomFeedback(bothCorrectFeedbacks);
         isCorrect = true;
       } else if (isRcCorrect) {
-        feedback = "Good job on RC! But RS answer needs work! 😊😅";
+        const rcOnlyFeedbacks = [
+          "RC's happy, RS is crying! You're 50% detective, 50% guesser! 😂😢",
+          "Good job on RC! But RS is questioning your friendship! 🤔",
+          "Half-way there! RC approves, RS is doing sad face! 😊😞",
+          "RC: 'Yay!' RS: 'Seriously?!' Drama alert! 🎭",
+          "You know RC better than RS? Favoritism much? 😏",
+          "One down, one disappointed! RC's treating, RS is sulking! 🍰😤"
+        ];
+        feedback = getRandomFeedback(rcOnlyFeedbacks);
         isCorrect = true;
       } else if (isRsCorrect) {
-        feedback = "Good job on RS! But RC answer needs work! 😊😅";
+        const rsOnlyFeedbacks = [
+          "RS is celebrating while RC is planning revenge! 😈🎉",
+          "Good job on RS! But RC is giving you the stink eye! 👁️",
+          "RS: 'I knew you loved me more!' RC: 'Excuse me?!' 💔",
+          "Half points! RS is happy dancing, RC is stress eating! 💃🍫",
+          "You got RS right but RC wrong? She's plotting something! 😠",
+          "RS approves, RC is writing you off her will! 📝💸"
+        ];
+        feedback = getRandomFeedback(rsOnlyFeedbacks);
         isCorrect = true;
       } else {
-        feedback = "Oops! Both answers need some detective work! 🕵️‍♂️";
+        const bothWrongFeedbacks = [
+          "Epic fail! Both are laughing AT you, not WITH you! 😂😂",
+          "Wrong on both counts! Are you sure you know them? 🙄",
+          "Double miss! Even a blindfolded monkey would do better! 🙈",
+          "Both wrong?! They're questioning if you're really their friend! 💭",
+          "Strike out! RC and RS are planning an intervention! 🆘",
+          "Nope and nope! Your detective license has been revoked! 🚫🔍",
+          "Both answers wrong! Time for some friendship homework! 📚",
+          "Wrong x2! They're probably changing their phone numbers! 📱",
+          "Double disaster! Even Google would be disappointed! 💻😞",
+          "Two swings, two misses! Baseball isn't your sport either! ⚾"
+        ];
+        feedback = getRandomFeedback(bothWrongFeedbacks);
         isCorrect = false;
       }
 
@@ -1213,6 +1287,10 @@
         setTimeout(() => sparkle.remove(), 2000);
       }
     }, 1000);
+
+    function getRandomFeedback(feedbacks) {
+      return feedbacks[Math.floor(Math.random() * feedbacks.length)];
+    }
   </script>
 </body>
 
