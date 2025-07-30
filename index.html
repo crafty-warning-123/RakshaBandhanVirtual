@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Raksha Bandhan Quiz</title>
+  <title>Happy Raksha Bandhan (Virtual Celebration)</title>
   <link href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700;800&display=swap" rel="stylesheet">
   <style>
@@ -609,11 +609,11 @@
     }
 
     .rc-result h3 {
-      color: #2196f3;
+      color: #e91e63;
     }
 
     .rs-result h3 {
-      color: #ff9800;
+      color: #2196f3;
     }
 
     .result-section img {
@@ -625,11 +625,11 @@
     }
 
     .rc-result img {
-      border-color: #2196f3;
+      border-color: #e91e63;
     }
 
     .rs-result img {
-      border-color: #ff9800;
+      border-color: #2196f3;
     }
 
     .tying-image {
@@ -643,8 +643,8 @@
 
 <body>
   <main class="container">
-    <h1 class="title">🎉 Raksha Bandhan Quiz 🎉</h1>
-    <p class="subtitle">How well do you know us? Let's test your detective-sense! 🤪</p>
+    <h1 class="title">🎉 Happy Raksha Bandhan 🎉<br> (Virtual Celebration)</h1>
+    <p class="subtitle">First you have to pass the quiz! How well do you know us? 🤪</p>
 
     <button class="play-btn" onclick="startQuiz()">Start the Drama! 🎉🎭</button>
 
@@ -667,7 +667,7 @@
           </div>
         </div>
         <div class="button-container">
-          <button class="next-btn" onclick="next('q1','q2')">Next Challenge! ✨</button>
+          <button class="next-btn" onclick="next('q1','q2')">Next Challenge! 🎇</button>
           <button class="skip-btn" onclick="skipToNext('q1','q2')">Skip to Next Question ➡️</button>
           <button class="skip-btn" onclick="skipToEnd()">Skip to the end 🚀</button>
         </div>
@@ -845,27 +845,31 @@
       </div>
 
       <div class="question" id="rakhi">
-        <h3>Choose your Rakhi! 🎁✨</h3>
+        <h3>Choose Rakhi! 🎁</h3>
         <div class="dual-rakhi-container">
           <div class="rakhi-section rc-rakhi">
-            <h4>Choose for Radhika</h4>
+            <h4>Choose a Rakhi for Radhika</h4>
             <div>
-              <img src="attached_assets/Rakhi4.webp" onclick="selectRakhi('rc', this, 'Rakhi4')"
+              <img src="attached_assets/Rakhi1.webp" onclick="selectRakhi('rc', this, 'Rakhi1')"
                 alt="Silver Rakhi with Rudraksha">
-              <img src="attached_assets/Rakhi5.webp" onclick="selectRakhi('rc', this, 'Rakhi5')"
+              <img src="attached_assets/Rakhi2.webp" onclick="selectRakhi('rc', this, 'Rakhi2')"
                 alt="Golden Ganesha Rakhi">
-              <img src="attached_assets/Rakhi6.webp" onclick="selectRakhi('rc', this, 'Rakhi6')"
+              <img src="attached_assets/Rakhi3.webp" onclick="selectRakhi('rc', this, 'Rakhi3')"
+                alt="Golden Lotus Rakhi">
+              <img src="attached_assets/Rakhi4.webp" onclick="selectRakhi('rc', this, 'Rakhi4')"
                 alt="Golden Lotus Rakhi">
             </div>
           </div>
           <div class="rakhi-section rs-rakhi">
-            <h4>Choose for Rajat</h4>
+            <h4>Choose a Rakhi for Rajat</h4>
             <div>
-              <img src="attached_assets/Rakhi1.webp" onclick="selectRakhi('rs', this, 'Rakhi1')"
+              <img src="attached_assets/Rakhi5.webp" onclick="selectRakhi('rs', this, 'Rakhi5')"
                 alt="Silver Rakhi with Rudraksha">
-              <img src="attached_assets/Rakhi2.webp" onclick="selectRakhi('rs', this, 'Rakhi2')"
+              <img src="attached_assets/Rakhi6.webp" onclick="selectRakhi('rs', this, 'Rakhi6')"
                 alt="Golden Ganesha Rakhi">
-              <img src="attached_assets/Rakhi3.webp" onclick="selectRakhi('rs', this, 'Rakhi3')"
+              <img src="attached_assets/Rakhi7.webp" onclick="selectRakhi('rs', this, 'Rakhi7')"
+                alt="Golden Lotus Rakhi">
+              <img src="attached_assets/Rakhi8.webp" onclick="selectRakhi('rs', this, 'Rakhi8')"
                 alt="Golden Lotus Rakhi">
             </div>
           </div>
@@ -893,17 +897,17 @@
     const feedbackPopup = document.getElementById('feedbackPopup');
 
     const wrongFeedbacks = [
-      "Really? That's your detective work? 🕵️‍♂️😂",
-      "Oh please! You clearly don't know them AT ALL! 🙄✨",
+      "Really? That's your detective work? 😂",
+      "Oh please! You clearly don't know them AT ALL! 🙄",
       "Seriously? Did you even TRY? 🤦‍♀️",
       "Wrong! Try harder next time! 😒",
       "Nope! Better luck with the next question! 🙃"
     ];
 
     const correctFeedbacks = [
-      "Perfect! Bravo! You are more observant than I think! 👏✨",
+      "Perfect! Bravo! You are more observant than I think! 👏",
       "Wow! Good job! You actually know them! 😍",
-      "Excellent detective work! You got it right! 🕵️‍♂️🎉",
+      "Excellent detective work! You got it right! 🕵️‍♂️",
       "Amazing! You're paying attention! I'm impressed! 💯",
       "Spot on! You really DO know them well! ❤️"
     ];
@@ -911,44 +915,44 @@
     // All possible correct answers for each question (RC: A1-A10, RS: B1-B10)
     const correctAnswers = {
       'q1': {
-        'rc': ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10'],
-        'rs': ['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B9', 'B10']
+        'rc': ['Kheer', 'Choorma', 'Gulab Jamun', 'GulabJamun', 'Ice cream', 'Icecream', '___', '___', '___', '___'],
+        'rs': ['___', '___', '___', '___', '___', '___', '___', '___', '___', '___']
       },
       'q2': {
-        'rc': ['C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'C8', 'C9', 'C10'],
-        'rs': ['D1', 'D2', 'D3', 'D4', 'D5', 'D6', 'D7', 'D8', 'D9', 'D10']
+        'rc': ['Social Science', 'Social Studies', 'History', '___', '___', '___', '___', '___', '___', '___'],
+        'rs': ['___', '___', '___', '___', '___', '___', '___', '___', '___', '___']
       },
       'q3': {
-        'rc': ['E1', 'E2', 'E3', 'E4', 'E5', 'E6', 'E7', 'E8', 'E9', 'E10'],
-        'rs': ['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10']
+        'rc': ['Guru', 'Vivah', 'Hera Pheri', 'Jannat', 'K3G', 'Kabhi Khushi Kabhi Gam', 'Delhi Belly', '___', '___', '___'],
+        'rs': ['___', '___', '___', '___', '___', '___', '___', '___', '___', '___']
       },
       'q4': {
-        'rc': ['G1', 'G2', 'G3', 'G4', 'G5', 'G6', 'G7', 'G8', 'G9', 'G10'],
-        'rs': ['H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'H7', 'H8', 'H9', 'H10']
+        'rc': ['Poori', 'Puri', 'Poori ke sath poori', 'Subah poori sham poori', 'Khud saari poori', 'Kheer Poori', 'Aaloo Poori', 'Halwa Poori', 'Methi Poori', 'Palak Poori'],
+        'rs': ['___', '___', '___', '___', '___', '___', '___', '___', '___', '___']
       },
       'q5': {
-        'rc': ['I1', 'I2', 'I3', 'I4', 'I5', 'I6', 'I7', 'I8', 'I9', 'I10'],
-        'rs': ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10']
+        'rc': ['Govinda', 'Karishma Kapoor', '___', '___', '___', '___', '___', '___', '___', '___'],
+        'rs': ['___', '___', '___', '___', '___', '___', '___', '___', '___', '___']
       },
       'q6': {
-        'rc': ['K1', 'K2', 'K3', 'K4', 'K5', 'K6', 'K7', 'K8', 'K9', 'K10'],
-        'rs': ['L1', 'L2', 'L3', 'L4', 'L5', 'L6', 'L7', 'L8', 'L9', 'L10']
+        'rc': ['Sparkle', '✨', '___', '___', '___', '___', '___', '___', '___', '___'],
+        'rs': ['___', '___', '___', '___', '___', '___', '___', '___', '___', '___']
       },
       'q7': {
-        'rc': ['M1', 'M2', 'M3', 'M4', 'M5', 'M6', 'M7', 'M8', 'M9', 'M10'],
-        'rs': ['N1', 'N2', 'N3', 'N4', 'N5', 'N6', 'N7', 'N8', 'N9', 'N10']
+        'rc': ['Bata dungi to secret kaise rahega?', 'Pass', 'Pata nahi', 'Skip', 'Idk', 'Kya malum', '___', '___', '___', '___'],
+        'rs': ['___', '___', '___', '___', '___', '___', '___', '___', '___', '___']
       },
       'q8': {
-        'rc': ['O1', 'O2', 'O3', 'O4', 'O5', 'O6', 'O7', 'O8', 'O9', 'O10'],
-        'rs': ['P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P7', 'P8', 'P9', 'P10']
+        'rc': ['Scroll reels', 'Sleep', 'Paint', 'Embroidery', 'Drawing', 'Writing', 'Reading', '___', '___', '___'],
+        'rs': ['___', '___', '___', '___', '___', '___', '___', '___', '___', '___']
       },
       'q9': {
-        'rc': ['Q1', 'Q2', 'Q3', 'Q4', 'Q5', 'Q6', 'Q7', 'Q8', 'Q9', 'Q10'],
-        'rs': ['R1', 'R2', 'R3', 'R4', 'R5', 'R6', 'R7', 'R8', 'R9', 'R10']
+        'rc': ['Chaiyya Chaiyya', 'Ay Hairathe', 'Gud se meetha ishq', 'Kahi aag lage lag jaye', 'Jalla Sain', '___', '___', '___', '___', '___'],
+        'rs': ['___', '___', '___', '___', '___', '___', '___', '___', '___', '___']
       },
       'q10': {
-        'rc': ['S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'S7', 'S8', 'S9', 'S10'],
-        'rs': ['T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8', 'T9', 'T10']
+        'rc': ['Home', 'India', 'Fateh Sagar', 'Udaipur', '___', '___', '___', '___', '___', '___'],
+        'rs': ['___', '___', '___', '___', '___', '___', '___', '___', '___', '___']
       }
     };
 
@@ -983,7 +987,7 @@
       // Only show progress text for the first 10 questions
       if (id.startsWith('q')) {
         progress.innerText = `Question ${num} of 10 - You got this! 💪`;
-      progress.style.color = '#9c27b0';
+        progress.style.color = '#9c27b0';
         progressFill.style.width = `${(num / 10) * 100}%`;
       } else {
         progress.innerText = '';
@@ -991,7 +995,7 @@
       }
 
       // Add ta-da effect
-      createEmojiBurst('🎉', '✨', '💥');
+      createEmojiBurst('🎉', '🎊', '💥');
     }
 
     function next(currentId, nextId) {
@@ -1013,10 +1017,10 @@
 
       if (!rcAnswer) {
         const emptyRcFeedbacks = [
-          "RC's feelings are hurt! You forgot about her! 💔",
+          "Radhika's feelings are hurt! You forgot about her! 💔",
           "Radhika is waiting... and waiting... and waiting... ⏰",
-          "One guess down, one to go! Don't leave RC hanging! 🤷‍♀️",
-          "RC: 'Am I invisible to you?' 👻",
+          "One guess down, one to go! Don't leave Radhika hanging! 🤷‍♀️",
+          "Radhika: 'Am I invisible to you?' 👻",
           "Half the job done is like half-cooked food! 🍝"
         ];
         showFeedback(getRandomFeedback(emptyRcFeedbacks), false);
@@ -1025,10 +1029,10 @@
 
       if (!rsAnswer) {
         const emptyRsFeedbacks = [
-          "RS is giving you the silent treatment now! 😤",
+          "Rajat is giving you the silent treatment now! 😤",
           "Rajat: 'Do I not exist in your world?' 🤨",
-          "You remembered RC but forgot RS? Selective memory much? 🧠",
-          "RS is probably doing push-ups waiting for your answer! 💪",
+          "You remembered Radhika but forgot Rajat? Selective memory much? 🧠",
+          "Rajat is probably doing push-ups waiting for your answer! 💪",
           "One answer without the other is like tea without sugar! ☕"
         ];
         showFeedback(getRandomFeedback(emptyRsFeedbacks), false);
@@ -1053,34 +1057,34 @@
 
       if (isRcCorrect && isRsCorrect) {
         const bothCorrectFeedbacks = [
-          "WHOA! You nailed both! Are you secretly stalking them? 🕵️‍♂️✨",
+          "WHOA! You nailed both! Are you secretly stalking them? 🕵️‍♂️",
           "Perfect score! You're officially promoted to 'Best Friend Detective'! 🏆",
           "Both right?! Someone's been paying attention! I'm impressed! 👏",
-          "Double bulls-eye! You're like Sherlock Holmes but funnier! 🔍😂",
-          "RC and RS are doing a happy dance right now! 💃🕺",
+          "Double bulls-eye! You're like Sherlock Holmes but funnier! 🔍",
+          "Radhika and Rajat are doing a happy dance right now! 💃🕺",
           "Plot twist: You actually DO know them! Mind = blown! 🤯"
         ];
         feedback = getRandomFeedback(bothCorrectFeedbacks);
         isCorrect = true;
       } else if (isRcCorrect) {
         const rcOnlyFeedbacks = [
-          "RC's happy, RS is crying! You're 50% detective, 50% guesser! 😂😢",
-          "Good job on RC! But RS is questioning your friendship! 🤔",
-          "Half-way there! RC approves, RS is doing sad face! 😊😞",
-          "RC: 'Yay!' RS: 'Seriously?!' Drama alert! 🎭",
-          "You know RC better than RS? Favoritism much? 😏",
-          "One down, one disappointed! RC's treating, RS is sulking! 🍰😤"
+          "Radhika's happy, Rajat is crying! You're 50% detective, 50% guesser! 😂😢",
+          "Good job on Radhika! But Rajat is questioning your friendship! 🤔",
+          "Half-way there! Radhika approves, Rajat is doing sad face! 😊😞",
+          "Radhika: 'Yay!' Rajat: 'Seriously?!' Drama alert! 🎭",
+          "You know Radhika better than Rajat? Favoritism much? 😏",
+          "One down, one disappointed! Radhika's treating, Rajat is sulking! 🍰😤"
         ];
         feedback = getRandomFeedback(rcOnlyFeedbacks);
         isCorrect = true;
       } else if (isRsCorrect) {
         const rsOnlyFeedbacks = [
-          "RS is celebrating while RC is planning revenge! 😈🎉",
-          "Good job on RS! But RC is giving you the stink eye! 👁️",
-          "RS: 'I knew you loved me more!' RC: 'Excuse me?!' 💔",
-          "Half points! RS is happy dancing, RC is stress eating! 💃🍫",
-          "You got RS right but RC wrong? She's plotting something! 😠",
-          "RS approves, RC is writing you off her will! 📝💸"
+          "Rajat is celebrating while Radhika is planning revenge! 😈🎉",
+          "Good job on Rajat! But Radhika is giving you the stink eye! 👁️",
+          "Rajat: 'I knew you loved me more!' Radhika: 'Excuse me?!' 💔",
+          "Half points! Rajat is happy dancing, Radhika is stress eating! 💃🍫",
+          "You got Rajat right but Radhika wrong? She's plotting something! 😠",
+          "Rajat approves, Radhika is writing you off her christmas list! 📝💸"
         ];
         feedback = getRandomFeedback(rsOnlyFeedbacks);
         isCorrect = true;
@@ -1090,7 +1094,7 @@
           "Wrong on both counts! Are you sure you know them? 🙄",
           "Double miss! Even a blindfolded monkey would do better! 🙈",
           "Both wrong?! They're questioning if you're really their friend! 💭",
-          "Strike out! RC and RS are planning an intervention! 🆘",
+          "Strike out! Radhika and Rajat are planning an intervention! 🆘",
           "Nope and nope! Your detective license has been revoked! 🚫🔍",
           "Both answers wrong! Time for some friendship homework! 📚",
           "Wrong x2! They're probably changing their phone numbers! 📱",
@@ -1168,17 +1172,17 @@
             <h3>Radhika's Rakhi</h3>
             <img src="${selectedRakhis.rc.element.src}" />
             <div>
-              <img src="${rcTyingImage}" class="tying-image" alt="Tying ${selectedRakhis.rc.name} for RC"/>
+              <img src="${rcTyingImage}" class="tying-image" alt="Tying ${selectedRakhis.rc.name} for Radhika"/>
             </div>
-            <p style="color: #2196f3; font-weight: bold;">Kitni pyari hai! 💗</p>
+            <p style="color: #e91e63; font-weight: bold;">Kitni pyari hai! 💗</p>
           </div>
           <div class="result-section rs-result">
             <h3>Rajat's Rakhi</h3>
             <img src="${selectedRakhis.rs.element.src}" />
             <div>
-              <img src="${rsTyingImage}" class="tying-image" alt="Tying ${selectedRakhis.rs.name} for RS"/>
+              <img src="${rsTyingImage}" class="tying-image" alt="Tying ${selectedRakhis.rs.name} for Rajat"/>
             </div>
-            <p style="color: #ff9800; font-weight: bold;">Jordar! 💙</p>
+            <p style="color: #2196f3; font-weight: bold;">Jordar! 💙</p>
           </div>
         </div>
         <div style="text-align: center; margin-top: 2rem;">
@@ -1209,9 +1213,9 @@
 
       // Show the final slide
       finalSlide.classList.add('active');
-      
+
       // Scroll to top of page
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({top: 0, behavior: 'smooth'});
 
       // Optional: Confetti explosion
       for (let i = 0; i < 50; i++) {
