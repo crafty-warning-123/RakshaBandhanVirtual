@@ -8,7 +8,8 @@
   <!-- WhatsApp Link Preview -->
   <meta property="og:title" content="Happy Raksha Bandhan (Virtual Celebration)">
   <meta property="og:description" content="Celebrate Rakhi virtually with Radhika and Rajat! 🎉">
-  <meta property="og:image" content="https://i.imgur.com/I7dM3qH.png">
+  <meta property="og:image"
+    content="https://crafty-warning-123.github.io/RakshaBandhanVirtualCelebration/attached_assets/Graphic_Girish.png">
   <meta property="og:url" content="https://crafty-warning-123.github.io/RakshaBandhanVirtualCelebration/">
   <meta property="og:type" content="website">
 
@@ -664,7 +665,8 @@
 <body>
   <main class="container">
     <h1 class="title">🎉 रक्षा बंधन की शुभकामनाएं! 🎉</h1>
-    <p class="subtitle">Celebrate Rakhi virtually with Radhika and Rajat!  🎉<br>First you have to pass the quiz!<br>How well do you know Radhika and Rajat? 🤪</p>
+    <p class="subtitle">Celebrate Rakhi virtually with Radhika and Rajat! 🎉<br>First you have to pass the quiz!<br>How
+      well do you know Radhika and Rajat? 🤪</p>
 
     <button class="play-btn" onclick="startQuiz()">Start the Drama! 🎉🎭</button>
 
@@ -916,6 +918,9 @@
           </div>
         </div>
         <div id="final-msg"></div>
+        <div style="text-align: center; margin-top: 2rem;">
+          <button class="next-btn" onclick="forceContinue()">Continue Anyway ➡️</button>
+        </div>
       </div>
 
       <div class="question" id="final-slide">
@@ -1197,6 +1202,25 @@
         }, 1000);
       }
     }
+
+    function forceContinue() {
+      const roles = ['rc', 'rs', 'self'];
+
+      roles.forEach(role => {
+        if (!selectedRakhis[role]) {
+          // Get first image from the corresponding section
+          const section = document.querySelector(`.rakhi-section.${role}-rakhi`) || document.querySelector(`.rakhi-section.self-rakhi`);
+          const firstImg = section.querySelector('img');
+          if (firstImg) {
+            selectRakhi(role, firstImg, firstImg.src.split('/').pop().replace('.webp', ''));
+          }
+        }
+      });
+
+      // After auto-selecting, move to final slide
+      showFinalResult();
+    }
+
 
     function showFinalResult() {
       // Hide rakhi selection screen
