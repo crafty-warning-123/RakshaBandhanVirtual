@@ -4,6 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- WhatsApp Link Preview -->
+  <meta property="og:title" content="Happy Raksha Bandhan (Virtual Celebration)">
+  <meta property="og:description" content="Celebrate Rakhi virtually with Radhika and Rajat! 🎉💛">
+  <meta property="og:image" content="https://yourdomain.com/path-to-image.jpg">
+  <meta property="og:url" content="https://crafty-warning-123.github.io/RakshaBandhanVirtual/">
+  <meta property="og:type" content="website">
+
   <title>Happy Raksha Bandhan (Virtual Celebration)</title>
   <link href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700;800&display=swap" rel="stylesheet">
@@ -655,8 +663,8 @@
 
 <body>
   <main class="container">
-    <h1 class="title">🎉 रक्षा बंधन की शुभकामनाएं! 🎉<br> (Virtual Celebration)</h1>
-    <p class="subtitle">First you have to pass the quiz! How well do you know us? 🤪</p>
+    <h1 class="title">🎉 रक्षा बंधन की शुभकामनाएं! 🎉</h1>
+    <p class="subtitle">Welcome to the virtual Raksha Bandhan Celebration.<br>First you have to pass the quiz!<br>How well do you know Radhika and Rajat? 🤪</p>
 
     <button class="play-btn" onclick="startQuiz()">Start the Drama! 🎉🎭</button>
 
@@ -686,7 +694,7 @@
       </div>
 
       <div class="question" id="q2">
-        <h3>📚 What subject did they hate in school?</h3>
+        <h3>📚 What subject did they hate in school/university?</h3>
         <div class="dual-input-container">
           <div class="input-section rc-section">
             <h4>Make your guess for Radhika</h4>
@@ -800,7 +808,7 @@
       </div>
 
       <div class="question" id="q8">
-        <h3>🧘 What do they do when stressed or sad?</h3>
+        <h3>🧘 What do they do to feel better when stressed or sad?</h3>
         <div class="dual-input-container">
           <div class="input-section rc-section">
             <h4>Make your guess for Radhika</h4>
@@ -918,7 +926,7 @@
   </main>
 
   <footer class="footer">
-    <p>💛 Made with love, chaos, and way too much emotion. 💛</p>
+    <p>💛 Made with love, chaos, and way too much emotion! 💛</p>
   </footer>
 
   <div id="feedbackPopup" class="feedback-popup"></div>
@@ -948,56 +956,56 @@
     // All possible correct answers for each question (RC: A1-A10, RS: B1-B10)
     const correctAnswers = {
       'q1': {
-        'rc': ['Kheer', 'Choorma', 'Gulab Jamun', 'GulabJamun', 'Ice cream', 'Icecream', '___', '___', '___', '___'],
-        'rs': ['___', '___', '___', '___', '___', '___', '___', '___', '___', '___']
+        'rc': ['Kheer', 'Choorma', 'Gulab Jamun', 'Gulabjamun', 'Ice cream', 'Icecream', '___', '___', '___', '___'],
+        'rs': ['Kheer', 'Jalebi', 'Gajar ka halwa', 'Mango', 'Aam', '___', '___', '___', '___', '___']
       },
       'q2': {
         'rc': ['Social Science', 'Social Studies', 'History', '___', '___', '___', '___', '___', '___', '___'],
-        'rs': ['___', '___', '___', '___', '___', '___', '___', '___', '___', '___']
+        'rs': ['Chemistry', 'Social Science', 'Social Studies', '___', '___', '___', '___', '___', '___', '___']
       },
       'q3': {
-        'rc': ['Guru', 'Vivah', 'Hera Pheri', 'Jannat', 'K3G', 'Kabhi Khushi Kabhi Gam', 'Delhi Belly', '___', '___', '___'],
-        'rs': ['___', '___', '___', '___', '___', '___', '___', '___', '___', '___']
+        'rc': ['Guru', 'Vivah', 'Hera Pheri', 'Jannat', 'K3G', 'Kabhi Khushi Kabhi Gam', 'Delhi Belly', 'Dil Chahta Hai', 'Jab We Met', 'Nayak'],
+        'rs': ['Hera Pheri', 'Delhi Belly', 'Gangs of Wasseypur', 'Munna Bhai M.B.B.S.', 'Nayak', 'Swades', 'Padosan', 'Krantiveer', 'Khosla Ka Ghosla!', 'Pyaasa']
       },
       'q4': {
         'rc': ['Poori', 'Puri', 'Poori ke sath poori', 'Subah poori sham poori', 'Khud saari poori', 'Kheer Poori', 'Aaloo Poori', 'Halwa Poori', 'Methi Poori', 'Palak Poori'],
-        'rs': ['___', '___', '___', '___', '___', '___', '___', '___', '___', '___']
+        'rs': ['Bhindi', 'Aaloo', 'Taroi', 'Rajjo ki rasoi', '___', '___', '___', '___', '___', '___']
       },
       'q5': {
         'rc': ['Govinda', 'Karishma Kapoor', '___', '___', '___', '___', '___', '___', '___', '___'],
-        'rs': ['___', '___', '___', '___', '___', '___', '___', '___', '___', '___']
+        'rs': ['Aishwarya Rai', 'Akshay Kumar', '___', '___', '___', '___', '___', '___', '___', '___']
       },
       'q6': {
-        'rc': ['Sparkle', '✨', '___', '___', '___', '___', '___', '___', '___', '___'],
-        'rs': ['___', '___', '___', '___', '___', '___', '___', '___', '___', '___']
+        'rc': ['Sparkle', '✨', '🤭', '😂', '😭', '___', '___', '___', '___', '___'],
+        'rs': ['Laughing', '😂', '😅', '😛', '😆', '___', '___', '___', '___', '___']
       },
       'q7': {
         'rc': ['Bata dungi to secret kaise rahega?', 'Pass', 'Pata nahi', 'Skip', 'Idk', 'Kya malum', '___', '___', '___', '___'],
-        'rs': ['___', '___', '___', '___', '___', '___', '___', '___', '___', '___']
+        'rs': ['No idea', 'Tum hi batao bhai koi ho to', 'Idk', 'Pass', 'Skip', '___', '___', '___', '___', '___']
       },
       'q8': {
         'rc': ['Scroll reels', 'Sleep', 'Paint', 'Embroidery', 'Drawing', 'Writing', 'Reading', '___', '___', '___'],
-        'rs': ['___', '___', '___', '___', '___', '___', '___', '___', '___', '___']
+        'rs': ['Listen to music', 'Lie down', 'Play chess', '420', 'purani aadatein', 'old habits', '___', '___', '___', '___']
       },
       'q9': {
-        'rc': ['Chaiyya Chaiyya', 'Ay Hairathe', 'Gud se meetha ishq', 'Kahi aag lage lag jaye', 'Jalla Sain', '___', '___', '___', '___', '___'],
-        'rs': ['___', '___', '___', '___', '___', '___', '___', '___', '___', '___']
+        'rc': ['Chaiyya chaiyya', 'Ay hairathe', 'Gud se meetha ishq', 'Kahi aag lage lag jaye', 'Jalla sain', 'Tunak tunak', 'Jihne mera dil luteya', 'Jag Jeondeyan De Mele', 'Ek pal ka jeena', 'Sona kitna sona hai'],
+        'rs': ['Jag Jeondeyan De Mele', 'Mera piya ghar aaya', 'Ek pal ka jeena', 'Yun hi chala chal', '___', '___', '___', '___', '___', '___']
       },
       'q10': {
-        'rc': ['Home', 'India', 'Fateh Sagar', 'Udaipur', '___', '___', '___', '___', '___', '___'],
-        'rs': ['___', '___', '___', '___', '___', '___', '___', '___', '___', '___']
+        'rc': ['Home', 'India', 'Fateh Sagar', 'Udaipur', 'Bilaspur', 'Minocha Colony', '___', '___', '___', '___'],
+        'rs': ['Home', 'Anywhere in the universe', '___', '___', '___', '___', '___', '___', '___', '___']
       }
     };
 
     const questionTexts = {
       'q1': '🧁 What is their favorite dessert?',
-      'q2': '📚 What subject did they hate in school?',
+      'q2': '📚 What subject did they hate in school/university?',
       'q3': '🎬 Which movie can they watch over and over?',
       'q4': '🍕 What\'s their go-to comfort food?',
       'q5': '🕺💃 Their favorite actor or actress growing up was?',
       'q6': '🌈 Their most used emoji is?',
       'q7': '🏃‍♀️ What\'s their secret talent?',
-      'q8': '🧘 What do they do when stressed or sad?',
+      'q8': '🧘 What do they do to feel better when stressed or sad?',
       'q9': '🎵 A song that always lifts their mood is?',
       'q10': '⚡ If they could teleport anywhere right now, where would they go?'
     };
@@ -1020,7 +1028,8 @@
 
       // Only show progress text for the first 10 questions
       if (id.startsWith('q')) {
-        progress.innerText = `Question ${num} of 10 - You got this! 💪`;
+        progress.innerText = `Question ${num} of 10 - You got this! 💪
+        There could be more than one correct answer. Guess any one.`;
         progress.style.color = '#9c27b0';
         progressFill.style.width = `${(num / 10) * 100}%`;
       } else {
