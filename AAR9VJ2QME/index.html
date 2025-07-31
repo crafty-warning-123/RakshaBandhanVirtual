@@ -1393,21 +1393,19 @@
 
     function createConfettiFromLine() {
       const colors = ['#9c27b0', '#ff9800', '#8e24aa', '#ff7043', '#2196f3', '#e91e63'];
-      const lineElement = document.getElementById('badhai-line');
+      const line = document.getElementById('badhai-line');
 
-      if (!lineElement) {
-        console.warn('❌ Could not find #badhai-line');
-        return;
-      }
+      if (!line) return;
 
-      const lineY = lineElement.getBoundingClientRect().top + window.scrollY;
+      const startY = line.getBoundingClientRect().bottom + window.scrollY + 10; // 10px padding
 
       for (let i = 0; i < 50; i++) {
         const confetti = document.createElement('div');
-        confetti.className = 'confetti-fixed-line';
+        confetti.className = 'confetti';
         confetti.style.left = `${Math.random() * window.innerWidth}px`;
-        confetti.style.top = `${lineY}px`;
+        confetti.style.top = `${startY}px`; // Set visual Y offset below the line
         confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.animationDelay = Math.random() * 1 + 's';
         document.body.appendChild(confetti);
 
         setTimeout(() => confetti.remove(), 3000);
