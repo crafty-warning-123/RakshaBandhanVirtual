@@ -373,6 +373,15 @@
       will-change: transform, opacity;
     }
 
+    .confetti-fixed-line {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #ff4081;
+      animation: confettiFallFromLine 3s linear forwards;
+      will-change: transform, opacity;
+    }
+
     @keyframes confettiFall {
       0% {
         transform: translateY(-100vh) rotate(0deg);
@@ -385,6 +394,17 @@
       }
     }
 
+    @keyframes confettiFallFromLine {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+    
     .sparkle {
       position: absolute;
       width: 20px;
@@ -1303,7 +1323,7 @@
 
       // Optional: Initial confetti explosion on load
       for (let i = 0; i < 50; i++) {
-        setTimeout(() => createConfetti(), i * 100);
+        setTimeout(() => createConfettiFromLine(), i * 100);
       }
 
       // Confetti when group photo scrolls into view — but not on initial load
@@ -1324,7 +1344,7 @@
               hasScrolled &&
               !photoConfettiTriggered
             ) {
-              createConfetti(); // 🎉 Real confetti only after user scrolls
+                createConfettiFromLine(); // 🎉 Real confetti only after user scrolls
               photoConfettiTriggered = true;
               observer.unobserve(entry.target);
             }
@@ -1346,7 +1366,7 @@
           window.scrollY > 50 // prevent trigger on small scroll
         ) {
           confettiCooldown = true;
-          createConfetti();
+            createConfettiFromLine();
 
           setTimeout(() => {
             confettiCooldown = false;
@@ -1366,6 +1386,30 @@
         document.body.appendChild(confetti);
 
         setTimeout(() => confetti.remove(), 3000);
+      }
+    }
+
+    function createConfettiFromLine() {
+      const colors = ['#9c27b0', '#ff9800', '#8e24aa', '#ff7043', '#2196f3', '#e91e63'];
+      const lineElement = document.querySelector('p[style*="रक्षा बंधन की ढेर सारी बधाई"]');
+
+      if (!lineElement) return;
+
+      // Get Y position of that line
+      const lineY = lineElement.getBoundingClientRect().top + window.scrollY;
+
+      for (let i = 0; i < 50; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti-fixed-line';
+        confetti.style.left = `${Math.random() * window.innerWidth}px`;
+        confetti.style.top = `${lineY}px`;
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        document.body.appendChild(confetti);
+
+        // Remove after animation ends
+        setTimeout(() => {
+          confetti.remove();
+        }, 3000);
       }
     }
 
