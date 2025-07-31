@@ -373,15 +373,6 @@
       will-change: transform, opacity;
     }
 
-    .confetti-fixed-line {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      background: #ff4081;
-      animation: confettiFallFromLine 3s linear forwards;
-      will-change: transform, opacity;
-    }
-
     @keyframes confettiFall {
       0% {
         transform: translateY(-100vh) rotate(0deg);
@@ -390,17 +381,6 @@
 
       100% {
         transform: translateY(100vh) rotate(720deg);
-        opacity: 0;
-      }
-    }
-
-    @keyframes confettiFallFromLine {
-      0% {
-        transform: translateY(0);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(100vh);
         opacity: 0;
       }
     }
@@ -1393,19 +1373,12 @@
 
     function createConfettiFromLine() {
       const colors = ['#9c27b0', '#ff9800', '#8e24aa', '#ff7043', '#2196f3', '#e91e63'];
-      const line = document.getElementById('badhai-line');
-
-      if (!line) return;
-
-      const startY = line.getBoundingClientRect().bottom + window.scrollY + 10; // 10px padding
-
-      for (let i = 0; i < 50; i++) {
+      for (let i = 0; i < 20; i++) {
         const confetti = document.createElement('div');
         confetti.className = 'confetti';
-        confetti.style.left = `${Math.random() * window.innerWidth}px`;
-        confetti.style.top = `${startY}px`; // Set visual Y offset below the line
+        confetti.style.left = Math.random() * 100 + '%';
         confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        confetti.style.animationDelay = Math.random() * 1 + 's';
+        confetti.style.animationDelay = Math.random() * 2 + 's';
         document.body.appendChild(confetti);
 
         setTimeout(() => confetti.remove(), 3000);
