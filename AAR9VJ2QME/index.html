@@ -1392,18 +1392,17 @@
       setTimeout(() => {
         const badhaiLine = document.getElementById('badhai-line');
         const startY = badhaiLine.getBoundingClientRect().bottom + window.scrollY;
+        for (let i = 0; i < 20; i++) {
+          const confetti = document.createElement('div');
+          confetti.className = 'confettiFromLine';
+          confetti.style.left = Math.random() * 100 + '%';
+          confetti.style.top = `${startY}px`; // ✅ now startY is defined
+          confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+          confetti.style.animationDelay = Math.random() * 2 + 's';
+          document.body.appendChild(confetti);
+          setTimeout(() => confetti.remove(), 3000);
+        }
       }, 1000);
-      for (let i = 0; i < 20; i++) {
-        const confetti = document.createElement('div');
-        confetti.className = 'confettiFromLine';
-        confetti.style.left = Math.random() * 100 + '%';
-        confetti.style.top = `${startY}px`; // location of badhai line `${startY}px`
-        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        confetti.style.animationDelay = Math.random() * 2 + 's';
-        document.body.appendChild(confetti);
-
-        setTimeout(() => confetti.remove(), 3000);
-      }
     }
 
     function createSparkles(element) {
