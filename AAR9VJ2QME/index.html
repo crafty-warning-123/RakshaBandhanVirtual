@@ -1332,34 +1332,31 @@
       }, 1000); // Wait 1 second before starting the confetti bursts
       
       // Confetti when group photo scrolls into view — but not on initial load
-      let hasScrolled = false;
       let photoConfettiTriggered = false;
+      let hasSetupObserver = false;
 
+      // When user scrolls for the first time, set up the observer
       window.addEventListener('scroll', () => {
-        hasScrolled = true;
-      });
+        if (!hasSetupObserver) {
+          const photoSection = document.getElementById('photoReveal');
+          if (!photoSection) return;
 
-      // Use IntersectionObserver with scroll gate
-      const photoSection = document.getElementById('photoReveal');
-      if (photoSection) {
-        const observer = new IntersectionObserver((entries, observer) => {
-          entries.forEach(entry => {
-            if (
-              entry.isIntersecting &&
-              hasScrolled &&
-              !photoConfettiTriggered
-            ) {
-                createConfettiFromLine(); // 🎉 Real confetti only after user scrolls
-              photoConfettiTriggered = true;
-              observer.unobserve(entry.target);
-            }
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting && !photoConfettiTriggered) {
+                createConfettiFromLine(); // 🎉 Only after scroll AND intersection
+                photoConfettiTriggered = true;
+                observer.unobserve(photoSection);
+              }
+            });
+          }, {
+            threshold: 0.6
           });
-        }, {
-          threshold: 0.6
-        });
 
-        observer.observe(photoSection);
-      }
+          observer.observe(photoSection);
+          hasSetupObserver = true;
+        }
+      });
 
       // Re-trigger confetti when user scrolls on final page
       let confettiCooldown = false;
