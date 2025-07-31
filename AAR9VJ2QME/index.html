@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- WhatsApp Link Preview -->
+  <meta property="og:title" content="🎉 रक्षा बंधन की शुभकामनाएं! 🎉">
+  <meta property="og:description" content="Celebrate Rakhi virtually with Radhika and Rajat!">
+  <meta property="og:image"
+    content="https://crafty-warning-123.github.io/RakshaBandhanVirtualCelebration/attached_assets/Graphic_Akash_Anjali.png">
+  <meta property="og:url" content="https://crafty-warning-123.github.io/RakshaBandhanVirtualCelebration/">
+  <meta property="og:type" content="website">
+
+  <title>Happy Raksha Bandhan (Virtual Celebration)</title>
+  <link href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(45deg, #8e24aa, #ff9800, #ff7043, #9c27b0);
+      background-size: 400% 400%;
+      animation: gradientShift 8s ease infinite;
+      font-family: 'Baloo 2', cursive;
+      margin: 0;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .container {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      margin-top: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #8e24aa;
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+      animation: dramaticZoom 2s ease-out;
+      margin-bottom: 1rem;
+    }
+
+    @keyframes dramaticZoom {
+      0% {
+        transform: scale(0.3) rotate(-10deg);
+        opacity: 0;
+      }
+
+      50% {
+        transform: scale(1.2) rotate(5deg);
+      }
+
+      100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+      }
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 1.3rem;
+      color: #ff9800;
+      font-weight: 700;
+      animation: slideInFromBottom 2s ease-out 0.5s both;
+      margin-bottom: 2rem;
+    }
+
+    @keyframes slideInFromBottom {
+      0% {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .question {
+      display: none;
+      animation: bounceIn 0.8s ease-out forwards;
+      position: relative;
+    }
+
+    .question.active {
+      display: block;
+    }
+
+    @keyframes bounceIn {
+      0% {
+        transform: scale(0.3) translateY(-100px);
+        opacity: 0;
+      }
+
+      50% {
+        transform: scale(1.1) translateY(10px);
+      }
+
+      100% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .question h3 {
+      font-size: 1.8rem;
+      color: #9c27b0;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .dual-input-container {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .input-section {
+      flex: 1;
+      text-align: center;
+    }
+
+    .input-section h4 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: #9c27b0;
+      font-weight: bold;
+    }
+
+    .rc-section h4 {
+      color: #e91e63;
+    }
+
+    .rs-section h4 {
+      color: #2196f3;
+    }
+
+    .input-section input {
+      font-size: 1.2rem;
+      padding: 1rem;
+      border: 3px solid #ff4081;
+      border-radius: 15px;
+      background: linear-gradient(45deg, #fff, #fce4ec);
+      transition: all 0.3s ease;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .rc-section input {
+      border-color: #e91e63;
+      background: linear-gradient(45deg, #fff, #fce4ec);
+    }
+
+    .rs-section input {
+      border-color: #2196f3;
+      background: linear-gradient(45deg, #fff, #e3f2fd);
+    }
+
+    .input-section input:focus {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(233, 30, 99, 0.3);
+    }
+
+    .rc-section input:focus {
+      border-color: #c2185b;
+      box-shadow: 0 0 20px rgba(233, 30, 99, 0.3);
+    }
+
+    .rs-section input:focus {
+      border-color: #1976d2;
+      box-shadow: 0 0 20px rgba(33, 150, 243, 0.3);
+    }
+
+    .next-btn {
+      background: linear-gradient(45deg, #9c27b0, #ff9800);
+      color: white;
+      font-weight: bold;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 25px;
+      margin-top: 1.5rem;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .next-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 25px rgba(156, 39, 176, 0.4);
+    }
+
+    .next-btn:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.5s;
+    }
+
+    .next-btn:hover:before {
+      left: 100%;
+    }
+
+    .play-btn {
+      background: linear-gradient(45deg, #9c27b0, #ff9800);
+      color: white;
+      font-weight: bold;
+      padding: 1.5rem 3rem;
+      border: none;
+      border-radius: 30px;
+      margin-top: 2rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      animation: pulse 2s infinite;
+      box-shadow: 0 10px 30px rgba(156, 39, 176, 0.4);
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .rakhi-choice {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .dual-rakhi-container {
+      display: flex;
+      flex-direction: column;
+      /* Arrange rakhis vertically */
+      align-items: center;
+      /* Center items horizontally */
+      gap: 3rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .rakhi-section {
+      flex: 1;
+      text-align: center;
+    }
+
+    .rakhi-section h4 {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      color: #9c27b0;
+      font-weight: bold;
+    }
+
+    .rc-rakhi h4 {
+      color: #e91e63;
+    }
+
+    .rs-rakhi h4 {
+      color: #2196f3;
+    }
+
+    .self-rakhi h4 {
+      color: #9c27b0;
+    }
+
+    .rakhi-section img {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      margin: 1rem 0;
+      cursor: pointer;
+      transition: all 0.5s ease;
+      border: 4px solid transparent;
+      position: relative;
+    }
+
+    .rakhi-section img:hover {
+      transform: scale(1.3) rotate(360deg);
+      border-color: #9c27b0;
+      box-shadow: 0 0 30px rgba(156, 39, 176, 0.6);
+    }
+
+    .rakhi-section img.selected {
+      border: 6px solid #4caf50;
+      box-shadow: 0 0 25px rgba(76, 175, 80, 0.8);
+      transform: scale(1.1);
+    }
+
+    .rakhi-section img.selected:hover {
+      border-color: #4caf50;
+      box-shadow: 0 0 35px rgba(76, 175, 80, 0.9);
+    }
+
+    .feedback-popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: linear-gradient(45deg, #ffeb3b, #ffc107);
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #e65100;
+      text-align: center;
+      animation: popIn 0.5s ease-out;
+      display: none;
+      max-width: 400px;
+    }
+
+    @keyframes popIn {
+      0% {
+        transform: translate(-50%, -50%) scale(0.3);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+      }
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #ff4081;
+      animation: confettiFall 3s linear infinite;
+      will-change: transform, opacity;
+    }
+
+    @keyframes confettiFall {
+      0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(circle, #fff, #ff4081);
+      border-radius: 50%;
+      animation: sparkle 2s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes sparkle {
+
+      0%,
+      100% {
+        opacity: 0;
+        transform: scale(0);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    #final-msg {
+      display: none;
+      font-size: 1.3rem;
+      text-align: center;
+      margin-top: 2rem;
+      color: #4e342e;
+      animation: heartBeat 2s ease-in-out infinite;
+    }
+
+    @keyframes heartBeat {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: #ffcdd2;
+      border-radius: 10px;
+      margin: 1rem 0;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(45deg, #9c27b0, #ff9800);
+      border-radius: 10px;
+      transition: width 0.8s ease;
+      width: 0%;
+    }
+
+    .emoji-burst {
+      position: absolute;
+      font-size: 2rem;
+      animation: emojiBurst 2s ease-out forwards;
+      pointer-events: none;
+    }
+
+    @keyframes emojiBurst {
+      0% {
+        transform: scale(0) rotate(0deg);
+        opacity: 1;
+      }
+
+      50% {
+        transform: scale(1.5) rotate(180deg);
+        opacity: 0.8;
+      }
+
+      100% {
+        transform: scale(0.5) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 3rem;
+      font-style: italic;
+      color: #8e24aa;
+      font-size: 1.1rem;
+      animation: glow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 5px #9c27b0;
+      }
+
+      to {
+        text-shadow: 0 0 20px #9c27b0, 0 0 30px #ff9800;
+      }
+    }
+
+    .correct-feedback {
+      background: linear-gradient(45deg, #4caf50, #66bb6a) !important;
+      color: white !important;
+    }
+
+    .wrong-feedback {
+      background: linear-gradient(45deg, #f44336, #ef5350) !important;
+      color: white !important;
+    }
+
+    .reveal-section {
+      margin-top: 2rem;
+      padding: 2rem;
+      background: linear-gradient(45deg, #e3f2fd, #f3e5f5);
+      border-radius: 15px;
+      border: 3px solid #9c27b0;
+    }
+
+    .reveal-btn {
+      background: linear-gradient(45deg, #9c27b0, #673ab7);
+      color: white;
+      font-weight: bold;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 25px;
+      margin: 1rem;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .reveal-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(156, 39, 176, 0.4);
+    }
+
+    .skip-btn {
+      background: linear-gradient(45deg, #607d8b, #455a64);
+      color: white;
+      font-weight: bold;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 20px;
+      margin: 1rem 0 0 1rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .skip-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(96, 125, 139, 0.4);
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .button-container .next-btn {
+      margin: 0;
+    }
+
+    .button-container .skip-btn {
+      margin: 0;
+    }
+
+    .answers-list {
+      margin-top: 2rem;
+      text-align: left;
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .answer-item {
+      margin: 1rem 0;
+      padding: 1rem;
+      background: linear-gradient(45deg, #fff3e0, #fce4ec);
+      border-radius: 10px;
+      border-left: 4px solid #ff4081;
+    }
+
+    .answer-item h4 {
+      color: #8e24aa;
+      margin-bottom: 0.5rem;
+    }
+
+    .answer-item p {
+      color: #5e35b1;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .dual-answers {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .answer-section {
+      flex: 1;
+    }
+
+    .rc-answers {
+      border-left-color: #2196f3;
+    }
+
+    .rs-answers {
+      border-left-color: #ff9800;
+    }
+
+    .final-result {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .result-section {
+      flex: 1;
+      text-align: center;
+    }
+
+    .result-section h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .rc-result h3 {
+      color: #e91e63;
+    }
+
+    .rs-result h3 {
+      color: #2196f3;
+    }
+
+    .result-section img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 4px solid;
+      margin: 1rem 0;
+    }
+
+    .rc-result img {
+      border-color: #e91e63;
+    }
+
+    .rs-result img {
+      border-color: #2196f3;
+    }
+
+    .self-result h3 {
+      color: #9c27b0;
+    }
+
+    .self-result img {
+      border-color: #9c27b0;
+    }
+
+    .tying-image {
+      width: 250px !important;
+      height: auto !important;
+      border-radius: 15px !important;
+      margin: 1rem 0 !important;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+    <h1 class="title">🎉 रक्षा बंधन की शुभकामनाएं! 🎉</h1>
+    <p class="subtitle">Celebrate Rakhi virtually with Radhika and Rajat!<br>First you have to pass the quiz!<br>How
+      well do you know Radhika and Rajat? 🤪</p>
+
+    <button class="play-btn" onclick="startQuiz()">Start the Drama! 🎉🎭</button>
+
+    <div id="quiz" style="display: none;">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <p id="progress" style="text-align: center; font-weight: bold; color: #8e24aa;"></p>
+
+      <div class="question" id="q1">
+        <h3>🧁 What is their favorite dessert?</h3>
+        <div class="dual-input-container">
+          <div class="input-section rc-section">
+            <h4>Make your guess for Radhika</h4>
+            <input type="text" id="rc_a1" placeholder="Think hard, detective! 🤔">
+          </div>
+          <div class="input-section rs-section">
+            <h4>Make your guess for Rajat</h4>
+            <input type="text" id="rs_a1" placeholder="Think hard, detective! 🤔">
+          </div>
+        </div>
+        <div class="button-container">
+          <button class="next-btn" onclick="next('q1','q2')">Next Challenge! 🎇</button>
+          <button class="skip-btn" onclick="skipToNext('q1','q2')">Skip to Next Question ➡️</button>
+          <button class="skip-btn" onclick="skipToEnd()">Skip to the end 🚀</button>
+        </div>
+      </div>
+
+      <div class="question" id="q2">
+        <h3>📚 What subject did they hate in school/university?</h3>
+        <div class="dual-input-container">
+          <div class="input-section rc-section">
+            <h4>Make your guess for Radhika</h4>
+            <input type="text" id="rc_a2" placeholder="Well! that is not easy to guess 😤">
+          </div>
+          <div class="input-section rs-section">
+            <h4>Make your guess for Rajat</h4>
+            <input type="text" id="rs_a2" placeholder="Well! that is not easy to guess 😤">
+          </div>
+        </div>
+        <div class="button-container">
+          <button class="next-btn" onclick="next('q2','q3')">Keep Going! 🚀</button>
+          <button class="skip-btn" onclick="skipToNext('q2','q3')">Skip to Next Question ➡️</button>
+          <button class="skip-btn" onclick="skipToEnd()">Skip to the end 🚀</button>
+        </div>
+      </div>
+
+      <div class="question" id="q3">
+        <h3>🎬 Which movie can they watch over and over?</h3>
+        <div class="dual-input-container">
+          <div class="input-section rc-section">
+            <h4>Make your guess for Radhika</h4>
+            <input type="text" id="rc_a3" placeholder="There are many! Guess any one!🎭">
+          </div>
+          <div class="input-section rs-section">
+            <h4>Make your guess for Rajat</h4>
+            <input type="text" id="rs_a3" placeholder="There are many! Guess any one!🎭">
+          </div>
+        </div>
+        <div class="button-container">
+          <button class="next-btn" onclick="next('q3','q4')">Next! 💫</button>
+          <button class="skip-btn" onclick="skipToNext('q3','q4')">Skip to Next Question ➡️</button>
+          <button class="skip-btn" onclick="skipToEnd()">Skip to the end 🚀</button>
+        </div>
+      </div>
+
+      <div class="question" id="q4">
+        <h3>🍕 What's their go-to comfort food?</h3>
+        <div class="dual-input-container">
+          <div class="input-section rc-section">
+            <h4>Make your guess for Radhika</h4>
+            <input type="text" id="rc_a4" placeholder="What do I always talk fondly of? 🤤">
+          </div>
+          <div class="input-section rs-section">
+            <h4>Make your guess for Rajat</h4>
+            <input type="text" id="rs_a4" placeholder="What do I always talk fondly of? 🤤">
+          </div>
+        </div>
+        <div class="button-container">
+          <button class="next-btn" onclick="next('q4','q5')">Continue! ⭐</button>
+          <button class="skip-btn" onclick="skipToNext('q4','q5')">Skip to Next Question ➡️</button>
+          <button class="skip-btn" onclick="skipToEnd()">Skip to the end 🚀</button>
+        </div>
+      </div>
+
+      <div class="question" id="q5">
+        <h3>🕺💃 Their favorite actor or actress growing up was?</h3>
+        <div class="dual-input-container">
+          <div class="input-section rc-section">
+            <h4>Make your guess for Radhika</h4>
+            <input type="text" id="rc_a5" placeholder="Ohho! Majedar question hai ye! 🎤">
+          </div>
+          <div class="input-section rs-section">
+            <h4>Make your guess for Rajat</h4>
+            <input type="text" id="rs_a5" placeholder="Ohho! Majedar question hai ye! 🎤">
+          </div>
+        </div>
+        <div class="button-container">
+          <button class="next-btn" onclick="next('q5','q6')">Next! 🎶</button>
+          <button class="skip-btn" onclick="skipToNext('q5','q6')">Skip to Next Question ➡️</button>
+          <button class="skip-btn" onclick="skipToEnd()">Skip to the end 🚀</button>
+        </div>
+      </div>
+
+      <div class="question" id="q6">
+        <h3>🌈 Their most used emoji is?</h3>
+        <div class="dual-input-container">
+          <div class="input-section rc-section">
+            <h4>Make your guess for Radhika</h4>
+            <input type="text" id="rc_a6" placeholder="Look around my chats for clues! 🧠">
+          </div>
+          <div class="input-section rs-section">
+            <h4>Make your guess for Rajat</h4>
+            <input type="text" id="rs_a6" placeholder="Look around my chats for clues! 🧠">
+          </div>
+        </div>
+        <div class="button-container">
+          <button class="next-btn" onclick="next('q6','q7')">Almost there! 🔮</button>
+          <button class="skip-btn" onclick="skipToNext('q6','q7')">Skip to Next Question ➡️</button>
+          <button class="skip-btn" onclick="skipToEnd()">Skip to the end 🚀</button>
+        </div>
+      </div>
+
+      <div class="question" id="q7">
+        <h3>🏃‍♀️ What's their secret talent?</h3>
+        <div class="dual-input-container">
+          <div class="input-section rc-section">
+            <h4>Make your guess for Radhika</h4>
+            <input type="text" id="rc_a7" placeholder="Keep going! 😎">
+          </div>
+          <div class="input-section rs-section">
+            <h4>Make your guess for Rajat</h4>
+            <input type="text" id="rs_a7" placeholder="Keep going! 😎">
+          </div>
+        </div>
+        <div class="button-container">
+          <button class="next-btn" onclick="next('q7','q8')">Keep going! 😎</button>
+          <button class="skip-btn" onclick="skipToNext('q7','q8')">Skip to Next Question ➡️</button>
+          <button class="skip-btn" onclick="skipToEnd()">Skip to the end 🚀</button>
+        </div>
+      </div>
+
+      <div class="question" id="q8">
+        <h3>🧘 What do they do to feel better when stressed or sad?</h3>
+        <div class="dual-input-container">
+          <div class="input-section rc-section">
+            <h4>Make your guess for Radhika</h4>
+            <input type="text" id="rc_a8" placeholder="Where do I waste all my time? 🤭">
+          </div>
+          <div class="input-section rs-section">
+            <h4>Make your guess for Rajat</h4>
+            <input type="text" id="rs_a8" placeholder="Where do I waste all my time? 🤭">
+          </div>
+        </div>
+        <div class="button-container">
+          <button class="next-btn" onclick="next('q8','q9')">Almost done! 📸</button>
+          <button class="skip-btn" onclick="skipToNext('q8','q9')">Skip to Next Question ➡️</button>
+          <button class="skip-btn" onclick="skipToEnd()">Skip to the end 🚀</button>
+        </div>
+      </div>
+
+      <div class="question" id="q9">
+        <h3>🎵 A song that always lifts their mood is?</h3>
+        <div class="dual-input-container">
+          <div class="input-section rc-section">
+            <h4>Make your guess for Radhika</h4>
+            <input type="text" id="rc_a9" placeholder="Think about my personality! 🎉">
+          </div>
+          <div class="input-section rs-section">
+            <h4>Make your guess for Rajat</h4>
+            <input type="text" id="rs_a9" placeholder="Think about my personality! 🎉">
+          </div>
+        </div>
+        <div class="button-container">
+          <button class="next-btn" onclick="next('q9','q10')">Last question! 🎈</button>
+          <button class="skip-btn" onclick="skipToNext('q9','q10')">Skip to Next Question ➡️</button>
+          <button class="skip-btn" onclick="skipToEnd()">Skip to the end 🚀</button>
+        </div>
+      </div>
+
+      <div class="question" id="q10">
+        <h3>⚡ If they could teleport anywhere right now, where would they go?</h3>
+        <div class="dual-input-container">
+          <div class="input-section rc-section">
+            <h4>Make your guess for Radhika</h4>
+            <input type="text" id="rc_a10" placeholder="This one is super easy! 🦉">
+          </div>
+          <div class="input-section rs-section">
+            <h4>Make your guess for Rajat</h4>
+            <input type="text" id="rs_a10" placeholder="This one is super easy! 🦉">
+          </div>
+        </div>
+        <div class="button-container">
+          <button class="next-btn" onclick="next('q10','rakhi')">Final Challenge! 🌙</button>
+          <button class="skip-btn" onclick="skipToNext('q10','rakhi')">Skip to Next Question ➡️</button>
+          <button class="skip-btn" onclick="skipToEnd()">Skip to the end 🚀</button>
+        </div>
+      </div>
+
+      <div class="question" id="rakhi">
+        <h3>चलो, अब सबके लिए राखी पसंद करो! 🎁</h3>
+        <div class="dual-rakhi-container">
+          <div class="rakhi-section rc-rakhi">
+            <h4>पहले राधिका के लिए राखी बताओ, कौन सी अच्छी है?</h4>
+            <div>
+              <img src="attached_assets/Rakhi1.webp" onclick="selectRakhi('rc', this, 'Rakhi1')"
+                alt="Lumba Rakhi with Kundan">
+              <img src="attached_assets/Rakhi2.webp" onclick="selectRakhi('rc', this, 'Rakhi2')"
+                alt="Lumba Rakhi with Meenakari">
+              <img src="attached_assets/Rakhi3.webp" onclick="selectRakhi('rc', this, 'Rakhi3')"
+                alt="Lumba Rakhi with Golden Lotus">
+              <img src="attached_assets/Rakhi4.webp" onclick="selectRakhi('rc', this, 'Rakhi4')"
+                alt="Lumba Rakhi with Eye and Tassel">
+            </div>
+          </div>
+          <div class="rakhi-section rs-rakhi">
+            <h4>और अब बताओ, रजत के लिए कौन सी राखी बढ़िया लग रही है?</h4>
+            <div>
+              <img src="attached_assets/Rakhi5.webp" onclick="selectRakhi('rs', this, 'Rakhi5')"
+                alt="Rakhi thread with Kundan">
+              <img src="attached_assets/Rakhi6.webp" onclick="selectRakhi('rs', this, 'Rakhi6')"
+                alt="Rakhi thread with Meenakari">
+              <img src="attached_assets/Rakhi7.webp" onclick="selectRakhi('rs', this, 'Rakhi7')"
+                alt="Rakhi thread with Golden Lotus">
+              <img src="attached_assets/Rakhi8.webp" onclick="selectRakhi('rs', this, 'Rakhi8')"
+                alt="Rakhi thread with Peacock">
+            </div>
+          </div>
+          <div class="rakhi-section self-rakhi">
+            <h4>अब खुद के लिए भी एक राखी पसंद करो।</h4>
+            <div>
+              <img src="attached_assets/Rakhi1.webp" onclick="selectRakhi('self', this, 'Rakhi1')"
+                alt="Lumba Rakhi with Kundan">
+              <img src="attached_assets/Rakhi2.webp" onclick="selectRakhi('self', this, 'Rakhi2')"
+                alt="Lumba Rakhi with Meenakari">
+              <img src="attached_assets/Rakhi3.webp" onclick="selectRakhi('self', this, 'Rakhi3')"
+                alt="Lumba Rakhi with Golden Lotus">
+              <img src="attached_assets/Rakhi4.webp" onclick="selectRakhi('self', this, 'Rakhi4')"
+                alt="Lumba Rakhi with Eye and Tassel">
+              <img src="attached_assets/Rakhi5.webp" onclick="selectRakhi('self', this, 'Rakhi5')"
+                alt="Rakhi thread with Kundan">
+              <img src="attached_assets/Rakhi6.webp" onclick="selectRakhi('self', this, 'Rakhi6')"
+                alt="Rakhi thread with Meenakari">
+              <img src="attached_assets/Rakhi7.webp" onclick="selectRakhi('self', this, 'Rakhi7')"
+                alt="Rakhi thread with Golden Lotus">
+              <img src="attached_assets/Rakhi8.webp" onclick="selectRakhi('self', this, 'Rakhi8')"
+                alt="Rakhi thread with Peacock">
+            </div>
+          </div>
+        </div>
+        <div id="final-msg"></div>
+        <div style="text-align: center; margin-top: 2rem;">
+          <button class="next-btn" onclick="forceContinue()">Continue Anyway ➡️</button>
+        </div>
+      </div>
+
+      <div class="question" id="final-slide">
+        <!-- This will be filled dynamically with rakhi tying content -->
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>💛 Made with love, chaos, and way too much emotion! 💛</p>
+  </footer>
+
+  <div id="feedbackPopup" class="feedback-popup"></div>
+
+  <script>
+    const progress = document.getElementById('progress');
+    const progressFill = document.getElementById('progressFill');
+    const quiz = document.getElementById('quiz');
+    const feedbackPopup = document.getElementById('feedbackPopup');
+
+    const wrongFeedbacks = [
+      "Really? That's your detective work? 😂",
+      "Oh please! You clearly don't know them AT ALL! 🙄",
+      "Seriously? Did you even TRY? 🤦‍♀️",
+      "Wrong! Try harder next time! 😒",
+      "Nope! Better luck with the next question! 🙃"
+    ];
+
+    const correctFeedbacks = [
+      "Perfect! Bravo! You are more observant than I think! 👏",
+      "Wow! Good job! You actually know them! 😍",
+      "Excellent detective work! You got it right! 🕵️‍♂️",
+      "Amazing! You're paying attention! I'm impressed! 💯",
+      "Spot on! You really DO know them well! ❤️"
+    ];
+
+    // All possible correct answers for each question (RC: A1-A10, RS: B1-B10)
+    const correctAnswers = {
+      'q1': {
+        'rc': ['Kheer', 'Choorma', 'Gulab Jamun', 'Gulabjamun', 'Ice cream', 'Icecream', '___', '___', '___', '___'],
+        'rs': ['Kheer', 'Jalebi', 'Gajar ka halwa', 'Mango', 'Aam', '___', '___', '___', '___', '___']
+      },
+      'q2': {
+        'rc': ['Social Science', 'Social Studies', 'History', '___', '___', '___', '___', '___', '___', '___'],
+        'rs': ['Chemistry', 'Social Science', 'Social Studies', '___', '___', '___', '___', '___', '___', '___']
+      },
+      'q3': {
+        'rc': ['Guru', 'Vivah', 'Hera Pheri', 'Jannat', 'K3G', 'Kabhi Khushi Kabhi Gam', 'Delhi Belly', 'Dil Chahta Hai', 'Jab We Met', 'Nayak'],
+        'rs': ['Hera Pheri', 'Delhi Belly', 'Gangs of Wasseypur', 'Munna Bhai M.B.B.S.', 'Nayak', 'Swades', 'Padosan', 'Krantiveer', 'Khosla Ka Ghosla!', 'Pyaasa']
+      },
+      'q4': {
+        'rc': ['Poori', 'Puri', 'Poori ke sath poori', 'Subah poori sham poori', 'Khud saari poori', 'Kheer Poori', 'Aaloo Poori', 'Halwa Poori', 'Methi Poori', 'Palak Poori'],
+        'rs': ['Bhindi', 'Aaloo', 'Taroi', 'Rajjo ki rasoi', '___', '___', '___', '___', '___', '___']
+      },
+      'q5': {
+        'rc': ['Govinda', 'Karishma Kapoor', '___', '___', '___', '___', '___', '___', '___', '___'],
+        'rs': ['Aishwarya Rai', 'Akshay Kumar', '___', '___', '___', '___', '___', '___', '___', '___']
+      },
+      'q6': {
+        'rc': ['Sparkle', '✨', '🤭', '😂', '😭', '___', '___', '___', '___', '___'],
+        'rs': ['Laughing', '😂', '😅', '😛', '😆', '___', '___', '___', '___', '___']
+      },
+      'q7': {
+        'rc': ['Bata dungi to secret kaise rahega?', 'Pass', 'Pata nahi', 'Skip', 'Idk', 'Kya malum', '___', '___', '___', '___'],
+        'rs': ['No idea', 'Tum hi batao bhai koi ho to', 'Idk', 'Pass', 'Skip', '___', '___', '___', '___', '___']
+      },
+      'q8': {
+        'rc': ['Scroll reels', 'Sleep', 'Paint', 'Embroidery', 'Drawing', 'Writing', 'Reading', '___', '___', '___'],
+        'rs': ['Listen to music', 'Lie down', 'Play chess', '420', 'purani aadatein', 'old habits', '___', '___', '___', '___']
+      },
+      'q9': {
+        'rc': ['Chaiyya chaiyya', 'Ay hairathe', 'Gud se meetha ishq', 'Kahi aag lage lag jaye', 'Jalla sain', 'Tunak tunak', 'Jihne mera dil luteya', 'Jag Jeondeyan De Mele', 'Ek pal ka jeena', 'Sona kitna sona hai'],
+        'rs': ['Jag Jeondeyan De Mele', 'Mera piya ghar aaya', 'Ek pal ka jeena', 'Yun hi chala chal', '___', '___', '___', '___', '___', '___']
+      },
+      'q10': {
+        'rc': ['Home', 'India', 'Fateh Sagar', 'Udaipur', 'Bilaspur', 'Minocha Colony', '___', '___', '___', '___'],
+        'rs': ['Home', 'Anywhere in the universe', '___', '___', '___', '___', '___', '___', '___', '___']
+      }
+    };
+
+    const questionTexts = {
+      'q1': '🧁 What is their favorite dessert?',
+      'q2': '📚 What subject did they hate in school/university?',
+      'q3': '🎬 Which movie can they watch over and over?',
+      'q4': '🍕 What\'s their go-to comfort food?',
+      'q5': '🕺💃 Their favorite actor or actress growing up was?',
+      'q6': '🌈 Their most used emoji is?',
+      'q7': '🏃‍♀️ What\'s their secret talent?',
+      'q8': '🧘 What do they do to feel better when stressed or sad?',
+      'q9': '🎵 A song that always lifts their mood is?',
+      'q10': '⚡ If they could teleport anywhere right now, where would they go?'
+    };
+
+    let selectedRakhis = {
+      'rc': null,
+      'rs': null,
+      'self': null
+    };
+
+    function startQuiz() {
+      document.querySelector('.play-btn').style.display = 'none';
+      quiz.style.display = 'block';
+      createConfetti();
+      showQuestion('q1', 1);
+    }
+
+    function showQuestion(id, num) {
+      document.getElementById(id).classList.add('active');
+
+      // Only show progress text for the first 10 questions
+      if (id.startsWith('q')) {
+        progress.innerText = `Question ${num} of 10 - You got this! 💪
+        There could be more than one correct answer. Guess any one.`;
+        progress.style.color = '#9c27b0';
+        progressFill.style.width = `${(num / 10) * 100}%`;
+      } else {
+        progress.innerText = '';
+        progressFill.style.width = '100%';
+      }
+
+      // Add ta-da effect
+      createEmojiBurst('🎉', '🎊', '💥');
+    }
+
+    function next(currentId, nextId) {
+      const rcAnswer = document.getElementById(`rc_${currentId.replace('q', 'a')}`).value.trim();
+      const rsAnswer = document.getElementById(`rs_${currentId.replace('q', 'a')}`).value.trim();
+
+      // Check if answers are empty
+      if (!rcAnswer && !rsAnswer) {
+        const emptyBothFeedbacks = [
+          "Seriously? You're just clicking buttons now? 🤦‍♀️",
+          "Did you fall asleep? Enter SOMETHING! 😴",
+          "Hello? Anyone home? Type some answers! 🏠👋",
+          "Are we playing 'guess the blank space'? 🤔",
+          "Even a random guess is better than nothing! 🎲"
+        ];
+        showFeedback(getRandomFeedback(emptyBothFeedbacks), false);
+        return;
+      }
+
+      if (!rcAnswer) {
+        const emptyRcFeedbacks = [
+          "Radhika's feelings are hurt! You forgot about her! 💔",
+          "Radhika is waiting... and waiting... and waiting... ⏰",
+          "One guess down, one to go! Don't leave Radhika hanging! 🤷‍♀️",
+          "Radhika: 'Am I invisible to you?' 👻",
+          "Half the job done is like half-cooked food! 🍝"
+        ];
+        showFeedback(getRandomFeedback(emptyRcFeedbacks), false);
+        return;
+      }
+
+      if (!rsAnswer) {
+        const emptyRsFeedbacks = [
+          "Rajat is giving you the silent treatment now! 😤",
+          "Rajat: 'Do I not exist in your world?' 🤨",
+          "You remembered Radhika but forgot Rajat? Selective memory much? 🧠",
+          "Rajat is probably doing push-ups waiting for your answer! 💪",
+          "One answer without the other is like tea without sugar! ☕"
+        ];
+        showFeedback(getRandomFeedback(emptyRsFeedbacks), false);
+        return;
+      }
+
+      const rcPossibleAnswers = correctAnswers[currentId]['rc'];
+      const rsPossibleAnswers = correctAnswers[currentId]['rs'];
+
+      let feedback = '';
+      let isCorrect = false;
+
+      // Check RC answer - exact match with sample answers
+      const isRcCorrect = rcPossibleAnswers.some(correctAns =>
+        rcAnswer.toLowerCase() === correctAns.toLowerCase()
+      );
+
+      // Check RS answer - exact match with sample answers
+      const isRsCorrect = rsPossibleAnswers.some(correctAns =>
+        rsAnswer.toLowerCase() === correctAns.toLowerCase()
+      );
+
+      if (isRcCorrect && isRsCorrect) {
+        const bothCorrectFeedbacks = [
+          "WHOA! You nailed both! Are you secretly stalking them? 🕵️‍♂️",
+          "Perfect score! You're officially promoted to 'Best Friend Detective'! 🏆",
+          "Both right?! Someone's been paying attention! I'm impressed! 👏",
+          "Double bulls-eye! You're like Sherlock Holmes but funnier! 🔍",
+          "Radhika and Rajat are doing a happy dance right now! 💃🕺",
+          "Plot twist: You actually DO know them! Mind = blown! 🤯"
+        ];
+        feedback = getRandomFeedback(bothCorrectFeedbacks);
+        isCorrect = true;
+      } else if (isRcCorrect) {
+        const rcOnlyFeedbacks = [
+          "Radhika's happy, Rajat is crying! You're 50% detective, 50% guesser! 😂😢",
+          "Good job on Radhika! But Rajat is questioning your friendship! 🤔",
+          "Half-way there! Radhika approves, Rajat is doing sad face! 😊😞",
+          "Radhika: 'Yay!' Rajat: 'Seriously?!' Drama alert! 🎭",
+          "You know Radhika better than Rajat? Favoritism much? 😏",
+          "One down, one disappointed! Radhika's treating, Rajat is sulking! 🍰😤"
+        ];
+        feedback = getRandomFeedback(rcOnlyFeedbacks);
+        isCorrect = true;
+      } else if (isRsCorrect) {
+        const rsOnlyFeedbacks = [
+          "Rajat is celebrating while Radhika is planning revenge! 😈🎉",
+          "Good job on Rajat! But Radhika is giving you the stink eye! 👁️",
+          "Rajat: 'I knew you loved me more!' Radhika: 'Excuse me?!' 💔",
+          "Half points! Rajat is happy dancing, Radhika is stress eating! 💃🍫",
+          "You got Rajat right but Radhika wrong? She's plotting something! 😠",
+          "Rajat approves, Radhika is writing you off her christmas list! 📝💸"
+        ];
+        feedback = getRandomFeedback(rsOnlyFeedbacks);
+        isCorrect = true;
+      } else {
+        const bothWrongFeedbacks = [
+          "Epic fail! Both are laughing AT you, not WITH you! 😂😂",
+          "Wrong on both counts! Are you sure you know them? 🙄",
+          "Double miss! Even a blindfolded monkey would do better! 🙈",
+          "Both wrong?! They're questioning if you're really their friend! 💭",
+          "Strike out! Radhika and Rajat are planning an intervention! 🆘",
+          "Nope and nope! Your detective license has been revoked! 🚫🔍",
+          "Both answers wrong! Time for some friendship homework! 📚",
+          "Wrong x2! They're probably changing their phone numbers! 📱",
+          "Double disaster! Even Google would be disappointed! 💻😞",
+          "Two swings, two misses! Baseball isn't your sport either! ⚾"
+        ];
+        feedback = getRandomFeedback(bothWrongFeedbacks);
+        isCorrect = false;
+      }
+
+      showFeedback(feedback, isCorrect);
+
+      setTimeout(() => {
+        document.getElementById(currentId).classList.remove('active');
+        if (nextId === 'rakhi') {
+          showQuestion(nextId, 11);
+        } else {
+          let num = parseInt(nextId.replace('q', ''));
+          showQuestion(nextId, num);
+        }
+      }, 2500);
+    }
+
+    function showFeedback(message, isCorrect) {
+      feedbackPopup.innerHTML = message;
+      feedbackPopup.className = isCorrect ? 'feedback-popup correct-feedback' : 'feedback-popup wrong-feedback';
+      feedbackPopup.style.display = 'block';
+
+      setTimeout(() => {
+        feedbackPopup.style.display = 'none';
+      }, 2500);
+    }
+
+    function selectRakhi(person, el, rakhiName) {
+      // Remove previous selection for this person
+      const personSection = el.closest('.rakhi-section');
+      const previousSelected = personSection.querySelector('img.selected');
+      if (previousSelected) {
+        previousSelected.classList.remove('selected');
+      }
+
+      // Add selection to current element
+      el.classList.add('selected');
+
+      selectedRakhis[person] = {
+        element: el,
+        name: rakhiName
+      };
+
+      // Visual feedback
+      createSparkles(el);
+
+      // Check if all three rakhis are selected
+      if (selectedRakhis.rc && selectedRakhis.rs && selectedRakhis.self) {
+        setTimeout(() => {
+          showFinalResult();
+        }, 1000);
+      }
+    }
+
+    function forceContinue() {
+      const roles = ['rc', 'rs', 'self'];
+
+      roles.forEach(role => {
+        if (!selectedRakhis[role]) {
+          // Get first image from the corresponding section
+          const section = document.querySelector(`.rakhi-section.${role}-rakhi`) || document.querySelector(`.rakhi-section.self-rakhi`);
+          const firstImg = section.querySelector('img');
+          if (firstImg) {
+            selectRakhi(role, firstImg, firstImg.src.split('/').pop().replace('.webp', ''));
+          }
+        }
+      });
+
+      // After auto-selecting, move to final slide
+      showFinalResult();
+    }
+
+
+    function showFinalResult() {
+      // Hide rakhi selection screen
+      document.getElementById('rakhi').classList.remove('active');
+
+      // Determine the tying images
+      let rcTyingImage = `attached_assets/${selectedRakhis.rc.name}_tying.webp`;
+      let rsTyingImage = `attached_assets/${selectedRakhis.rs.name}_tying.webp`;
+      let selfTyingImage = `attached_assets/${selectedRakhis.self.name}_tying.webp`;
+
+      // Set the content inside the final slide
+      const finalSlide = document.getElementById('final-slide');
+      finalSlide.innerHTML = `
+        <h2 style="text-align: center;">❤️ चलो, अब सब अपनी-अपनी राखी बंधवा लेते हैं! ❤️</h2>
+        <div class="final-result">
+          <div class="result-section rc-result">
+            <h3>राधिका के लिए राखी</h3>
+            <img src="${selectedRakhis.rc.element.src}" />
+            <div>
+              <img src="${rcTyingImage}" class="tying-image" alt="Tying ${selectedRakhis.rc.name} for Radhika"/>
+            </div>
+            <p style="color: #e91e63; font-weight: bold;">अरे वाह! कितनी प्यारी है! 💗</p>
+          </div>
+          <div class="result-section rs-result">
+            <h3>रजत के लिए राखी</h3>
+            <img src="${selectedRakhis.rs.element.src}" />
+            <div>
+              <img src="${rsTyingImage}" class="tying-image" alt="Tying ${selectedRakhis.rs.name} for Rajat"/>
+            </div>
+            <p style="color: #2196f3; font-weight: bold;">क्या बात! ज़ोरदार!! 💙</p>
+          </div>
+        </div>
+        <div class="final-result" style="justify-content: center; margin-top: 2rem;">
+          <div class="result-section self-result">
+            <h3>तुम्हारे लिए राखी</h3>
+            <img src="${selectedRakhis.self.element.src}" />
+            <div>
+              <img src="${selfTyingImage}" class="tying-image" alt="Tying ${selectedRakhis.self.name} for yourself"/>
+            </div>
+            <p style="color: #9c27b0; font-weight: bold;">वाह जी! खुद के लिए तो सबसे बढ़िया वाली पसंद की है! 💜</p>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 2rem;">
+          <p style="color: #e91e63; font-size: 1.4rem; font-weight: bold;">रक्षा बंधन की ढेर सारी बधाई! ✨</p>
+          <p style="color: #8e24aa;">हमारा प्रेम इसी तरह बना रहे और बढ़ता रहे! 💛</p>
+          <div id="photoReveal" style="text-align: center; margin-bottom: 3rem;">
+            <img src="attached_assets/Graphic_Akash_Anjali.png" 
+                 alt="Our photo together" 
+                 style="max-width: 90%; height: auto; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.3);">
+          </div>
+          <button class="reveal-btn" onclick="playAgain()">Play Again! 🔄</button>
+          <div id="revealConfirm1" style="margin-top: 1rem;">
+            <button class="reveal-btn" onclick="showRevealConfirm2()">Reveal All Answers 🧐</button>
+          </div>
+          <div id="revealConfirm2" style="display:none;">
+            <p>🙄 You sure you want to reveal the answers?</p>
+            <button class="reveal-btn" onclick="showRevealConfirm3()">Yes</button>
+            <button class="reveal-btn" onclick="cancelReveal()">No</button>
+          </div>
+          <div id="revealConfirm3" style="display:none;">
+            <p>😤 Are you really sure that you want to spoil it?</p>
+            <button class="reveal-btn" onclick="showRevealConfirm4()">Yes</button>
+            <button class="reveal-btn" onclick="cancelReveal()">No</button>
+          </div>
+          <div id="revealConfirm4" style="display:none;">
+            <p>😩 Come on! play again and get it right!</p>
+            <button class="reveal-btn" onclick="revealAnswersFinal()">Nope, Reveal Them!</button>
+            <button class="reveal-btn" onclick="playAgain()">Fine, I'll guess again 🔄</button>
+          </div>
+          <div id="finalAnswerReveal" style="display: none; margin-top: 2rem;"></div>
+        </div>
+      `;
+
+      // Show the final slide
+      finalSlide.classList.add('active');
+
+      // Scroll to top of page
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // Optional: Initial confetti explosion on load
+      for (let i = 0; i < 50; i++) {
+        setTimeout(() => createConfetti(), i * 100);
+      }
+
+      // Confetti when group photo scrolls into view — but not on initial load
+      let hasScrolled = false;
+      let photoConfettiTriggered = false;
+
+      window.addEventListener('scroll', () => {
+        hasScrolled = true;
+      });
+
+      // Use IntersectionObserver with scroll gate
+      const photoSection = document.getElementById('photoReveal');
+      if (photoSection) {
+        const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (
+              entry.isIntersecting &&
+              hasScrolled &&
+              !photoConfettiTriggered
+            ) {
+              createConfetti(); // 🎉 Real confetti only after user scrolls
+              photoConfettiTriggered = true;
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.6
+        });
+
+        observer.observe(photoSection);
+      }
+
+      // Re-trigger confetti when user scrolls on final page
+      let confettiCooldown = false;
+      window.addEventListener('scroll', () => {
+        const finalSlide = document.getElementById('final-slide');
+        if (
+          finalSlide.classList.contains('active') &&
+          !confettiCooldown &&
+          window.scrollY > 50 // prevent trigger on small scroll
+        ) {
+          confettiCooldown = true;
+          createConfetti();
+
+          setTimeout(() => {
+            confettiCooldown = false;
+          }, 1500); // 1.5 second cooldown
+        }
+      });
+    }
+
+    function createConfetti() {
+      const colors = ['#9c27b0', '#ff9800', '#8e24aa', '#ff7043', '#2196f3', '#e91e63'];
+      for (let i = 0; i < 20; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * 100 + '%';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.animationDelay = Math.random() * 2 + 's';
+        document.body.appendChild(confetti);
+
+        setTimeout(() => confetti.remove(), 3000);
+      }
+    }
+
+    function createSparkles(element) {
+      const rect = element.getBoundingClientRect();
+      for (let i = 0; i < 10; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.style.left = rect.left + Math.random() * rect.width + 'px';
+        sparkle.style.top = rect.top + Math.random() * rect.height + 'px';
+        document.body.appendChild(sparkle);
+
+        setTimeout(() => sparkle.remove(), 2000);
+      }
+    }
+
+    function createEmojiBurst(...emojis) {
+      emojis.forEach((emoji, index) => {
+        const burst = document.createElement('div');
+        burst.className = 'emoji-burst';
+        burst.innerHTML = emoji;
+        burst.style.left = Math.random() * 100 + '%';
+        burst.style.top = Math.random() * 50 + '%';
+        burst.style.animationDelay = index * 0.2 + 's';
+        document.body.appendChild(burst);
+
+        setTimeout(() => burst.remove(), 2000);
+      });
+    }
+
+    function skipToNext(currentId, nextId) {
+      // Hide current question without checking answer
+      document.getElementById(currentId).classList.remove('active');
+
+      // Show next question
+      if (nextId === 'rakhi') {
+        showQuestion(nextId, 11);
+      } else {
+        let num = parseInt(nextId.replace('q', ''));
+        showQuestion(nextId, num);
+      }
+
+      createEmojiBurst('⏭️', '💨', '🎯');
+    }
+
+    function skipToEnd() {
+      // Hide current question
+      document.querySelectorAll('.question.active').forEach(q => q.classList.remove('active'));
+
+      // Show rakhi selection
+      showQuestion('rakhi', 11);
+      createEmojiBurst('🚀', '💨', '⚡');
+    }
+
+    function showRevealConfirm2() {
+      document.getElementById('revealConfirm1').style.display = 'none';
+      document.getElementById('revealConfirm2').style.display = 'block';
+    }
+
+    function showRevealConfirm3() {
+      document.getElementById('revealConfirm2').style.display = 'none';
+      document.getElementById('revealConfirm3').style.display = 'block';
+    }
+
+    function showRevealConfirm4() {
+      document.getElementById('revealConfirm3').style.display = 'none';
+      document.getElementById('revealConfirm4').style.display = 'block';
+    }
+
+    function cancelReveal() {
+      document.getElementById('revealConfirm1').style.display = 'block';
+      document.getElementById('revealConfirm2').style.display = 'none';
+      document.getElementById('revealConfirm3').style.display = 'none';
+      document.getElementById('revealConfirm4').style.display = 'none';
+    }
+
+    function revealAnswersFinal() {
+      const finalContainer = document.getElementById('finalAnswerReveal');
+      let answersHTML = '<div class="answers-list"><h3 style="text-align: center; color: #e91e63;">🎯 All Correct Answers! 🎯</h3>';
+
+      Object.keys(correctAnswers).forEach(questionId => {
+        const questionText = questionTexts[questionId];
+        const rcAnswers = correctAnswers[questionId]['rc'];
+        const rsAnswers = correctAnswers[questionId]['rs'];
+
+        answersHTML += `
+          <div class="answer-item">
+            <h4>${questionText}</h4>
+            <div class="dual-answers">
+              <div class="answer-section rc-answers">
+                <p><strong>Radhika:</strong> ${rcAnswers.join(', ')}</p>
+              </div>
+              <div class="answer-section rs-answers">
+                <p><strong>Rajat:</strong> ${rsAnswers.join(', ')}</p>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+
+      answersHTML += '</div>';
+      finalContainer.innerHTML = answersHTML;
+      finalContainer.style.display = 'block';
+
+      // Hide confirm buttons
+      document.getElementById('revealConfirm4').style.display = 'none';
+    }
+
+    function playAgain() {
+      // Reset the quiz
+      location.reload();
+    }
+
+    // Auto-create ambient sparkles
+    setInterval(() => {
+      if (Math.random() > 0.7) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.style.left = Math.random() * 100 + '%';
+        sparkle.style.top = Math.random() * 100 + '%';
+        sparkle.style.animationDuration = (Math.random() * 2 + 1) + 's';
+        document.body.appendChild(sparkle);
+
+        setTimeout(() => sparkle.remove(), 2000);
+      }
+    }, 1000);
+
+    function getRandomFeedback(feedbacks) {
+      return feedbacks[Math.floor(Math.random() * feedbacks.length)];
+    }
+  </script>
+</body>
+
+</html>
