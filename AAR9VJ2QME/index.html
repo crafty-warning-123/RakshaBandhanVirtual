@@ -401,7 +401,7 @@
       }
 
       100% {
-        transform: translateY(100vh) rotate(720deg);
+        transform: translateY(500vh) rotate(720deg);
         opacity: 0;
       }
     }
@@ -1402,7 +1402,7 @@
         const confetti = document.createElement('div');
         confetti.className = 'confettiFromLine';
         confetti.style.left = Math.random() * 100 + '%';
-        // confetti.style.top = `${startY}px`; // location of badhai line
+        confetti.style.top = '0px'; // location of badhai line `${startY}px`
         confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
         confetti.style.animationDelay = Math.random() * 2 + 's';
         document.body.appendChild(confetti);
