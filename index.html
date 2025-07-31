@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- WhatsApp Link Preview -->
-  <meta property="og:title" content="Happy Raksha Bandhan (Virtual Celebration)">
-  <meta property="og:description" content="Celebrate Rakhi virtually with Radhika and Rajat! ✨">
+  <meta property="og:title" content="🎉 रक्षा बंधन की शुभकामनाएं! 🎉">
+  <meta property="og:description" content="Celebrate Rakhi virtually with Radhika and Rajat!">
   <meta property="og:image"
     content="https://crafty-warning-123.github.io/RakshaBandhanVirtualCelebration/attached_assets/Graphic_Girish.png">
   <meta property="og:url" content="https://crafty-warning-123.github.io/RakshaBandhanVirtualCelebration/">
@@ -370,6 +370,7 @@
       height: 10px;
       background: #ff4081;
       animation: confettiFall 3s linear infinite;
+      will-change: transform, opacity;
     }
 
     @keyframes confettiFall {
@@ -665,7 +666,7 @@
 <body>
   <main class="container">
     <h1 class="title">🎉 रक्षा बंधन की शुभकामनाएं! 🎉</h1>
-    <p class="subtitle">Celebrate Rakhi virtually with Radhika and Rajat! ✨<br>First you have to pass the quiz!<br>How
+    <p class="subtitle">Celebrate Rakhi virtually with Radhika and Rajat!<br>First you have to pass the quiz!<br>How
       well do you know Radhika and Rajat? 🤪</p>
 
     <button class="play-btn" onclick="startQuiz()">Start the Drama! 🎉🎭</button>
@@ -1266,8 +1267,10 @@
         <div style="text-align: center; margin-top: 2rem;">
           <p style="color: #e91e63; font-size: 1.4rem; font-weight: bold;">रक्षा बंधन की ढेर सारी बधाई! ✨</p>
           <p style="color: #8e24aa;">हमारा प्रेम इसी तरह बना रहे और बढ़ता रहे! 💛</p>
-          <div style="text-align: center; margin: 2rem 0;">
-          <img src="attached_assets/Graphic_Girish.png" alt="Our photo together" style="max-width: 100%; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
+          <div id="photoReveal" style="text-align: center; margin-bottom: 3rem;">
+            <img src="attached_assets/Graphic_Girish.png" 
+                 alt="Our photo together" 
+                 style="max-width: 90%; height: auto; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.3);">
           </div>
           <button class="reveal-btn" onclick="playAgain()">Play Again! 🔄</button>
           <div id="revealConfirm1" style="margin-top: 1rem;">
@@ -1296,12 +1299,60 @@
       finalSlide.classList.add('active');
 
       // Scroll to top of page
-      window.scrollTo({top: 0, behavior: 'smooth'});
+      window.scrollTo({ top: 0, behavior: 'smooth' });
 
-      // Optional: Confetti explosion
+      // Optional: Initial confetti explosion on load
       for (let i = 0; i < 50; i++) {
         setTimeout(() => createConfetti(), i * 100);
       }
+
+      // Confetti when group photo scrolls into view — but not on initial load
+      let hasScrolled = false;
+      let photoConfettiTriggered = false;
+
+      window.addEventListener('scroll', () => {
+        hasScrolled = true;
+      });
+
+      // Use IntersectionObserver with scroll gate
+      const photoSection = document.getElementById('photoReveal');
+      if (photoSection) {
+        const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (
+              entry.isIntersecting &&
+              hasScrolled &&
+              !photoConfettiTriggered
+            ) {
+              createConfetti(); // 🎉 Real confetti only after user scrolls
+              photoConfettiTriggered = true;
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.6
+        });
+
+        observer.observe(photoSection);
+      }
+
+      // Re-trigger confetti when user scrolls on final page
+      let confettiCooldown = false;
+      window.addEventListener('scroll', () => {
+        const finalSlide = document.getElementById('final-slide');
+        if (
+          finalSlide.classList.contains('active') &&
+          !confettiCooldown &&
+          window.scrollY > 50 // prevent trigger on small scroll
+        ) {
+          confettiCooldown = true;
+          createConfetti();
+
+          setTimeout(() => {
+            confettiCooldown = false;
+          }, 1500); // 1.5 second cooldown
+        }
+      });
     }
 
     function createConfetti() {
