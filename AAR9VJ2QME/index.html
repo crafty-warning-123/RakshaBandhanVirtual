@@ -1331,32 +1331,21 @@
         }
       }, 1000); // Wait 1 second before starting the confetti bursts
       
-      // Confetti when group photo scrolls into view — but not on initial load
-      let photoConfettiTriggered = false;
-      let hasSetupObserver = false;
-
-      // When user scrolls for the first time, set up the observer
-      window.addEventListener('scroll', () => {
-        if (!hasSetupObserver) {
-          const photoSection = document.getElementById('photoReveal');
-          if (!photoSection) return;
-
-          const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting && !photoConfettiTriggered) {
-                createConfettiFromLine(); // 🎉 Only after scroll AND intersection
-                photoConfettiTriggered = true;
-                observer.unobserve(photoSection);
-              }
-            });
-          }, {
-            threshold: 0.6
+      // Confetti when group photo scrolls into view
+      const photoSection = document.getElementById('photoReveal');
+      if (photoSection) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              createConfettiFromLine(); // re-trigger every time it's in view
+            }
           });
+        }, {
+          threshold: 0.6
+        });
 
-          observer.observe(photoSection);
-          hasSetupObserver = true;
-        }
-      });
+        observer.observe(photoSection);
+      }
 
       // Re-trigger confetti when user scrolls on final page
       let confettiCooldown = false;
@@ -1365,10 +1354,10 @@
         if (
           finalSlide.classList.contains('active') &&
           !confettiCooldown &&
-          window.scrollY > 50 // prevent trigger on small scroll
+          window.scrollY > 50
         ) {
           confettiCooldown = true;
-            createConfettiFromLine();
+          createConfettiFromLine();
 
           setTimeout(() => {
             confettiCooldown = false;
