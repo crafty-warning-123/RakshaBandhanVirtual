@@ -1331,13 +1331,20 @@
         }
       }, 1000); // Wait 1 second before starting the confetti bursts
       
-      // Confetti when group photo scrolls into view
+      // Confetti when group photo scrolls into view — only once
       const photoSection = document.getElementById('photoReveal');
+      let photoConfettiTriggered = false;
+
       if (photoSection) {
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              createConfettiFromLine(); // re-trigger every time it's in view
+            if (entry.isIntersecting && !photoConfettiTriggered) {
+              photoConfettiTriggered = true;
+              // Full burst: 50 staggered confetti triggers
+              for (let i = 0; i < 50; i++) {
+                setTimeout(() => createConfettiFromLine(), i * 100);
+              }
+              observer.unobserve(photoSection); // stop observing
             }
           });
         }, {
@@ -1347,7 +1354,7 @@
         observer.observe(photoSection);
       }
 
-      // Re-trigger confetti when user scrolls on final page
+      // Re-trigger confetti on general scroll with cooldown
       let confettiCooldown = false;
       window.addEventListener('scroll', () => {
         const finalSlide = document.getElementById('final-slide');
@@ -1358,10 +1365,9 @@
         ) {
           confettiCooldown = true;
           createConfettiFromLine();
-
           setTimeout(() => {
             confettiCooldown = false;
-          }, 1500); // 1.5 second cooldown
+          }, 1500); // 1.5s cooldown
         }
       });
     }
@@ -1372,6 +1378,7 @@
         const confetti = document.createElement('div');
         confetti.className = 'confetti';
         confetti.style.left = Math.random() * 100 + '%';
+        confetti.style.top = '0px';
         confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
         confetti.style.animationDelay = Math.random() * 2 + 's';
         document.body.appendChild(confetti);
