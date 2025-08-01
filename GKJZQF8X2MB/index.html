@@ -721,8 +721,10 @@
         style="margin-bottom: 1rem; max-width: 300px; font-size: 1.2rem; padding: 1rem; border: 3px solid #ff4081; border-radius: 15px; background: linear-gradient(45deg, #fff, #fce4ec); display: block; margin-left: auto; margin-right: auto;" />
 
       <div id="genderButtons" style="margin-top: 1rem;">        
-        <button class="gender-btn" type="button" onclick="userGender = 'female'">👧</button>
-        <button class="gender-btn" type="button" onclick="userGender = 'male'">👦</button>
+        <div id="genderButtons" style="margin-top: 1rem; display: flex; justify-content: center; gap: 1rem;">
+          <button class="gender-btn" type="button" data-gender="female">👧</button>
+          <button class="gender-btn" type="button" data-gender="male">👦</button>
+        </div>
       </div>
 
       <button id="submitUserInfo" class="play-btn" type="submit" style="margin-top: 1.5rem;" disabled>Let's Go 🚀</button>
