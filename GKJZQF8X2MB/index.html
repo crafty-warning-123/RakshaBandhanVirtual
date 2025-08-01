@@ -718,17 +718,19 @@
     <form id="userForm" style="text-align: center; margin-bottom: 2rem; animation: slideInFromBottom 1s ease-out;">
       <p style="margin-bottom: 0.5rem; font-weight: bold; color: #9c27b0;">About you:</p>
       <input type="text" id="userName" placeholder="तुम्हारा नाम / Your name ✍️" required
-        style="margin-bottom: 1rem; max-width: 300px; font-size: 1.2rem; padding: 1rem; border: 3px solid #ff4081; border-radius: 15px; background: linear-gradient(45deg, #fff, #fce4ec); display: block; margin-left: auto; margin-right: auto;" />
+        style="margin-bottom: 1rem; max-width: 300px; font-size: 1.2rem; padding: 1rem; border: 3px solid #ff4081; border-radius: 15px; background: linear-gradient(45deg, #fff, #fce4ec); display: inline-block;" />
 
       <div id="genderButtons" style="margin-top: 1rem; display: flex; justify-content: center; gap: 1rem;">
         <button class="gender-btn" type="button" data-gender="female">👧</button>
         <button class="gender-btn" type="button" data-gender="male">👦</button>
       </div>
 
-      <button id="submitUserInfo" class="play-btn" type="submit" style="margin-top: 1.5rem;" disabled>Let's Go 🚀</button>
+      <button id="submitUserInfo" class="play-btn" type="submit" disabled
+        style="margin-top: 1.5rem; display: inline-block;">Let's Go 🚀</button>
     </form>
 
-    <button id="startDramaBtn" class="play-btn" onclick="startQuiz()" style="display: none;">Start the Drama! 🎉🎭</button>
+    <button id="startDramaBtn" class="play-btn" onclick="startQuiz()" style="display: none;">Start the Drama!
+      🎉🎭</button>
 
     <div id="quiz" style="display: none;">
       <div class="progress-bar">
@@ -958,14 +960,22 @@
           <div class="rakhi-section self-rakhi">
             <h4>अब खुद के लिए भी एक राखी पसंद करो।</h4>
             <div id="self-rakhi-images">
-              <img src="../attached_assets/Rakhi1.webp" onclick="selectRakhi('self', this, 'Rakhi1')" alt="Lumba Rakhi with Kundan">
-              <img src="../attached_assets/Rakhi2.webp" onclick="selectRakhi('self', this, 'Rakhi2')" alt="Lumba Rakhi with Meenakari">
-              <img src="../attached_assets/Rakhi3.webp" onclick="selectRakhi('self', this, 'Rakhi3')" alt="Lumba Rakhi with Golden Lotus">
-              <img src="../attached_assets/Rakhi4.webp" onclick="selectRakhi('self', this, 'Rakhi4')" alt="Lumba Rakhi with Eye and Tassel">
-              <img src="../attached_assets/Rakhi5.webp" onclick="selectRakhi('self', this, 'Rakhi5')" alt="Rakhi thread with Kundan">
-              <img src="../attached_assets/Rakhi6.webp" onclick="selectRakhi('self', this, 'Rakhi6')" alt="Rakhi thread with Meenakari">
-              <img src="../attached_assets/Rakhi7.webp" onclick="selectRakhi('self', this, 'Rakhi7')" alt="Rakhi thread with Golden Lotus">
-              <img src="../attached_assets/Rakhi8.webp" onclick="selectRakhi('self', this, 'Rakhi8')" alt="Rakhi thread with Peacock">
+              <img src="../attached_assets/Rakhi1.webp" onclick="selectRakhi('self', this, 'Rakhi1')"
+                alt="Lumba Rakhi with Kundan">
+              <img src="../attached_assets/Rakhi2.webp" onclick="selectRakhi('self', this, 'Rakhi2')"
+                alt="Lumba Rakhi with Meenakari">
+              <img src="../attached_assets/Rakhi3.webp" onclick="selectRakhi('self', this, 'Rakhi3')"
+                alt="Lumba Rakhi with Golden Lotus">
+              <img src="../attached_assets/Rakhi4.webp" onclick="selectRakhi('self', this, 'Rakhi4')"
+                alt="Lumba Rakhi with Eye and Tassel">
+              <img src="../attached_assets/Rakhi5.webp" onclick="selectRakhi('self', this, 'Rakhi5')"
+                alt="Rakhi thread with Kundan">
+              <img src="../attached_assets/Rakhi6.webp" onclick="selectRakhi('self', this, 'Rakhi6')"
+                alt="Rakhi thread with Meenakari">
+              <img src="../attached_assets/Rakhi7.webp" onclick="selectRakhi('self', this, 'Rakhi7')"
+                alt="Rakhi thread with Golden Lotus">
+              <img src="../attached_assets/Rakhi8.webp" onclick="selectRakhi('self', this, 'Rakhi8')"
+                alt="Rakhi thread with Peacock">
             </div>
           </div>
         </div>
@@ -1035,8 +1045,8 @@
       }
 
       // Hide form, show start button
-      document.getElementById('userForm').style.display = 'none';      
-      document.getElementById('startDramaBtn').style.display = 'block';   
+      document.getElementById('userForm').style.display = 'none';
+      document.getElementById('startDramaBtn').style.display = 'block';
     });
 
     const progress = document.getElementById('progress');
@@ -1422,24 +1432,30 @@
                  alt="Our photo together" 
                  style="max-width: 90%; height: auto; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.3);">
           </div>
-          <button class="reveal-btn" onclick="playAgain()">Play Again! 🔄</button>
-          <div id="revealConfirm1" style="margin-top: 1rem;">
-            <button class="reveal-btn" onclick="showRevealConfirm2()">Reveal All Answers 🧐</button>
-          </div>
-          <div id="revealConfirm2" style="display:none;">
-            <p>🙄 You sure you want to reveal the answers?</p>
-            <button class="reveal-btn" onclick="showRevealConfirm3()">Yes</button>
-            <button class="reveal-btn" onclick="cancelReveal()">No</button>
-          </div>
-          <div id="revealConfirm3" style="display:none;">
-            <p>😤 Are you really sure that you want to spoil it?</p>
-            <button class="reveal-btn" onclick="showRevealConfirm4()">Yes</button>
-            <button class="reveal-btn" onclick="cancelReveal()">No</button>
-          </div>
-          <div id="revealConfirm4" style="display:none;">
-            <p>😩 Come on! play again and get it right!</p>
-            <button class="reveal-btn" onclick="revealAnswersFinal()">Nope, Reveal Them!</button>
-            <button class="reveal-btn" onclick="playAgain()">Fine, I'll guess again 🔄</button>
+          <div style="text-align: center; margin-top: 2rem;">
+            <button class="reveal-btn" onclick="playAgain()">Play Again! 🔄</button>
+
+            <div id="revealConfirm1" style="margin-top: 1rem; text-align: center;">
+              <button class="reveal-btn" onclick="showRevealConfirm2()">Reveal All Answers 🧐</button>
+            </div>
+
+            <div id="revealConfirm2" style="display: none; text-align: center;">
+              <p>🙄 You sure you want to reveal the answers?</p>
+              <button class="reveal-btn" onclick="showRevealConfirm3()">Yes</button>
+              <button class="reveal-btn" onclick="cancelReveal()">No</button>
+            </div>
+
+            <div id="revealConfirm3" style="display: none; text-align: center;">
+              <p>😤 Are you really sure that you want to spoil it?</p>
+              <button class="reveal-btn" onclick="showRevealConfirm4()">Yes</button>
+              <button class="reveal-btn" onclick="cancelReveal()">No</button>
+            </div>
+
+            <div id="revealConfirm4" style="display: none; text-align: center;">
+              <p>😩 Come on! play again and get it right!</p>
+              <button class="reveal-btn" onclick="revealAnswersFinal()">Nope, Reveal Them!</button>
+              <button class="reveal-btn" onclick="playAgain()">Fine, I'll guess again 🔄</button>
+            </div>
           </div>
           <div id="finalAnswerReveal" style="display: none; margin-top: 2rem;"></div>
         </div>
