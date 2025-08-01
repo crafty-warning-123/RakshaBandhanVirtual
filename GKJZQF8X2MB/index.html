@@ -1386,6 +1386,9 @@
 
 
     function showFinalResult() {
+      // Scroll to top of page
+      window.scrollTo({top: 0, behavior: 'smooth'});
+      
       // Hide rakhi selection screen
       document.getElementById('rakhi').classList.remove('active');
 
@@ -1466,10 +1469,7 @@
       `;
 
       // Show the final slide
-      finalSlide.classList.add('active');
-
-      // Scroll to top of page
-      window.scrollTo({top: 0, behavior: 'smooth'});
+      finalSlide.classList.add('active');      
 
       // Optional: Initial confetti explosion on load
       setTimeout(() => {
