@@ -954,23 +954,15 @@
           </div>
           <div class="rakhi-section self-rakhi">
             <h4>अब खुद के लिए भी एक राखी पसंद करो।</h4>
-            <div>
-              <img src="../attached_assets/Rakhi1.webp" onclick="selectRakhi('self', this, 'Rakhi1')"
-                alt="Lumba Rakhi with Kundan">
-              <img src="../attached_assets/Rakhi2.webp" onclick="selectRakhi('self', this, 'Rakhi2')"
-                alt="Lumba Rakhi with Meenakari">
-              <img src="../attached_assets/Rakhi3.webp" onclick="selectRakhi('self', this, 'Rakhi3')"
-                alt="Lumba Rakhi with Golden Lotus">
-              <img src="../attached_assets/Rakhi4.webp" onclick="selectRakhi('self', this, 'Rakhi4')"
-                alt="Lumba Rakhi with Eye and Tassel">
-              <img src="../attached_assets/Rakhi5.webp" onclick="selectRakhi('self', this, 'Rakhi5')"
-                alt="Rakhi thread with Kundan">
-              <img src="../attached_assets/Rakhi6.webp" onclick="selectRakhi('self', this, 'Rakhi6')"
-                alt="Rakhi thread with Meenakari">
-              <img src="../attached_assets/Rakhi7.webp" onclick="selectRakhi('self', this, 'Rakhi7')"
-                alt="Rakhi thread with Golden Lotus">
-              <img src="../attached_assets/Rakhi8.webp" onclick="selectRakhi('self', this, 'Rakhi8')"
-                alt="Rakhi thread with Peacock">
+            <div id="self-rakhi-images">
+              <img src="../attached_assets/Rakhi1.webp" onclick="selectRakhi('self', this, 'Rakhi1')" alt="Lumba Rakhi with Kundan">
+              <img src="../attached_assets/Rakhi2.webp" onclick="selectRakhi('self', this, 'Rakhi2')" alt="Lumba Rakhi with Meenakari">
+              <img src="../attached_assets/Rakhi3.webp" onclick="selectRakhi('self', this, 'Rakhi3')" alt="Lumba Rakhi with Golden Lotus">
+              <img src="../attached_assets/Rakhi4.webp" onclick="selectRakhi('self', this, 'Rakhi4')" alt="Lumba Rakhi with Eye and Tassel">
+              <img src="../attached_assets/Rakhi5.webp" onclick="selectRakhi('self', this, 'Rakhi5')" alt="Rakhi thread with Kundan">
+              <img src="../attached_assets/Rakhi6.webp" onclick="selectRakhi('self', this, 'Rakhi6')" alt="Rakhi thread with Meenakari">
+              <img src="../attached_assets/Rakhi7.webp" onclick="selectRakhi('self', this, 'Rakhi7')" alt="Rakhi thread with Golden Lotus">
+              <img src="../attached_assets/Rakhi8.webp" onclick="selectRakhi('self', this, 'Rakhi8')" alt="Rakhi thread with Peacock">
             </div>
           </div>
         </div>
@@ -1040,6 +1032,18 @@
       greet.style.textAlign = 'center';
       document.querySelector('main.container').prepend(greet);
     });
+
+    const rakhiContainer = document.getElementById('self-rakhi-images');
+    const rakhiImgs = Array.from(rakhiContainer.children);
+
+    if (userGender === 'male') {
+      const reordered = [
+        rakhiImgs[4], rakhiImgs[5], rakhiImgs[6], rakhiImgs[7], // Rakhi5–8
+        rakhiImgs[0], rakhiImgs[1], rakhiImgs[2], rakhiImgs[3], // Rakhi1–4
+      ];
+      rakhiContainer.innerHTML = '';
+      reordered.forEach(img => rakhiContainer.appendChild(img));
+    }
 
     const progress = document.getElementById('progress');
     const progressFill = document.getElementById('progressFill');
