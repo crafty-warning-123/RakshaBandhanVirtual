@@ -1385,10 +1385,7 @@
 
     function showFinalResult() {           
       // Hide rakhi selection screen
-      document.getElementById('rakhi').classList.remove('active');
-
-      // Scroll to top of page
-      window.scrollTo({top: 0, behavior: 'smooth'});
+      document.getElementById('rakhi').classList.remove('active');      
 
       // Determine the tying images
       let rcTyingImage = `../attached_assets/${selectedRakhis.rc.name}_tying.webp`;
@@ -1467,7 +1464,10 @@
       `;
 
       // Show the final slide
-      finalSlide.classList.add('active');      
+      finalSlide.classList.add('active');
+
+      // Scroll to top of page
+      window.scrollTo({top: 0, behavior: 'smooth'});
 
       // Optional: Initial confetti explosion on load
       setTimeout(() => {
@@ -1500,7 +1500,6 @@
           observer.observe(photoSection);
         }, 500);
       }
-
 
       // Re-trigger confetti on general scroll with cooldown
       let confettiCooldown = false;
