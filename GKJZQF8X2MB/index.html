@@ -1036,8 +1036,7 @@
 
       // Hide form, show start button
       document.getElementById('userForm').style.display = 'none';      
-      document.getElementById('submitUserInfo').style.display = 'block'; 
-      // document.getElementById('startDramaBtn').style.display = 'block'; 
+      document.getElementById('startDramaBtn').style.display = 'block';       
       // document.querySelector('.play-btn[onclick="startQuiz()"]').style.display = 'block';      
     });
 
@@ -1126,7 +1125,7 @@
     };
 
     function startQuiz() {
-      document.getElementById('startDramaBtn').style.display = 'none'; // ✅ more reliable
+      document.getElementById('startDramaBtn').style.display = 'none';
       quiz.style.display = 'block';
       createConfetti();
       showQuestion('q1', 1);
