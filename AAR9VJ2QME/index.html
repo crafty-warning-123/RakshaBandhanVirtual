@@ -1282,7 +1282,7 @@
             <div>
               <img src="${selfTyingImage}" class="tying-image" alt="Tying ${selectedRakhis.self.name} for yourself"/>
             </div>
-            <p style="color: #9c27b0; font-weight: bold;">वाह जी! खुद के लिए तो सबसे बढ़िया वाली पसंद की है! 💜</p>
+            <p id="waah-line" style="color: #9c27b0; font-weight: bold;">वाह जी! खुद के लिए तो सबसे बढ़िया वाली पसंद की है! 💜</p>
           </div>
         </div>
         <div style="text-align: center; margin-top: 2rem;">
@@ -1390,8 +1390,8 @@
     function createConfettiFromLine() {
       const colors = ['#9c27b0', '#ff9800', '#8e24aa', '#ff7043', '#2196f3', '#e91e63'];
       setTimeout(() => {
-        const badhaiLine = document.getElementById('badhai-line');
-        const startY = badhaiLine.getBoundingClientRect().top + window.scrollY - 0;
+        const badhaiLine = document.getElementById('waah-line');
+        const startY = badhaiLine.getBoundingClientRect().bottom + window.scrollY - 0;
         for (let i = 0; i < 20; i++) {
           const confetti = document.createElement('div');
           confetti.className = 'confettiFromLine';
