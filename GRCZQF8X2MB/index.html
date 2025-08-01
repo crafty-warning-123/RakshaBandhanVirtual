@@ -405,7 +405,7 @@
         opacity: 0;
       }
     }
-    
+
     .sparkle {
       position: absolute;
       width: 20px;
@@ -983,8 +983,8 @@
     // All possible correct answers for each question (RC: A1-A10, RS: B1-B10)
     const correctAnswers = {
       'q1': {
-        'rc': ['Kheer', 'Choorma', 'Gulab Jamun', 'Gulabjamun', 'Ice cream', 'Icecream', '___', '___', '___', '___'],
-        'rs': ['Kheer', 'Jalebi', 'Gajar ka halwa', 'Mango', 'Aam', '___', '___', '___', '___', '___']
+        'rc': ['Kheer', 'Choorma', 'Gulab Jamun', 'Ice Cream', '___', '___', '___', '___', '___', '___'],
+        'rs': ['Kheer', 'Jalebi', 'Gajar ka halwa','Aam', 'Mango', 'Gajar halwa', '___', '___', '___', '___']
       },
       'q2': {
         'rc': ['Social Science', 'Social Studies', 'History', '___', '___', '___', '___', '___', '___', '___'],
@@ -1012,10 +1012,10 @@
       },
       'q8': {
         'rc': ['Scroll reels', 'Sleep', 'Paint', 'Embroidery', 'Drawing', 'Writing', 'Reading', '___', '___', '___'],
-        'rs': ['Listen to music', 'Lie down', 'Play chess', '420', 'purani aadatein', 'old habits', '___', '___', '___', '___']
+        'rs': ['Listen to music', 'Lie down', 'Play chess', '420', 'purani aadatein', 'old habits', 'purani aadat', '___', '___', '___']
       },
       'q9': {
-        'rc': ['Chaiyya chaiyya', 'Ay hairathe', 'Gud se meetha ishq', 'Kahi aag lage lag jaye', 'Jalla sain', 'Tunak tunak', 'Jihne mera dil luteya', 'Jag Jeondeyan De Mele', 'Ek pal ka jeena', 'Sona kitna sona hai'],
+        'rc': ['Chaiyya chaiyya', 'Ay hairathe', 'Gud se meetha ishq', 'Kahi aag lage lag jaye', 'Jalla sain', 'Tunak tunak', 'Jihne mera dil luteya', 'Jag Jeondeyan De Mele', 'Ek pal ka jeena', 'Chunri chunri'],
         'rs': ['Jag Jeondeyan De Mele', 'Mera piya ghar aaya', 'Ek pal ka jeena', 'Yun hi chala chal', '___', '___', '___', '___', '___', '___']
       },
       'q10': {
@@ -1117,12 +1117,12 @@
 
       // Check RC answer - exact match with sample answers
       const isRcCorrect = rcPossibleAnswers.some(correctAns =>
-        rcAnswer.toLowerCase() === correctAns.toLowerCase()
+        isAnswerCorrect(rcAnswer, correctAns)
       );
 
       // Check RS answer - exact match with sample answers
       const isRsCorrect = rsPossibleAnswers.some(correctAns =>
-        rsAnswer.toLowerCase() === correctAns.toLowerCase()
+        isAnswerCorrect(rsAnswer, correctAns)
       );
 
       if (isRcCorrect && isRsCorrect) {
@@ -1187,6 +1187,50 @@
         }
       }, 2500);
     }
+
+    function normalizeAnswer(str) {
+      return str
+        .toLowerCase()
+        .replace(/[^a-z0-9]/gi, '') // remove all non-alphanumeric chars
+        .trim();
+    }
+
+    function getLevenshteinDistance(a, b) {
+      const matrix = Array.from({ length: b.length + 1 }, (_, i) =>
+        Array.from({ length: a.length + 1 }, (_, j) =>
+          i === 0 ? j : j === 0 ? i : 0
+        )
+      );
+
+      for (let i = 1; i <= b.length; i++) {
+        for (let j = 1; j <= a.length; j++) {
+          if (b[i - 1] === a[j - 1]) {
+            matrix[i][j] = matrix[i - 1][j - 1];
+          } else {
+            matrix[i][j] = Math.min(
+              matrix[i - 1][j - 1] + 1,
+              matrix[i][j - 1] + 1,
+              matrix[i - 1][j] + 1
+            );
+          }
+        }
+      }
+
+      return matrix[b.length][a.length];
+    }
+
+    function isAnswerCorrect(userInput, correctAnswer) {
+      const a = normalizeAnswer(userInput);
+      const b = normalizeAnswer(correctAnswer);
+
+      if (!a || !b) return false;
+
+      const distance = getLevenshteinDistance(a, b);
+      const maxAllowedDistance = Math.floor(Math.max(a.length, b.length) * 0.25); // 25% of length
+
+      return distance <= maxAllowedDistance;
+    }
+
 
     function showFeedback(message, isCorrect) {
       feedbackPopup.innerHTML = message;
@@ -1330,7 +1374,7 @@
           setTimeout(() => createConfetti(), i * 100);
         }
       }, 1000); // Wait 1 second before starting the confetti bursts
-      
+
       // Confetti when group photo scrolls into view — only once
       const photoSection = document.getElementById('photoReveal');
       let photoConfettiTriggered = false;
@@ -1340,7 +1384,7 @@
           entries.forEach(entry => {
             if (entry.isIntersecting && !photoConfettiTriggered) {
               photoConfettiTriggered = true;
-              // Full burst: 5100 staggered confetti triggers
+              // Full burst: 100 staggered confetti triggers
               for (let i = 0; i < 100; i++) {
                 setTimeout(() => createConfettiFromLine(), i * 100);
               }
@@ -1382,7 +1426,7 @@
         confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
         confetti.style.animationDelay = Math.random() * 2 + 's';
         document.body.appendChild(confetti);
-        
+
         setTimeout(() => confetti.remove(), 3000);
       }
     }
@@ -1400,7 +1444,7 @@
           confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
           confetti.style.animationDelay = Math.random() * 2 + 's';
           document.body.appendChild(confetti);
-          
+
           setTimeout(() => confetti.remove(), 6000);
         }
       }, 1000);
