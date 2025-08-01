@@ -681,6 +681,28 @@
       border-radius: 15px !important;
       margin: 1rem 0 !important;
     }
+
+    .gender-btn {
+      font-size: 2rem;
+      padding: 0.8rem 1.2rem;
+      margin: 0.5rem;
+      border: none;
+      border-radius: 15px;
+      background: linear-gradient(45deg, #9c27b0, #ff9800);
+      color: white;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .gender-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 20px rgba(156, 39, 176, 0.4);
+    }
+
+    .gender-btn.selected-gender {
+      box-shadow: 0 0 15px 5px rgba(76, 175, 80, 0.6);
+      border: 3px solid #4caf50;
+    }
   </style>
 </head>
 
@@ -690,16 +712,17 @@
     <p class="subtitle">Celebrate Rakhi virtually with Radhika and Rajat!<br>First you have to pass the quiz!<br>How
       well do you know Radhika and Rajat? 🤪</p>
 
-    <form id="userForm" style="margin-bottom: 2rem; text-align: center;">
-      <input type="text" id="userName" placeholder="Your Name" required style="margin-bottom: 1rem; max-width: 300px;">
-      <br>
-      <select id="userGender" required style="max-width: 300px;">
-        <option value="" disabled selected>Select Gender</option>
-        <option value="female">👩 Female</option>
-        <option value="male">👨 Male</option>
-      </select>
-      <br><br>
-      <button type="submit">Let's Go 🚀</button>
+    <form id="userForm" style="text-align: center; margin-bottom: 2rem; animation: slideInFromBottom 1s ease-out;">
+      <input type="text" id="userName" placeholder="Enter your name ✍️" required
+        style="margin-bottom: 1rem; max-width: 300px; font-size: 1.2rem; padding: 1rem; border: 3px solid #ff4081; border-radius: 15px; background: linear-gradient(45deg, #fff, #fce4ec); display: block; margin-left: auto; margin-right: auto;" />
+
+      <div id="genderButtons" style="margin-top: 1rem;">
+        <p style="margin-bottom: 0.5rem; font-weight: bold; color: #9c27b0;">Select your gender</p>
+        <button type="button" class="gender-btn" data-gender="female">👩</button>
+        <button type="button" class="gender-btn" data-gender="male">👨</button>
+      </div>
+
+      <button id="submitUserInfo" class="play-btn" style="margin-top: 1.5rem;" disabled>Let's Go 🚀</button>
     </form>
 
     <button class="play-btn" onclick="startQuiz()" style="display: none;">Start the Drama! 🎉🎭</button>
@@ -971,29 +994,51 @@
   <div id="feedbackPopup" class="feedback-popup"></div>
 
   <script>
+    let userName = '';
+    let userGender = '';
+
+    const genderButtons = document.querySelectorAll('.gender-btn');
+    const submitBtn = document.getElementById('submitUserInfo');
+
+    genderButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove highlight from other buttons
+        genderButtons.forEach(btn => btn.classList.remove('selected-gender'));
+        // Highlight this one
+        button.classList.add('selected-gender');
+        userGender = button.getAttribute('data-gender');
+        checkFormReady();
+      });
+    });
+
+    document.getElementById('userName').addEventListener('input', checkFormReady);
+
+    function checkFormReady() {
+      const nameInput = document.getElementById('userName').value.trim();
+      if (nameInput && userGender) {
+        submitBtn.disabled = false;
+      } else {
+        submitBtn.disabled = true;
+      }
+    }
+
     document.getElementById('userForm').addEventListener('submit', function (e) {
-      e.preventDefault(); // prevent form from reloading the page
+      e.preventDefault();
+      userName = document.getElementById('userName').value.trim();
 
-      const name = document.getElementById('userName').value.trim();
-      const gender = document.getElementById('userGender').value;
-
-      if (!name || !gender) return;
-
-      // Store for later if needed
-      window.userName = name;
-      window.userGender = gender;
-
-      // Hide the form and show the quiz start button
+      // Hide form, show start button
       document.getElementById('userForm').style.display = 'none';
-      document.querySelector('.play-btn').style.display = 'inline-block';
+      document.querySelector('.play-btn[onclick="startQuiz()"]').style.display = 'block';
 
-      // Optional greeting
-      const greeting = document.createElement('p');
-      const emoji = gender === 'male' ? '👨' : '👩';
-      greeting.innerHTML = `Welcome ${emoji} <strong>${name}</strong>! Ready to rock the quiz?`;
-      greeting.style.fontWeight = 'bold';
-      greeting.style.marginTop = '1rem';
-      document.querySelector('.container').prepend(greeting);
+      // Optional: Add name greeting
+      const emoji = userGender === 'female' ? '👩' : '👨';
+      const greet = document.createElement('p');
+      greet.innerHTML = `Welcome ${emoji} <strong>${userName}</strong>! Ready for drama? 🎭`;
+      greet.style.fontWeight = 'bold';
+      greet.style.fontSize = '1.2rem';
+      greet.style.marginTop = '1rem';
+      greet.style.textAlign = 'center';
+      document.querySelector('main.container').prepend(greet);
     });
 
     const progress = document.getElementById('progress');
