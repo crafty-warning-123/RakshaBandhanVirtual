@@ -1340,7 +1340,7 @@
           entries.forEach(entry => {
             if (entry.isIntersecting && !photoConfettiTriggered) {
               photoConfettiTriggered = true;
-              // Full burst: 50 staggered confetti triggers
+              // Full burst: 100 staggered confetti triggers
               for (let i = 0; i < 100; i++) {
                 setTimeout(() => createConfettiFromLine(), i * 100);
               }
