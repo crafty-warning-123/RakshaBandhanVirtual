@@ -682,25 +682,36 @@
       margin: 1rem 0 !important;
     }
 
+    .gender-btn-container {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
     .gender-btn {
-      font-size: 2rem;
-      padding: 0.8rem 1.2rem;
-      margin: 0.5rem;
+      font-size: 1.2rem;
+      padding: 0.5rem 1rem;
+      min-width: 130px;
       border: none;
-      border-radius: 15px;
+      border-radius: 12px;
       background: linear-gradient(45deg, #9c27b0, #ff9800);
       color: white;
+      font-weight: bold;
       cursor: pointer;
-      transition: transform 0.2s ease;
+      transition: all 0.2s ease-in-out;
+      margin: 0;
+      text-align: center;
     }
 
     .gender-btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 8px 20px rgba(156, 39, 176, 0.4);
+      transform: scale(1.05);
+      box-shadow: 0 0 10px rgba(156, 39, 176, 0.4);
     }
 
     .gender-btn.selected-gender {
-      box-shadow: 0 0 15px 5px rgba(76, 175, 80, 0.6);
+      box-shadow: 0 0 10px 3px rgba(76, 175, 80, 0.6);
       border: 3px solid #4caf50;
     }
   </style>
@@ -713,13 +724,15 @@
       well do you know Radhika and Rajat? 🤪</p>
 
     <form id="userForm" style="text-align: center; margin-bottom: 2rem; animation: slideInFromBottom 1s ease-out;">
+      <p style="margin-bottom: 0.5rem; font-weight: bold; color: #9c27b0;">About you:</p>
       <input type="text" id="userName" placeholder="Enter your name ✍️" required
         style="margin-bottom: 1rem; max-width: 300px; font-size: 1.2rem; padding: 1rem; border: 3px solid #ff4081; border-radius: 15px; background: linear-gradient(45deg, #fff, #fce4ec); display: block; margin-left: auto; margin-right: auto;" />
 
-      <div id="genderButtons" style="margin-top: 1rem;">
-        <p style="margin-bottom: 0.5rem; font-weight: bold; color: #9c27b0;">Select your gender</p>
-        <button type="button" class="gender-btn" data-gender="female">👩</button>
-        <button type="button" class="gender-btn" data-gender="male">👨</button>
+      <div id="genderButtons" style="margin-top: 1rem;">        
+        <div class="gender-btn-container">
+          <button class="gender-btn" type="button" onclick="userGender = 'female'">👧</button>
+          <button class="gender-btn" type="button" onclick="userGender = 'male'">👦</button>
+        </div>
       </div>
 
       <button id="submitUserInfo" class="play-btn" style="margin-top: 1.5rem;" disabled>Let's Go 🚀</button>
