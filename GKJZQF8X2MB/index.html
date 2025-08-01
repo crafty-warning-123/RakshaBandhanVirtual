@@ -1379,11 +1379,7 @@
       });
 
       // After auto-selecting, move to final slide
-      if (selectedRakhis.rc && selectedRakhis.rs && selectedRakhis.self) {
-        setTimeout(() => {
-          showFinalResult();
-        }, 1000);
-      }
+      showFinalResult();
     }
 
 
@@ -1489,19 +1485,22 @@
           entries.forEach(entry => {
             if (entry.isIntersecting && !photoConfettiTriggered) {
               photoConfettiTriggered = true;
-              // Full burst: 100 staggered confetti triggers
               for (let i = 0; i < 50; i++) {
                 setTimeout(() => createConfettiFromLine(), i * 100);
               }
-              observer.unobserve(photoSection); // stop observing
+              observer.unobserve(photoSection);
             }
           });
         }, {
           threshold: 0.6
         });
 
-        observer.observe(photoSection);
+        // Delay observing
+        setTimeout(() => {
+          observer.observe(photoSection);
+        }, 500);
       }
+
 
       // Re-trigger confetti on general scroll with cooldown
       let confettiCooldown = false;
