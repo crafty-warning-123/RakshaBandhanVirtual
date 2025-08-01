@@ -1383,12 +1383,12 @@
     }
 
 
-    function showFinalResult() {
-      // Scroll to top of page
-      window.scrollTo({top: 0, behavior: 'smooth'});
-      
+    function showFinalResult() {           
       // Hide rakhi selection screen
       document.getElementById('rakhi').classList.remove('active');
+
+      // Scroll to top of page
+      window.scrollTo({top: 0, behavior: 'smooth'});
 
       // Determine the tying images
       let rcTyingImage = `../attached_assets/${selectedRakhis.rc.name}_tying.webp`;
