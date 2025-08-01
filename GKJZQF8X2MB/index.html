@@ -1485,7 +1485,7 @@
             if (entry.isIntersecting && !photoConfettiTriggered) {
               photoConfettiTriggered = true;
               // Full burst: 100 staggered confetti triggers
-              for (let i = 0; i < 100; i++) {
+              for (let i = 0; i < 50; i++) {
                 setTimeout(() => createConfettiFromLine(), i * 100);
               }
               observer.unobserve(photoSection); // stop observing

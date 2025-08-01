@@ -9,7 +9,7 @@
   <meta property="og:title" content="🎉 रक्षा बंधन की शुभकामनाएं! 🎉">
   <meta property="og:description" content="Celebrate Rakhi virtually with Radhika and Rajat!">
   <meta property="og:image"
-    content="https://crafty-warning-123.github.io/RakshaBandhanVirtualCelebration/attached_assets/Graphic_Akash_Anjali.png">
+    content="https://crafty-warning-123.github.io/RakshaBandhanVirtualCelebration/attached_assets/Graphic_Anjali_Akash.png">
   <meta property="og:url" content="https://crafty-warning-123.github.io/RakshaBandhanVirtualCelebration/">
   <meta property="og:type" content="website">
 
@@ -405,7 +405,7 @@
         opacity: 0;
       }
     }
-    
+
     .sparkle {
       position: absolute;
       width: 20px;
@@ -536,10 +536,11 @@
       padding: 1rem 2rem;
       border: none;
       border-radius: 25px;
-      margin: 1rem;
+      margin: 1rem auto;;
       font-size: 1.1rem;
       cursor: pointer;
       transition: all 0.3s ease;
+      display: block;
     }
 
     .reveal-btn:hover {
@@ -681,6 +682,31 @@
       border-radius: 15px !important;
       margin: 1rem 0 !important;
     }
+
+    .gender-btn {
+      font-size: 2rem;
+      padding: 0.8rem 1.2rem;
+      margin: 0.5rem;
+      border: none;
+      border-radius: 15px;
+      background: linear-gradient(45deg, #9c27b0, #ff9800);
+      color: white;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      /* Add this line to shrink width */
+      width: 150px;
+      text-align: center;
+    }
+
+    .gender-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 20px rgba(156, 39, 176, 0.4);
+    }
+
+    .gender-btn.selected-gender {
+      box-shadow: 0 0 15px 5px rgba(76, 175, 80, 0.6);
+      border: 3px solid #4caf50;
+    }
   </style>
 </head>
 
@@ -690,7 +716,22 @@
     <p class="subtitle">Celebrate Rakhi virtually with Radhika and Rajat!<br>First you have to pass the quiz!<br>How
       well do you know Radhika and Rajat? 🤪</p>
 
-    <button class="play-btn" onclick="startQuiz()">Start the Drama! 🎉🎭</button>
+    <form id="userForm" style="text-align: center; margin-bottom: 2rem; animation: slideInFromBottom 1s ease-out;">
+      <p style="margin-bottom: 0.5rem; font-weight: bold; color: #9c27b0;">About you:</p>
+      <input type="text" id="userName" placeholder="तुम्हारा नाम / Your name ✍️" required
+        style="margin-bottom: 1rem; max-width: 300px; font-size: 1.2rem; padding: 1rem; border: 3px solid #ff4081; border-radius: 15px; background: linear-gradient(45deg, #fff, #fce4ec); display: inline-block;" />
+
+      <div id="genderButtons" style="margin-top: 1rem; display: flex; justify-content: center; gap: 1rem;">
+        <button class="gender-btn" type="button" data-gender="female">👧</button>
+        <button class="gender-btn" type="button" data-gender="male">👦</button>
+      </div>
+
+      <button id="submitUserInfo" class="play-btn" type="submit" disabled
+        style="margin-top: 1.5rem; display: inline-block;">Let's Go 🚀</button>
+    </form>
+
+    <button id="startDramaBtn" class="play-btn" onclick="startQuiz()" style="display: none;">Start the Drama!
+      🎉🎭</button>
 
     <div id="quiz" style="display: none;">
       <div class="progress-bar">
@@ -919,7 +960,7 @@
           </div>
           <div class="rakhi-section self-rakhi">
             <h4>अब खुद के लिए भी एक राखी पसंद करो।</h4>
-            <div>
+            <div id="self-rakhi-images">
               <img src="../attached_assets/Rakhi1.webp" onclick="selectRakhi('self', this, 'Rakhi1')"
                 alt="Lumba Rakhi with Kundan">
               <img src="../attached_assets/Rakhi2.webp" onclick="selectRakhi('self', this, 'Rakhi2')"
@@ -959,6 +1000,56 @@
   <div id="feedbackPopup" class="feedback-popup"></div>
 
   <script>
+    let userName = '';
+    let userGender = '';
+
+    const genderButtons = document.querySelectorAll('.gender-btn');
+    const submitBtn = document.getElementById('submitUserInfo');
+
+    genderButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove highlight from other buttons
+        genderButtons.forEach(btn => btn.classList.remove('selected-gender'));
+        // Highlight this one
+        button.classList.add('selected-gender');
+        userGender = button.getAttribute('data-gender');
+        checkFormReady();
+      });
+    });
+
+    document.getElementById('userName').addEventListener('input', checkFormReady);
+
+    function checkFormReady() {
+      const nameInput = document.getElementById('userName').value.trim();
+      if (nameInput && userGender) {
+        submitBtn.disabled = false;
+      } else {
+        submitBtn.disabled = true;
+      }
+    }
+
+    document.getElementById('userForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      userName = document.getElementById('userName').value.trim();
+
+      if (userGender === 'male') {
+        const rakhiContainer = document.getElementById('self-rakhi-images');
+        if (rakhiContainer) {
+          const rakhiImgs = Array.from(rakhiContainer.children);
+          const reordered = [
+            rakhiImgs[4], rakhiImgs[5], rakhiImgs[6], rakhiImgs[7],
+            rakhiImgs[0], rakhiImgs[1], rakhiImgs[2], rakhiImgs[3]
+          ];
+          rakhiContainer.innerHTML = '';
+          reordered.forEach(img => rakhiContainer.appendChild(img));
+        }
+      }
+
+      // Hide form, show start button
+      document.getElementById('userForm').style.display = 'none';
+      document.getElementById('startDramaBtn').style.display = 'block';
+    });
+
     const progress = document.getElementById('progress');
     const progressFill = document.getElementById('progressFill');
     const quiz = document.getElementById('quiz');
@@ -984,7 +1075,7 @@
     const correctAnswers = {
       'q1': {
         'rc': ['Kheer', 'Choorma', 'Gulab Jamun', 'Ice Cream', 'Khir', '___', '___', '___', '___', '___'],
-        'rs': ['Kheer', 'Jalebi', 'Gajar ka halwa','Aam', 'Mango', 'Khir', 'Gajar halwa', '___', '___', '___']
+        'rs': ['Kheer', 'Jalebi', 'Gajar ka halwa', 'Aam', 'Mango', 'Khir', 'Gajar halwa', '___', '___', '___']
       },
       'q2': {
         'rc': ['Social Science', 'Social Studies', 'History', '___', '___', '___', '___', '___', '___', '___'],
@@ -1044,7 +1135,7 @@
     };
 
     function startQuiz() {
-      document.querySelector('.play-btn').style.display = 'none';
+      document.getElementById('startDramaBtn').style.display = 'none';
       quiz.style.display = 'block';
       createConfetti();
       showQuestion('q1', 1);
@@ -1199,8 +1290,8 @@
     }
 
     function getLevenshteinDistance(a, b) {
-      const matrix = Array.from({ length: b.length + 1 }, (_, i) =>
-        Array.from({ length: a.length + 1 }, (_, j) =>
+      const matrix = Array.from({length: b.length + 1}, (_, i) =>
+        Array.from({length: a.length + 1}, (_, j) =>
           i === 0 ? j : j === 0 ? i : 0
         )
       );
@@ -1338,28 +1429,34 @@
           </p>
           <p style="color: #8e24aa;">हमारा प्रेम इसी तरह बना रहे और बढ़ता रहे! 💛</p>
           <div id="photoReveal" style="text-align: center; margin-bottom: 3rem;">
-            <img src="../attached_assets/Graphic_Akash_Anjali.png" 
+            <img src="../attached_assets/Graphic_Anjali_Akash.png" 
                  alt="Our photo together" 
                  style="max-width: 90%; height: auto; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.3);">
           </div>
-          <button class="reveal-btn" onclick="playAgain()">Play Again! 🔄</button>
-          <div id="revealConfirm1" style="margin-top: 1rem;">
-            <button class="reveal-btn" onclick="showRevealConfirm2()">Reveal All Answers 🧐</button>
-          </div>
-          <div id="revealConfirm2" style="display:none;">
-            <p>🙄 You sure you want to reveal the answers?</p>
-            <button class="reveal-btn" onclick="showRevealConfirm3()">Yes</button>
-            <button class="reveal-btn" onclick="cancelReveal()">No</button>
-          </div>
-          <div id="revealConfirm3" style="display:none;">
-            <p>😤 Are you really sure that you want to spoil it?</p>
-            <button class="reveal-btn" onclick="showRevealConfirm4()">Yes</button>
-            <button class="reveal-btn" onclick="cancelReveal()">No</button>
-          </div>
-          <div id="revealConfirm4" style="display:none;">
-            <p>😩 Come on! play again and get it right!</p>
-            <button class="reveal-btn" onclick="revealAnswersFinal()">Nope, Reveal Them!</button>
-            <button class="reveal-btn" onclick="playAgain()">Fine, I'll guess again 🔄</button>
+          <div style="text-align: center; margin-top: 2rem;">
+            <button class="reveal-btn" onclick="playAgain()">Play Again! 🔄</button>
+
+            <div id="revealConfirm1" style="margin-top: 1rem; text-align: center;">
+              <button class="reveal-btn" onclick="showRevealConfirm2()">Reveal All Answers 🧐</button>
+            </div>
+
+            <div id="revealConfirm2" style="display: none; text-align: center;">
+              <p>🙄 You sure you want to reveal the answers?</p>
+              <button class="reveal-btn" onclick="showRevealConfirm3()">Yes</button>
+              <button class="reveal-btn" onclick="cancelReveal()">No</button>
+            </div>
+
+            <div id="revealConfirm3" style="display: none; text-align: center;">
+              <p>😤 Are you really sure that you want to spoil it?</p>
+              <button class="reveal-btn" onclick="showRevealConfirm4()">Yes</button>
+              <button class="reveal-btn" onclick="cancelReveal()">No</button>
+            </div>
+
+            <div id="revealConfirm4" style="display: none; text-align: center;">
+              <p>😩 Come on! play again and get it right!</p>
+              <button class="reveal-btn" onclick="revealAnswersFinal()">Nope, Reveal Them!</button>
+              <button class="reveal-btn" onclick="playAgain()">Fine, I'll guess again 🔄</button>
+            </div>
           </div>
           <div id="finalAnswerReveal" style="display: none; margin-top: 2rem;"></div>
         </div>
@@ -1369,7 +1466,7 @@
       finalSlide.classList.add('active');
 
       // Scroll to top of page
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({top: 0, behavior: 'smooth'});
 
       // Optional: Initial confetti explosion on load
       setTimeout(() => {
@@ -1377,7 +1474,7 @@
           setTimeout(() => createConfetti(), i * 100);
         }
       }, 1000); // Wait 1 second before starting the confetti bursts
-      
+
       // Confetti when group photo scrolls into view — only once
       const photoSection = document.getElementById('photoReveal');
       let photoConfettiTriggered = false;
@@ -1388,7 +1485,7 @@
             if (entry.isIntersecting && !photoConfettiTriggered) {
               photoConfettiTriggered = true;
               // Full burst: 100 staggered confetti triggers
-              for (let i = 0; i < 100; i++) {
+              for (let i = 0; i < 50; i++) {
                 setTimeout(() => createConfettiFromLine(), i * 100);
               }
               observer.unobserve(photoSection); // stop observing
@@ -1429,7 +1526,7 @@
         confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
         confetti.style.animationDelay = Math.random() * 2 + 's';
         document.body.appendChild(confetti);
-        
+
         setTimeout(() => confetti.remove(), 3000);
       }
     }
@@ -1447,7 +1544,7 @@
           confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
           confetti.style.animationDelay = Math.random() * 2 + 's';
           document.body.appendChild(confetti);
-          
+
           setTimeout(() => confetti.remove(), 6000);
         }
       }, 1000);
