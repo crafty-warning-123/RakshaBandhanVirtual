@@ -1018,32 +1018,23 @@
       e.preventDefault();
       userName = document.getElementById('userName').value.trim();
 
+      if (userGender === 'male') {
+        const rakhiContainer = document.getElementById('self-rakhi-images');
+        if (rakhiContainer) {
+          const rakhiImgs = Array.from(rakhiContainer.children);
+          const reordered = [
+            rakhiImgs[4], rakhiImgs[5], rakhiImgs[6], rakhiImgs[7],
+            rakhiImgs[0], rakhiImgs[1], rakhiImgs[2], rakhiImgs[3]
+          ];
+          rakhiContainer.innerHTML = '';
+          reordered.forEach(img => rakhiContainer.appendChild(img));
+        }
+      }
+
       // Hide form, show start button
       document.getElementById('userForm').style.display = 'none';
-      document.querySelector('.play-btn[onclick="startQuiz()"]').style.display = 'block';
-
-      // Optional: Add name greeting
-      const emoji = userGender === 'female' ? '👩' : '👨';
-      const greet = document.createElement('p');
-      greet.innerHTML = `Welcome ${emoji} <strong>${userName}</strong>! Ready for drama? 🎭`;
-      greet.style.fontWeight = 'bold';
-      greet.style.fontSize = '1.2rem';
-      greet.style.marginTop = '1rem';
-      greet.style.textAlign = 'center';
-      document.querySelector('main.container').prepend(greet);
+      document.querySelector('.play-btn[onclick="startQuiz()"]').style.display = 'block';      
     });
-
-    const rakhiContainer = document.getElementById('self-rakhi-images');
-    const rakhiImgs = Array.from(rakhiContainer.children);
-
-    if (userGender === 'male') {
-      const reordered = [
-        rakhiImgs[4], rakhiImgs[5], rakhiImgs[6], rakhiImgs[7], // Rakhi5–8
-        rakhiImgs[0], rakhiImgs[1], rakhiImgs[2], rakhiImgs[3], // Rakhi1–4
-      ];
-      rakhiContainer.innerHTML = '';
-      reordered.forEach(img => rakhiContainer.appendChild(img));
-    }
 
     const progress = document.getElementById('progress');
     const progressFill = document.getElementById('progressFill');
