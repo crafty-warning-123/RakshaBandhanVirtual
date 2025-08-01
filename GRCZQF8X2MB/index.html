@@ -1341,7 +1341,7 @@
             if (entry.isIntersecting && !photoConfettiTriggered) {
               photoConfettiTriggered = true;
               // Full burst: 50 staggered confetti triggers
-              for (let i = 0; i < 50; i++) {
+              for (let i = 0; i < 100; i++) {
                 setTimeout(() => createConfettiFromLine(), i * 100);
               }
               observer.unobserve(photoSection); // stop observing
@@ -1390,8 +1390,8 @@
     function createConfettiFromLine() {
       const colors = ['#9c27b0', '#ff9800', '#8e24aa', '#ff7043', '#2196f3', '#e91e63'];
       setTimeout(() => {
-        const badhaiLine = document.getElementById('waah-line');
-        const startY = badhaiLine.getBoundingClientRect().bottom + window.scrollY - 0;
+        const waahLine = document.getElementById('waah-line');
+        const startY = waahLine.getBoundingClientRect().bottom + window.scrollY - 0;
         for (let i = 0; i < 20; i++) {
           const confetti = document.createElement('div');
           confetti.className = 'confettiFromLine';
