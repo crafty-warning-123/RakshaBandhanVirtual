@@ -405,7 +405,7 @@
         opacity: 0;
       }
     }
-    
+
     .sparkle {
       position: absolute;
       width: 20px;
@@ -690,7 +690,19 @@
     <p class="subtitle">Celebrate Rakhi virtually with Radhika and Rajat!<br>First you have to pass the quiz!<br>How
       well do you know Radhika and Rajat? 🤪</p>
 
-    <button class="play-btn" onclick="startQuiz()">Start the Drama! 🎉🎭</button>
+    <form id="userForm" style="margin-bottom: 2rem; text-align: center;">
+      <input type="text" id="userName" placeholder="Your Name" required style="margin-bottom: 1rem; max-width: 300px;">
+      <br>
+      <select id="userGender" required style="max-width: 300px;">
+        <option value="" disabled selected>Select Gender</option>
+        <option value="female">👩 Female</option>
+        <option value="male">👨 Male</option>
+      </select>
+      <br><br>
+      <button type="submit">Let's Go 🚀</button>
+    </form>
+
+    <button class="play-btn" onclick="startQuiz()" style="display: none;">Start the Drama! 🎉🎭</button>
 
     <div id="quiz" style="display: none;">
       <div class="progress-bar">
@@ -959,6 +971,31 @@
   <div id="feedbackPopup" class="feedback-popup"></div>
 
   <script>
+    document.getElementById('userForm').addEventListener('submit', function (e) {
+      e.preventDefault(); // prevent form from reloading the page
+
+      const name = document.getElementById('userName').value.trim();
+      const gender = document.getElementById('userGender').value;
+
+      if (!name || !gender) return;
+
+      // Store for later if needed
+      window.userName = name;
+      window.userGender = gender;
+
+      // Hide the form and show the quiz start button
+      document.getElementById('userForm').style.display = 'none';
+      document.querySelector('.play-btn').style.display = 'inline-block';
+
+      // Optional greeting
+      const greeting = document.createElement('p');
+      const emoji = gender === 'male' ? '👨' : '👩';
+      greeting.innerHTML = `Welcome ${emoji} <strong>${name}</strong>! Ready to rock the quiz?`;
+      greeting.style.fontWeight = 'bold';
+      greeting.style.marginTop = '1rem';
+      document.querySelector('.container').prepend(greeting);
+    });
+
     const progress = document.getElementById('progress');
     const progressFill = document.getElementById('progressFill');
     const quiz = document.getElementById('quiz');
@@ -984,7 +1021,7 @@
     const correctAnswers = {
       'q1': {
         'rc': ['Kheer', 'Choorma', 'Gulab Jamun', 'Ice Cream', 'Khir', '___', '___', '___', '___', '___'],
-        'rs': ['Kheer', 'Jalebi', 'Gajar ka halwa','Aam', 'Mango', 'Khir', 'Gajar halwa', '___', '___', '___']
+        'rs': ['Kheer', 'Jalebi', 'Gajar ka halwa', 'Aam', 'Mango', 'Khir', 'Gajar halwa', '___', '___', '___']
       },
       'q2': {
         'rc': ['Social Science', 'Social Studies', 'History', '___', '___', '___', '___', '___', '___', '___'],
@@ -1199,8 +1236,8 @@
     }
 
     function getLevenshteinDistance(a, b) {
-      const matrix = Array.from({ length: b.length + 1 }, (_, i) =>
-        Array.from({ length: a.length + 1 }, (_, j) =>
+      const matrix = Array.from({length: b.length + 1}, (_, i) =>
+        Array.from({length: a.length + 1}, (_, j) =>
           i === 0 ? j : j === 0 ? i : 0
         )
       );
@@ -1369,7 +1406,7 @@
       finalSlide.classList.add('active');
 
       // Scroll to top of page
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({top: 0, behavior: 'smooth'});
 
       // Optional: Initial confetti explosion on load
       setTimeout(() => {
@@ -1377,7 +1414,7 @@
           setTimeout(() => createConfetti(), i * 100);
         }
       }, 1000); // Wait 1 second before starting the confetti bursts
-      
+
       // Confetti when group photo scrolls into view — only once
       const photoSection = document.getElementById('photoReveal');
       let photoConfettiTriggered = false;
@@ -1429,7 +1466,7 @@
         confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
         confetti.style.animationDelay = Math.random() * 2 + 's';
         document.body.appendChild(confetti);
-        
+
         setTimeout(() => confetti.remove(), 3000);
       }
     }
@@ -1447,7 +1484,7 @@
           confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
           confetti.style.animationDelay = Math.random() * 2 + 's';
           document.body.appendChild(confetti);
-          
+
           setTimeout(() => confetti.remove(), 6000);
         }
       }, 1000);
