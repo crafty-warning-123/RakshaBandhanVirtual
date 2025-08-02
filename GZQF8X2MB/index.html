@@ -1667,8 +1667,9 @@
     }
 
     function playAgain() {
-      // Scroll to top of page
-      window.scrollTo({top: 0, behavior: 'smooth'});
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
       // Reset the quiz
       location.reload();      
     }
