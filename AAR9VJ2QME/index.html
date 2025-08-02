@@ -721,7 +721,7 @@
         But before the awwws begin…<br>Let’s test how well you know us! 🤪 <br>Complete the quiz to unlock your Rakhi moment! 🎉<br>(Promise, it’s worth it!)<br> <br>
       </p>      
       <p style="margin-bottom: 0.5rem; font-weight: bold; color: #9c27b0;">About you:</p>
-      <input type="text" id="userName" placeholder="तुम्हारा नाम / Your name ✍️" required
+      <input type="text" id="userName" placeholder="तुम्हारा नाम / Your name ✍️"
         style="margin-bottom: 1rem; max-width: 300px; font-size: 1.2rem; padding: 1rem; border: 3px solid #ff4081; border-radius: 15px; background: linear-gradient(45deg, #fff, #fce4ec); display: inline-block;" />
 
       <div id="genderButtons" style="margin-top: 1rem; display: flex; justify-content: center; gap: 1rem;">
@@ -1023,8 +1023,7 @@
     document.getElementById('userName').addEventListener('input', checkFormReady);
 
     function checkFormReady() {
-      const nameInput = document.getElementById('userName').value.trim();
-      if (nameInput && userGender) {
+      if (userGender) {
         submitBtn.disabled = false;
       } else {
         submitBtn.disabled = true;
