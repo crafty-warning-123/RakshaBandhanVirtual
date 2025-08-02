@@ -1142,6 +1142,8 @@
       quiz.style.display = 'block';
       createConfetti();
       showQuestion('q1', 1);
+      // Scroll to top of page
+      window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
     function showQuestion(id, num) {
@@ -1396,10 +1398,10 @@
       // Set the content inside the final slide
       const finalSlide = document.getElementById('final-slide');
       finalSlide.innerHTML = `
-        <h2 style="text-align: center;">❤️ चलो, अब सब अपनी-अपनी राखी बंधवा लेते हैं! ❤️</h2>
+        <h3>❤️ चलो, अब सब अपनी-अपनी राखी बंधवा लेते हैं! ❤️</h3>        
         <div class="final-result">
           <div class="result-section rc-result">
-            <h3>राधिका के लिए राखी</h3>
+            <h4>राधिका के लिए राखी</h4>
             <img src="${selectedRakhis.rc.element.src}" />
             <div>
               <img src="${rcTyingImage}" class="tying-image" alt="Tying ${selectedRakhis.rc.name} for Radhika"/>
@@ -1407,7 +1409,7 @@
             <p style="color: #e91e63; font-weight: bold;">अरे वाह! कितनी प्यारी है! 💗</p>
           </div>
           <div class="result-section rs-result">
-            <h3>रजत के लिए राखी</h3>
+            <h4>रजत के लिए राखी</h4>
             <img src="${selectedRakhis.rs.element.src}" />
             <div>
               <img src="${rsTyingImage}" class="tying-image" alt="Tying ${selectedRakhis.rs.name} for Rajat"/>
@@ -1417,7 +1419,7 @@
         </div>
         <div class="final-result" style="justify-content: center; margin-top: 2rem;">
           <div class="result-section self-result">
-            <h3>तुम्हारे लिए राखी</h3>
+            <h4>तुम्हारे लिए राखी</h4>
             <img src="${selectedRakhis.self.element.src}" />
             <div>
               <img src="${selfTyingImage}" class="tying-image" alt="Tying ${selectedRakhis.self.name} for yourself"/>
@@ -1594,6 +1596,8 @@
       }
 
       createEmojiBurst('⏭️', '💨', '🎯');
+      // Scroll to top of page
+      window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
     function skipToEnd() {
@@ -1603,6 +1607,8 @@
       // Show rakhi selection
       showQuestion('rakhi', 11);
       createEmojiBurst('🚀', '💨', '⚡');
+      // Scroll to top of page
+      window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
     function showRevealConfirm2() {
