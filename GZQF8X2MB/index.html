@@ -1401,16 +1401,16 @@
       finalSlide.innerHTML = `
         <h3>❤️ चलो, अब सब अपनी-अपनी राखी बंधवा लेते हैं! ❤️</h3>        
         <div class="final-result">
-          <div class="result-section rc-result">
-            <h4>राधिका के लिए राखी</h4>
+          <div class="result-section rc-result">            
+            <p style="color: #e91e63; font-weight: bold;">राधिका के लिए राखी</p>
             <img src="${selectedRakhis.rc.element.src}" />
             <div>
               <img src="${rcTyingImage}" class="tying-image" alt="Tying ${selectedRakhis.rc.name} for Radhika"/>
             </div>
             <p style="color: #e91e63; font-weight: bold;">अरे वाह! कितनी प्यारी है! 💗</p>
           </div>
-          <div class="result-section rs-result">
-            <h4>रजत के लिए राखी</h4>
+          <div class="result-section rs-result">            
+            <p style="color: #e91e63; font-weight: bold;">रजत के लिए राखी</p>
             <img src="${selectedRakhis.rs.element.src}" />
             <div>
               <img src="${rsTyingImage}" class="tying-image" alt="Tying ${selectedRakhis.rs.name} for Rajat"/>
@@ -1419,8 +1419,8 @@
           </div>
         </div>
         <div class="final-result" style="justify-content: center; margin-top: 2rem;">
-          <div class="result-section self-result">
-            <h4>तुम्हारे लिए राखी${userName ? ` (${userName})` : ''}</h4>
+          <div class="result-section self-result">            
+            <p style="color: #e91e63; font-weight: bold;">तुम्हारे लिए राखी${userName ? ` (${userName})` : ''}</p>
             <img src="${selectedRakhis.self.element.src}" />
             <div>
               <img src="${selfTyingImage}" class="tying-image" alt="Tying ${selectedRakhis.self.name} for yourself"/>
