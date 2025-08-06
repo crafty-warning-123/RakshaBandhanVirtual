@@ -740,11 +740,12 @@
         style="margin-top: 2.5rem; display: inline-block;">Let's Go 🚀</button>
     </form>
 
-    <div id="spotify-wrapper" style="display: none;">
+    <div id="musicplayer" style="text-align: center; display: none;">
       <p
         style="text-align:center; font-size:1.3rem; color:#ff9800; font-weight:700; animation:slideInFromBottom 2s ease-out 0.5s both; margin-bottom:0.5rem;">
         Enjoy some music while you explore!</p>
-      <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Na1SEuvMNcg?si=0ItxhhS-29gP-SNH"
+      <iframe width="560" height="315"
+        src="https://www.youtube-nocookie.com/embed/Na1SEuvMNcg?si=1O-JBlEOPHM9GJpO&amp;start=10"
         title="YouTube video player" frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -1076,7 +1077,7 @@
 
       // Hide form, show start button
       document.getElementById('userForm').style.display = 'none';
-      document.getElementById('spotify-wrapper').style.display = 'block';
+      document.getElementById('musicplayer').style.display = 'block';
       document.getElementById('startDramaBtn').style.display = 'block';
       // Scroll to top of page
       window.scrollTo({top: 0, behavior: 'smooth'});
@@ -1167,7 +1168,7 @@
     };
 
     function startQuiz() {
-      document.getElementById('spotify-wrapper').style.display = 'none';
+      document.getElementById('musicplayer').style.display = 'none';
       document.getElementById('startDramaBtn').style.display = 'none';
       quiz.style.display = 'block';
       createConfetti();
