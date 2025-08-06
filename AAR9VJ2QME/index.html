@@ -1469,6 +1469,26 @@
               <button class="reveal-btn" onclick="revealAnswersFinal()">Nope, Reveal Them!</button>
               <button class="reveal-btn" onclick="playAgain()">Fine, I'll guess again 🔄</button>
             </div>
+            
+            <div id="revealConfirm5" style="display: none; text-align: center;">
+              <p>Enter the secret key to reveal the answers!</p>
+              <input type="text" id="secretCodeInput" placeholder="Enter secret code..."
+                style="margin-bottom: 0.25rem; max-width: 300px; font-size: 1.2rem; padding: 1rem; border: 3px solid #ff4081; border-radius: 15px; background: linear-gradient(45deg, #fff, #fce4ec); display: inline-block;" />
+              <button class="reveal-btn" onclick="
+                const code = document.getElementById('secretCodeInput').value.trim();
+                if (code === 'X7P9L2QK') {
+                  document.getElementById('codeErrorMsg').style.display = 'none';
+                  revealAnswersFinal();
+                } else {
+                  document.getElementById('codeErrorMsg').style.display = 'block';
+                }
+              ">Unlock Answers</button>
+              <button class="reveal-btn" onclick="playAgain()">Fine, I'll guess again 🔄</button>
+              <p id="codeErrorMsg" style="color: red; display: none; margin-top: 1rem;">❌ Incorrect code. Try again.</p>
+            </div>
+            
+
+  
           </div>
           <!-- <div id="finalAnswerReveal" style="display: none; margin-top: 2rem;"></div> -->
         </div>
