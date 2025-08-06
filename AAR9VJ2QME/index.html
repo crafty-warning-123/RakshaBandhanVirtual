@@ -1453,7 +1453,7 @@
             </div>
 
             <div id="revealConfirm2" style="display: none; text-align: center;">
-              <p>🙄 You sure you want to reveal the answers?</p>
+              <p>🙄 Come on! try again and get it right!</p>
               <button class="reveal-btn" onclick="showRevealConfirm3()">Yes</button>
               <button class="reveal-btn" onclick="cancelReveal()">No</button>
             </div>
@@ -1465,13 +1465,12 @@
             </div>
             
             <div id="revealConfirm4" style="display: none; text-align: center;">
-              <p>😩 Come on! try again and get it right!
-              Enter the secret key to reveal the answers!</p>
+              <p>😩 Enter the secret key to reveal the answers!</p>
               <input type="text" id="secretCodeInput" placeholder="Enter secret code..."
                 style="margin-bottom: 0.5rem; font-size: 1.1rem; padding: 1rem 2rem; border: 3px solid #9c27b0; border-radius: 25px; background: linear-gradient(45deg, #fff, #fce4ec); display: inline-block;" />
               <button class="reveal-btn" onclick="
                 const code = document.getElementById('secretCodeInput').value.trim();
-                if (code === 'haargayetum') {
+                if (code === 'YeLoTeepLo') {
                   document.getElementById('codeErrorMsg').style.display = 'none';
                   revealAnswersFinal();
                 } else {
