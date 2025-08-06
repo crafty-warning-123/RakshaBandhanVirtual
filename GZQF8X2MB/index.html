@@ -1393,10 +1393,8 @@
           // Get first image from the corresponding section
           const section = document.querySelector(`.rakhi-section.${role}-rakhi`) || document.querySelector(`.rakhi-section.self-rakhi`);
           const imgs = section.querySelectorAll('img');
-          const selectImg = imgs[1];;
-          if (role === 'self') {
-            const selectImg = imgs[2];;
-          }
+          const imgIndex = (role === 'self') ? 2 : 1;
+          const selectImg = imgs[imgIndex];
           if (selectImg) {
             selectRakhi(role, selectImg, selectImg.src.split('/').pop().replace('.webp', ''));
           }
@@ -1703,10 +1701,10 @@
       }
       // Restart the quiz
       document.getElementById('final-slide').classList.remove('active');
+      quiz.style.display = 'block';
       document.getElementById('startDramaBtn').style.display = 'block';
       // Scroll to top of page
       window.scrollTo({top: 0, behavior: 'smooth'});
-      // startQuiz();
       // Reset the quiz
       // location.reload();
     }
