@@ -9,7 +9,7 @@
   <meta property="og:title" content="🎉 रक्षा बंधन की शुभकामनाएं! 🎉">
   <meta property="og:description" content="No Distance Too Big for Rakhi! 💌 With Love from Radhika & Rajat">
   <meta property="og:image"
-    content="https://crafty-warning-123.github.io/RakshaBandhanVirtualCelebration/attached_assets/Graphic_Rakhi.png">
+    content="https://crafty-warning-123.github.io/RakshaBandhanVirtualCelebration/attached_assets/Graphic_AA.png">
   <meta property="og:url" content="https://crafty-warning-123.github.io/RakshaBandhanVirtualCelebration/">
   <meta property="og:type" content="website">
 
@@ -716,8 +716,39 @@
     <h1 class="title">🎉 रक्षा बंधन की शुभकामनाएं! 🎉</h1>
     <p class="subtitle">No Distance Too Big for Rakhi!<br>💌 With Love from Radhika & Rajat</p>
 
-    showFinalResult();
-    
+    <form id="userForm" style="text-align: center; margin-bottom: 2rem; animation: slideInFromBottom 1s ease-out;">
+      <p
+        style="text-align:center; font-size:1.3rem; color:#ff9800; font-weight:700; animation:slideInFromBottom 2s ease-out 0.5s both; margin-bottom:0.5rem;">
+        But before the awwws begin…<br>Let’s test how well you know us! 🤪 <br>Complete the quiz to unlock your Rakhi
+        moment! 🎉<br>(Promise, it’s worth it!)<br> <br>
+      </p>
+      <p style="margin-bottom: 0.5rem; font-weight: bold; color: #9c27b0;">About you:</p>
+      <input type="text" id="userName" placeholder="तुम्हारा नाम / Your name ✍️"
+        style="margin-bottom: 0.25rem; max-width: 300px; font-size: 1.2rem; padding: 1rem; border: 3px solid #ff4081; border-radius: 15px; background: linear-gradient(45deg, #fff, #fce4ec); display: inline-block;" />
+
+      <div id="genderButtons" style="margin-top: 0.25rem; display: flex; justify-content: center; gap: 1rem;">
+        <button class="gender-btn" type="button" data-gender="female">👧</button>
+        <button class="gender-btn" type="button" data-gender="male">👦</button>
+      </div>
+
+      <button id="submitUserInfo" class="play-btn" type="submit" disabled
+        style="margin-top: 2.5rem; display: inline-block;">Let's Go 🚀</button>
+    </form>
+
+    <button id="startDramaBtn" class="play-btn" onclick="startQuiz()" style="display: none;">Start the Drama!
+      🎉🎭</button>
+
+    <div id="quiz" style="display: none;">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <p id="progress" style="text-align: center; font-weight: bold; color: #8e24aa;"></p>
+
+      <div class="question" id="final-slide">
+        <!-- This will be filled dynamically with rakhi tying content -->
+      </div>
+
+    </div>
   </main>
 
   <footer class="footer">
@@ -1123,18 +1154,50 @@
       // Set the content inside the final slide
       const finalSlide = document.getElementById('final-slide');
       finalSlide.innerHTML = `
-        <div id="photoReveal" style="text-align: center; margin-bottom: 3rem;">
+        <div id="rakhiThali" style="text-align: center; margin-bottom: 1rem;">
           <img src="../attached_assets/Graphic_Rakhi.png" 
                alt="Our photo together" 
                style="max-width: 90%; height: auto; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.3);">
-        </div>               
-        
+        </div>
+        <h3>❤️ चलो, अब सब अपनी-अपनी राखी बंधवा लेते हैं! ❤️</h3>        
+        <div class="final-result">
+          <div class="result-section rc-result">            
+            <p style="color: #e91e63; font-weight: bold; margin-bottom: 0.05rem;">राधिका के लिए राखी</p>
+            <img src="${selectedRakhis.rc.element.src}" />
+            <div>
+              <img src="${rcTyingImage}" class="tying-image" alt="Tying ${selectedRakhis.rc.name} for Radhika"/>
+            </div>
+            <p style="color: #e91e63; font-weight: bold;">अरे! कितनी प्यारी है! 💗</p>
+          </div>
+          <div class="result-section rs-result">            
+            <p style="color: #e91e63; font-weight: bold; margin-bottom: 0.05rem;">रजत के लिए राखी</p>
+            <img src="${selectedRakhis.rs.element.src}" />
+            <div>
+              <img src="${rsTyingImage}" class="tying-image" alt="Tying ${selectedRakhis.rs.name} for Rajat"/>
+            </div>
+            <p style="color: #2196f3; font-weight: bold;">क्या बात! ज़ोरदार!! 💙</p>
+          </div>
+        </div>
+        <div class="final-result" style="justify-content: center; margin-top: 2rem;">
+          <div class="result-section self-result">            
+            <p style="color: #9c27b0; font-weight: bold; margin-bottom: 0.05rem;">तुम्हारे लिए राखी${userName ? ` (${userName})` : ''}</p>
+            <img src="${selectedRakhis.self.element.src}" />
+            <div>
+              <img src="${selfTyingImage}" class="tying-image" alt="Tying ${selectedRakhis.self.name} for yourself"/>
+            </div>
+            <p id="waah-line" style="color: #9c27b0; font-weight: bold;">वाह जी! खुद के लिए तो सबसे बढ़िया वाली पसंद की है! 💜</p>
+          </div>
+        </div>
         <div style="text-align: center; margin-top: 2rem;">
           <p id="badhai-line" style="color: #e91e63; font-size: 1.4rem; font-weight: bold;">
             रक्षा बंधन की ढेर सारी बधाई! ✨
           </p>
           <p style="color: #8e24aa;">हमारा प्रेम इसी तरह बना रहे और बढ़ता रहे! 💛</p>
-          
+          <div id="photoReveal" style="text-align: center; margin-bottom: 3rem;">
+            <img src="../attached_assets/Graphic_AA.png" 
+                 alt="Our photo together" 
+                 style="max-width: 90%; height: auto; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.3);">
+          </div>
           <div style="text-align: center; margin-top: 2rem;">
             <button class="reveal-btn" onclick="playAgain()">Try the Quiz Again! 🔄</button>
 
@@ -1159,6 +1222,26 @@
               <button class="reveal-btn" onclick="revealAnswersFinal()">Nope, Reveal Them!</button>
               <button class="reveal-btn" onclick="playAgain()">Fine, I'll guess again 🔄</button>
             </div>
+            
+            <div id="revealConfirm5" style="display: none; text-align: center;">
+              <p>Enter the secret key to reveal the answers!</p>
+              <input type="text" id="secretCodeInput" placeholder="Enter secret code..."
+                style="margin-bottom: 0.25rem; max-width: 300px; font-size: 1.2rem; padding: 1rem; border: 3px solid #ff4081; border-radius: 15px; background: linear-gradient(45deg, #fff, #fce4ec); display: inline-block;" />
+              <button class="reveal-btn" onclick="
+                const code = document.getElementById('secretCodeInput').value.trim();
+                if (code === 'X7P9L2QK') {
+                  document.getElementById('codeErrorMsg').style.display = 'none';
+                  revealAnswersFinal();
+                } else {
+                  document.getElementById('codeErrorMsg').style.display = 'block';
+                }
+              ">Unlock Answers</button>
+              <button class="reveal-btn" onclick="playAgain()">Fine, I'll guess again 🔄</button>
+              <p id="codeErrorMsg" style="color: red; display: none; margin-top: 1rem;">❌ Incorrect code. Try again.</p>
+            </div>
+            
+
+  
           </div>
           <!-- <div id="finalAnswerReveal" style="display: none; margin-top: 2rem;"></div> -->
         </div>
