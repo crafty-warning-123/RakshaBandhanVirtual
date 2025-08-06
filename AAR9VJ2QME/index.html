@@ -1644,9 +1644,9 @@
 
       createEmojiBurst('⏭️', '💨', '🎯');      
       // Scroll to top of question
-      const progress = document.getElementById('progress');
-      const startY = waahLine.getBoundingClientRect().top + window.scrollY - 0;      
-      window.scrollTo({top: startY, behavior: 'smooth'});
+      const progress_scroll = document.getElementById('progress');
+      const startY_scroll = progress_scroll.getBoundingClientRect().top + window.scrollY - 0;      
+      window.scrollTo({top: startY_scroll, behavior: 'smooth'});
     }
 
     function skipToEnd() {
