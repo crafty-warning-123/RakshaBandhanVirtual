@@ -9,7 +9,7 @@
   <meta property="og:title" content="🎉 रक्षा बंधन की शुभकामनाएं! 🎉">
   <meta property="og:description" content="No Distance Too Big for Rakhi! 💌 With Love from Radhika & Rajat">
   <meta property="og:image"
-    content="https://crafty-warning-123.github.io/RakshaBandhanVirtualCelebration/attached_assets/Graphic_AA.png">
+    content="https://crafty-warning-123.github.io/RakshaBandhanVirtualCelebration/attached_assets/Graphic_Rakhi.png">
   <meta property="og:url" content="https://crafty-warning-123.github.io/RakshaBandhanVirtualCelebration/">
   <meta property="og:type" content="website">
 
@@ -716,280 +716,11 @@
     <h1 class="title">🎉 रक्षा बंधन की शुभकामनाएं! 🎉</h1>
     <p class="subtitle">No Distance Too Big for Rakhi!<br>💌 With Love from Radhika & Rajat</p>
 
-    <form id="userForm" style="text-align: center; margin-bottom: 2rem; animation: slideInFromBottom 1s ease-out;">
-      <p
-        style="text-align:center; font-size:1.3rem; color:#ff9800; font-weight:700; animation:slideInFromBottom 2s ease-out 0.5s both; margin-bottom:0.5rem;">
-        But before the awwws begin…<br>Let’s test how well you know us! 🤪 <br>Complete the quiz to unlock your Rakhi
-        moment! 🎉<br>(Promise, it’s worth it!)<br> <br>
-      </p>
-      <p style="margin-bottom: 0.5rem; font-weight: bold; color: #9c27b0;">About you:</p>
-      <input type="text" id="userName" placeholder="तुम्हारा नाम / Your name ✍️"
-        style="margin-bottom: 0.25rem; max-width: 300px; font-size: 1.2rem; padding: 1rem; border: 3px solid #ff4081; border-radius: 15px; background: linear-gradient(45deg, #fff, #fce4ec); display: inline-block;" />
-
-      <div id="genderButtons" style="margin-top: 0.25rem; display: flex; justify-content: center; gap: 1rem;">
-        <button class="gender-btn" type="button" data-gender="female">👧</button>
-        <button class="gender-btn" type="button" data-gender="male">👦</button>
-      </div>
-
-      <button id="submitUserInfo" class="play-btn" type="submit" disabled
-        style="margin-top: 2.5rem; display: inline-block;">Let's Go 🚀</button>
-    </form>
-
-    <button id="startDramaBtn" class="play-btn" onclick="startQuiz()" style="display: none;">Start the Drama!
-      🎉🎭</button>
-
     <div id="quiz" style="display: none;">
       <div class="progress-bar">
         <div class="progress-fill" id="progressFill"></div>
       </div>
       <p id="progress" style="text-align: center; font-weight: bold; color: #8e24aa;"></p>
-
-      <div class="question" id="q1">
-        <h3>🧁 What is their favorite dessert?</h3>
-        <div class="dual-input-container">
-          <div class="input-section rc-section">
-            <h4>Make your guess for Radhika</h4>
-            <input type="text" id="rc_a1" placeholder="Think hard, detective! 🤔">
-          </div>
-          <div class="input-section rs-section">
-            <h4>Make your guess for Rajat</h4>
-            <input type="text" id="rs_a1" placeholder="Think hard, detective! 🤔">
-          </div>
-        </div>
-        <div class="button-container">
-          <button class="check-btn" onclick="next('q1','q2')">Submit your dessert guess 🍰</button>
-          <button class="skip-btn" onclick="skipToNext('q1','q2')">Continue to the Next Question ➡️</button>
-          <button class="skip-btn" onclick="skipToEnd()">Skip to the End of the Quiz 🚀</button>
-        </div>
-      </div>
-
-      <div class="question" id="q2">
-        <h3>📚 What subject did they hate in school/university?</h3>
-        <div class="dual-input-container">
-          <div class="input-section rc-section">
-            <h4>Make your guess for Radhika</h4>
-            <input type="text" id="rc_a2" placeholder="Well! that is not easy to guess 😤">
-          </div>
-          <div class="input-section rs-section">
-            <h4>Make your guess for Rajat</h4>
-            <input type="text" id="rs_a2" placeholder="Well! that is not easy to guess 😤">
-          </div>
-        </div>
-        <div class="button-container">
-          <button class="check-btn" onclick="next('q2','q3')">Reveal the subject drama! 📚💥</button>
-          <button class="skip-btn" onclick="skipToNext('q2','q3')">Continue to the Next Question ➡️</button>
-          <button class="skip-btn" onclick="skipToEnd()">Skip to the End of the Quiz 🚀</button>
-        </div>
-      </div>
-
-      <div class="question" id="q3">
-        <h3>🎬 Which movie can they watch over and over?</h3>
-        <div class="dual-input-container">
-          <div class="input-section rc-section">
-            <h4>Make your guess for Radhika</h4>
-            <input type="text" id="rc_a3" placeholder="There are many! Guess any one!🎭">
-          </div>
-          <div class="input-section rs-section">
-            <h4>Make your guess for Rajat</h4>
-            <input type="text" id="rs_a3" placeholder="There are many! Guess any one!🎭">
-          </div>
-        </div>
-        <div class="button-container">
-          <button class="check-btn" onclick="next('q3','q4')">Lock in the movie 🎬🎯</button>
-          <button class="skip-btn" onclick="skipToNext('q3','q4')">Continue to the Next Question ➡️</button>
-          <button class="skip-btn" onclick="skipToEnd()">Skip to the End of the Quiz 🚀</button>
-        </div>
-      </div>
-
-      <div class="question" id="q4">
-        <h3>🍕 What's their go-to comfort food?</h3>
-        <div class="dual-input-container">
-          <div class="input-section rc-section">
-            <h4>Make your guess for Radhika</h4>
-            <input type="text" id="rc_a4" placeholder="What do I always talk fondly of? 🤤">
-          </div>
-          <div class="input-section rs-section">
-            <h4>Make your guess for Rajat</h4>
-            <input type="text" id="rs_a4" placeholder="What do I always talk fondly of? 🤤">
-          </div>
-        </div>
-        <div class="button-container">
-          <button class="check-btn" onclick="next('q4','q5')">Check comfort food guess 😋</button>
-          <button class="skip-btn" onclick="skipToNext('q4','q5')">Continue to the Next Question ➡️</button>
-          <button class="skip-btn" onclick="skipToEnd()">Skip to the End of the Quiz 🚀</button>
-        </div>
-      </div>
-
-      <div class="question" id="q5">
-        <h3>🕺💃 Their favorite actor or actress growing up was?</h3>
-        <div class="dual-input-container">
-          <div class="input-section rc-section">
-            <h4>Make your guess for Radhika</h4>
-            <input type="text" id="rc_a5" placeholder="Ohho! Majedar question hai ye! 🎤">
-          </div>
-          <div class="input-section rs-section">
-            <h4>Make your guess for Rajat</h4>
-            <input type="text" id="rs_a5" placeholder="Ohho! Majedar question hai ye! 🎤">
-          </div>
-        </div>
-        <div class="button-container">
-          <button class="check-btn" onclick="next('q5','q6')">Guess locked! Let's see 🎭🔐</button>
-          <button class="skip-btn" onclick="skipToNext('q5','q6')">Continue to the Next Question ➡️</button>
-          <button class="skip-btn" onclick="skipToEnd()">Skip to the End of the Quiz 🚀</button>
-        </div>
-      </div>
-
-      <div class="question" id="q6">
-        <h3>🌈 Their most used emoji is?</h3>
-        <div class="dual-input-container">
-          <div class="input-section rc-section">
-            <h4>Make your guess for Radhika</h4>
-            <input type="text" id="rc_a6" placeholder="Look around my chats for clues! 🧠">
-          </div>
-          <div class="input-section rs-section">
-            <h4>Make your guess for Rajat</h4>
-            <input type="text" id="rs_a6" placeholder="Look around my chats for clues! 🧠">
-          </div>
-        </div>
-        <div class="button-container">
-          <button class="check-btn" onclick="next('q6','q7')">Drop the emoji bomb! 💣😂</button>
-          <button class="skip-btn" onclick="skipToNext('q6','q7')">Continue to the Next Question ➡️</button>
-          <button class="skip-btn" onclick="skipToEnd()">Skip to the End of the Quiz 🚀</button>
-        </div>
-      </div>
-
-      <div class="question" id="q7">
-        <h3>🏃‍♀️ What's their secret talent?</h3>
-        <div class="dual-input-container">
-          <div class="input-section rc-section">
-            <h4>Make your guess for Radhika</h4>
-            <input type="text" id="rc_a7" placeholder="Keep going! 😎">
-          </div>
-          <div class="input-section rs-section">
-            <h4>Make your guess for Rajat</h4>
-            <input type="text" id="rs_a7" placeholder="Keep going! 😎">
-          </div>
-        </div>
-        <div class="button-container">
-          <button class="check-btn" onclick="next('q7','q8')">Talent reveal? Hit it! 🎤🕺</button>
-          <button class="skip-btn" onclick="skipToNext('q7','q8')">Continue to the Next Question ➡️</button>
-          <button class="skip-btn" onclick="skipToEnd()">Skip to the End of the Quiz 🚀</button>
-        </div>
-      </div>
-
-      <div class="question" id="q8">
-        <h3>🧘 What do they do to feel better when stressed or sad?</h3>
-        <div class="dual-input-container">
-          <div class="input-section rc-section">
-            <h4>Make your guess for Radhika</h4>
-            <input type="text" id="rc_a8" placeholder="Where do I waste all my time? 🤭">
-          </div>
-          <div class="input-section rs-section">
-            <h4>Make your guess for Rajat</h4>
-            <input type="text" id="rs_a8" placeholder="Where do I waste all my time? 🤭">
-          </div>
-        </div>
-        <div class="button-container">
-          <button class="check-btn" onclick="next('q8','q9')">Let's heal with that guess 🧘‍♀️💖</button>
-          <button class="skip-btn" onclick="skipToNext('q8','q9')">Continue to the Next Question ➡️</button>
-          <button class="skip-btn" onclick="skipToEnd()">Skip to the End of the Quiz 🚀</button>
-        </div>
-      </div>
-
-      <div class="question" id="q9">
-        <h3>🎵 A song that always lifts their mood is?</h3>
-        <div class="dual-input-container">
-          <div class="input-section rc-section">
-            <h4>Make your guess for Radhika</h4>
-            <input type="text" id="rc_a9" placeholder="Think about my personality! 🎉">
-          </div>
-          <div class="input-section rs-section">
-            <h4>Make your guess for Rajat</h4>
-            <input type="text" id="rs_a9" placeholder="Think about my personality! 🎉">
-          </div>
-        </div>
-        <div class="button-container">
-          <button class="check-btn" onclick="next('q9','q10')">Music vibes incoming! 🎵🌈</button>
-          <button class="skip-btn" onclick="skipToNext('q9','q10')">Continue to the Next Question ➡️</button>
-          <button class="skip-btn" onclick="skipToEnd()">Skip to the End of the Quiz 🚀</button>
-        </div>
-      </div>
-
-      <div class="question" id="q10">
-        <h3>⚡ If they could teleport anywhere right now, where would they go?</h3>
-        <div class="dual-input-container">
-          <div class="input-section rc-section">
-            <h4>Make your guess for Radhika</h4>
-            <input type="text" id="rc_a10" placeholder="This one is super easy! 🦉">
-          </div>
-          <div class="input-section rs-section">
-            <h4>Make your guess for Rajat</h4>
-            <input type="text" id="rs_a10" placeholder="This one is super easy! 🦉">
-          </div>
-        </div>
-        <div class="button-container">
-          <button class="check-btn" onclick="next('q10','rakhi')">Teleport that answer! ✈️🧭</button>
-          <button class="skip-btn" onclick="skipToNext('q10','rakhi')">Continue to the Next Question ➡️</button>
-          <button class="skip-btn" onclick="skipToEnd()">Skip to the End of the Quiz 🚀</button>
-        </div>
-      </div>
-
-      <div class="question" id="rakhi">
-        <h3>चलो, अब सबके लिए राखी पसंद करो! 🎁</h3>
-        <div class="dual-rakhi-container">
-          <div class="rakhi-section rc-rakhi">
-            <h4>पहले राधिका के लिए राखी बताओ, कौन सी अच्छी है?</h4>
-            <div>
-              <img src="../attached_assets/Rakhi1.webp" onclick="selectRakhi('rc', this, 'Rakhi1')"
-                alt="Lumba Rakhi with Kundan">
-              <img src="../attached_assets/Rakhi2.webp" onclick="selectRakhi('rc', this, 'Rakhi2')"
-                alt="Lumba Rakhi with Meenakari">
-              <img src="../attached_assets/Rakhi3.webp" onclick="selectRakhi('rc', this, 'Rakhi3')"
-                alt="Lumba Rakhi with Golden Lotus">
-              <img src="../attached_assets/Rakhi4.webp" onclick="selectRakhi('rc', this, 'Rakhi4')"
-                alt="Lumba Rakhi with Eye and Tassel">
-            </div>
-          </div>
-          <div class="rakhi-section rs-rakhi">
-            <h4>और अब बताओ, रजत के लिए कौन सी राखी बढ़िया लग रही है?</h4>
-            <div>
-              <img src="../attached_assets/Rakhi5.webp" onclick="selectRakhi('rs', this, 'Rakhi5')"
-                alt="Rakhi thread with Kundan">
-              <img src="../attached_assets/Rakhi6.webp" onclick="selectRakhi('rs', this, 'Rakhi6')"
-                alt="Rakhi thread with Meenakari">
-              <img src="../attached_assets/Rakhi7.webp" onclick="selectRakhi('rs', this, 'Rakhi7')"
-                alt="Rakhi thread with Golden Lotus">
-              <img src="../attached_assets/Rakhi8.webp" onclick="selectRakhi('rs', this, 'Rakhi8')"
-                alt="Rakhi thread with Peacock">
-            </div>
-          </div>
-          <div class="rakhi-section self-rakhi">
-            <h4>अब खुद के लिए भी एक राखी पसंद करो।</h4>
-            <div id="self-rakhi-images">
-              <img src="../attached_assets/Rakhi1.webp" onclick="selectRakhi('self', this, 'Rakhi1')"
-                alt="Lumba Rakhi with Kundan">
-              <img src="../attached_assets/Rakhi2.webp" onclick="selectRakhi('self', this, 'Rakhi2')"
-                alt="Lumba Rakhi with Meenakari">
-              <img src="../attached_assets/Rakhi3.webp" onclick="selectRakhi('self', this, 'Rakhi3')"
-                alt="Lumba Rakhi with Golden Lotus">
-              <img src="../attached_assets/Rakhi4.webp" onclick="selectRakhi('self', this, 'Rakhi4')"
-                alt="Lumba Rakhi with Eye and Tassel">
-              <img src="../attached_assets/Rakhi5.webp" onclick="selectRakhi('self', this, 'Rakhi5')"
-                alt="Rakhi thread with Kundan">
-              <img src="../attached_assets/Rakhi6.webp" onclick="selectRakhi('self', this, 'Rakhi6')"
-                alt="Rakhi thread with Meenakari">
-              <img src="../attached_assets/Rakhi7.webp" onclick="selectRakhi('self', this, 'Rakhi7')"
-                alt="Rakhi thread with Golden Lotus">
-              <img src="../attached_assets/Rakhi8.webp" onclick="selectRakhi('self', this, 'Rakhi8')"
-                alt="Rakhi thread with Peacock">
-            </div>
-          </div>
-        </div>
-        <div id="final-msg"></div>
-        <div style="text-align: center; margin-top: 2rem;">
-          <button class="check-btn" onclick="forceContinue()">All Set! Let's continue 🎊</button>
-        </div>
-      </div>
 
       <div class="question" id="final-slide">
         <!-- This will be filled dynamically with rakhi tying content -->
@@ -1405,46 +1136,14 @@
           <img src="../attached_assets/Graphic_Rakhi.png" 
                alt="Our photo together" 
                style="max-width: 90%; height: auto; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.3);">
-        </div>
-        <h3>❤️ चलो, अब सब अपनी-अपनी राखी बंधवा लेते हैं! ❤️</h3>        
-        <div class="final-result">
-          <div class="result-section rc-result">            
-            <p style="color: #e91e63; font-weight: bold; margin-bottom: 0.05rem;">राधिका के लिए राखी</p>
-            <img src="${selectedRakhis.rc.element.src}" />
-            <div>
-              <img src="${rcTyingImage}" class="tying-image" alt="Tying ${selectedRakhis.rc.name} for Radhika"/>
-            </div>
-            <p style="color: #e91e63; font-weight: bold;">अरे! कितनी प्यारी है! 💗</p>
-          </div>
-          <div class="result-section rs-result">            
-            <p style="color: #e91e63; font-weight: bold; margin-bottom: 0.05rem;">रजत के लिए राखी</p>
-            <img src="${selectedRakhis.rs.element.src}" />
-            <div>
-              <img src="${rsTyingImage}" class="tying-image" alt="Tying ${selectedRakhis.rs.name} for Rajat"/>
-            </div>
-            <p style="color: #2196f3; font-weight: bold;">क्या बात! ज़ोरदार!! 💙</p>
-          </div>
-        </div>
-        <div class="final-result" style="justify-content: center; margin-top: 2rem;">
-          <div class="result-section self-result">            
-            <p style="color: #9c27b0; font-weight: bold; margin-bottom: 0.05rem;">तुम्हारे लिए राखी${userName ? ` (${userName})` : ''}</p>
-            <img src="${selectedRakhis.self.element.src}" />
-            <div>
-              <img src="${selfTyingImage}" class="tying-image" alt="Tying ${selectedRakhis.self.name} for yourself"/>
-            </div>
-            <p id="waah-line" style="color: #9c27b0; font-weight: bold;">वाह जी! खुद के लिए तो सबसे बढ़िया वाली पसंद की है! 💜</p>
-          </div>
-        </div>
+        </div>               
+        
         <div style="text-align: center; margin-top: 2rem;">
           <p id="badhai-line" style="color: #e91e63; font-size: 1.4rem; font-weight: bold;">
             रक्षा बंधन की ढेर सारी बधाई! ✨
           </p>
           <p style="color: #8e24aa;">हमारा प्रेम इसी तरह बना रहे और बढ़ता रहे! 💛</p>
-          <div id="photoReveal" style="text-align: center; margin-bottom: 3rem;">
-            <img src="../attached_assets/Graphic_AA.png" 
-                 alt="Our photo together" 
-                 style="max-width: 90%; height: auto; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.3);">
-          </div>
+          
           <div style="text-align: center; margin-top: 2rem;">
             <button class="reveal-btn" onclick="playAgain()">Try the Quiz Again! 🔄</button>
 
