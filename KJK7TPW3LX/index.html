@@ -957,7 +957,7 @@
         </div>
         <div class="button-container">
           <button class="check-btn" onclick="next('q10','rakhi')">Teleport that answer! ✈️🧭</button>
-          <button class="skip-btn" onclick="skipToNext('q10','rakhi')">Finish the Quiz ➡️</button>
+          <button class="skip-btn" onclick="skipToNext('q10','rakhi')">Continue to Next Question ➡️</button>
           <button class="skip-btn" onclick="skipToNext('q10','q9')">Go Back to Previous Question ⬅️</button>
           <button class="skip-btn" onclick="skipToEnd()">Skip to the End of the Quiz 🚀</button>
         </div>
@@ -1425,6 +1425,7 @@
     function showFinalResult() {
       // Hide rakhi selection screen
       document.getElementById('rakhi').classList.remove('active');
+      // document.getElementById('progressFill').style.display = 'none';
 
       // Determine the tying images
       let rcTyingImage = `../attached_assets/${selectedRakhis.rc.name}_tying.webp`;
