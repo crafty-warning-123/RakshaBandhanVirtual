@@ -715,14 +715,21 @@
   <main class="container">
     <h1 class="title">🎉 रक्षा बंधन की शुभकामनाएं! 🎉</h1>
     <p class="subtitle">No Distance Too Big for Rakhi!<br>💌 With Love from Radhika & Rajat</p>
-
+    
     <form id="userForm" style="text-align: center; margin-bottom: 2rem; animation: slideInFromBottom 1s ease-out;">
-      <p style="text-align:center; font-size:1.3rem; color:#ff9800; font-weight:700; animation:slideInFromBottom 2s ease-out 0.5s both; margin-bottom:0.5rem;">
-        But before the awwws begin…<br>Let’s test how well you know us! 🤪 <br>Complete the quiz to unlock your Rakhi moment! 🎉<br>(Promise, it’s worth it!)<br> <br>
-      </p>      
+      <div id="rakhiThali" style="text-align: center; margin-bottom: 3rem;">
+        <img src="../attached_assets/Graphic_Rakhi.png" 
+             alt="Rakhi Thali" 
+             style="max-width: 90%; height: auto; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.3);">
+      </div>
+      <p
+        style="text-align:center; font-size:1.3rem; color:#ff9800; font-weight:700; animation:slideInFromBottom 2s ease-out 0.5s both; margin-bottom:0.5rem;">
+        ( ... scroll for more ... )<br> <br>But before the awwws begin…<br>Let’s test how well you know us! 🤪 <br>Complete the quiz to unlock your Rakhi
+        moment! 🎉<br>(Promise, it’s worth it!)<br> <br>
+      </p>
       <p style="margin-bottom: 0.5rem; font-weight: bold; color: #9c27b0;">About you:</p>
       <input type="text" id="userName" placeholder="तुम्हारा नाम / Your name ✍️"
-        style="margin-bottom: 0.25rem; max-width: 300px; font-size: 1.2rem; padding: 1rem; border: 3px solid #ff4081; border-radius: 15px; background: linear-gradient(45deg, #fff, #fce4ec); display: inline-block;" />
+        style="margin-bottom: 0.25rem; font-size: 1.2rem; padding: 1rem; border: 3px solid #ff4081; border-radius: 15px; background: linear-gradient(45deg, #fff, #fce4ec); display: inline-block;" />
 
       <div id="genderButtons" style="margin-top: 0.25rem; display: flex; justify-content: center; gap: 1rem;">
         <button class="gender-btn" type="button" data-gender="female">👧</button>
@@ -1106,7 +1113,7 @@
         'rs': ['Tum hi batao bhai koi ho to?', 'Pass', 'Pata nahi', 'Skip', 'Idk', 'Kya malum', 'No idea', '___', '___', '___']
       },
       'q8': {
-        'rc': [ 'Sleep', 'Painting', 'Embroidery', 'Drawing', 'Writing', 'Reading', 'Reels', 'Craft', 'Paint','Scroll reels'],
+        'rc': ['Sleep', 'Painting', 'Embroidery', 'Drawing', 'Writing', 'Reading', 'Reels', 'Craft', 'Paint', 'Scroll reels'],
         'rs': ['Listen to music', 'Lie down', 'Play chess', '420', 'purani aadatein', 'old habits', 'purani aadat', 'Music', 'Rest', 'Chess']
       },
       'q9': {
@@ -1339,7 +1346,7 @@
 
       setTimeout(() => {
         feedbackPopup.style.display = 'none';
-      }, 2500);
+      }, 5000);
     }
 
     function selectRakhi(person, el, rakhiName) {
@@ -1387,9 +1394,9 @@
       showFinalResult();
     }
 
-    function showFinalResult() {           
+    function showFinalResult() {
       // Hide rakhi selection screen
-      document.getElementById('rakhi').classList.remove('active');      
+      document.getElementById('rakhi').classList.remove('active');
 
       // Determine the tying images
       let rcTyingImage = `../attached_assets/${selectedRakhis.rc.name}_tying.webp`;
@@ -1398,7 +1405,7 @@
 
       // Set the content inside the final slide
       const finalSlide = document.getElementById('final-slide');
-      finalSlide.innerHTML = `
+      finalSlide.innerHTML = `        
         <h3>❤️ चलो, अब सब अपनी-अपनी राखी बंधवा लेते हैं! ❤️</h3>        
         <div class="final-result">
           <div class="result-section rc-result">            
@@ -1446,7 +1453,7 @@
             </div>
 
             <div id="revealConfirm2" style="display: none; text-align: center;">
-              <p>🙄 You sure you want to reveal the answers?</p>
+              <p>🙄 Come on! try again and get it right!</p>
               <button class="reveal-btn" onclick="showRevealConfirm3()">Yes</button>
               <button class="reveal-btn" onclick="cancelReveal()">No</button>
             </div>
@@ -1456,14 +1463,25 @@
               <button class="reveal-btn" onclick="showRevealConfirm4()">Yes</button>
               <button class="reveal-btn" onclick="cancelReveal()">No</button>
             </div>
-
+            
             <div id="revealConfirm4" style="display: none; text-align: center;">
-              <p>😩 Come on! try again and get it right!</p>
-              <button class="reveal-btn" onclick="revealAnswersFinal()">Nope, Reveal Them!</button>
+              <p>😩 Enter the secret key to reveal the answers!</p>
+              <input type="text" id="secretCodeInput" placeholder="Enter secret key..."
+                style="margin-bottom: 0.5rem; font-size: 1.1rem; padding: 1rem 2rem; border: 3px solid #9c27b0; border-radius: 25px; background: linear-gradient(45deg, #fff, #fce4ec); display: inline-block;" />
+              <button class="reveal-btn" onclick="
+                const code = normalizeAnswer(document.getElementById('secretCodeInput').value.trim());
+                if (code === 'jaoteeplo') {
+                  document.getElementById('codeErrorMsg').style.display = 'none';
+                  revealAnswersFinal();
+                } else {
+                  document.getElementById('codeErrorMsg').style.display = 'block';
+                }
+              ">Unlock Answers</button>
               <button class="reveal-btn" onclick="playAgain()">Fine, I'll guess again 🔄</button>
+              <p id="codeErrorMsg" style="color: red; display: none; margin-top: 1rem;">❌ Incorrect code. Try again.</p>
             </div>
           </div>
-          <!-- <div id="finalAnswerReveal" style="display: none; margin-top: 2rem;"></div> -->
+          <div id="finalAnswerReveal" style="display: none; margin-top: 2rem;"></div>
         </div>
       `;
 
@@ -1671,7 +1689,7 @@
         history.scrollRestoration = 'manual';
       }
       // Reset the quiz
-      location.reload();      
+      location.reload();
     }
 
     // Auto-create ambient sparkles

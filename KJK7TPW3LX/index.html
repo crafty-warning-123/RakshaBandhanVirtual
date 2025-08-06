@@ -724,7 +724,7 @@
       </div>
       <p
         style="text-align:center; font-size:1.3rem; color:#ff9800; font-weight:700; animation:slideInFromBottom 2s ease-out 0.5s both; margin-bottom:0.5rem;">
-        (scroll for more...)<br> <br>But before the awwws begin…<br>Let’s test how well you know us! 🤪 <br>Complete the quiz to unlock your Rakhi
+        ( ... scroll for more ... )<br> <br>But before the awwws begin…<br>Let’s test how well you know us! 🤪 <br>Complete the quiz to unlock your Rakhi
         moment! 🎉<br>(Promise, it’s worth it!)<br> <br>
       </p>
       <p style="margin-bottom: 0.5rem; font-weight: bold; color: #9c27b0;">About you:</p>
@@ -1469,8 +1469,8 @@
               <input type="text" id="secretCodeInput" placeholder="Enter secret key..."
                 style="margin-bottom: 0.5rem; font-size: 1.1rem; padding: 1rem 2rem; border: 3px solid #9c27b0; border-radius: 25px; background: linear-gradient(45deg, #fff, #fce4ec); display: inline-block;" />
               <button class="reveal-btn" onclick="
-                const code = normalizeAnswer(document.getElementById('secretCodeInput').value);
-                if (code === 'jao teep lo') {
+                const code = normalizeAnswer(document.getElementById('secretCodeInput').value.trim());
+                if (code === 'jaoteeplo') {
                   document.getElementById('codeErrorMsg').style.display = 'none';
                   revealAnswersFinal();
                 } else {
@@ -1480,11 +1480,8 @@
               <button class="reveal-btn" onclick="playAgain()">Fine, I'll guess again 🔄</button>
               <p id="codeErrorMsg" style="color: red; display: none; margin-top: 1rem;">❌ Incorrect code. Try again.</p>
             </div>
-            
-
-  
           </div>
-          <!-- <div id="finalAnswerReveal" style="display: none; margin-top: 2rem;"></div> -->
+          <div id="finalAnswerReveal" style="display: none; margin-top: 2rem;"></div>
         </div>
       `;
 
