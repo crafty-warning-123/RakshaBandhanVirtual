@@ -1085,8 +1085,8 @@
     // All possible correct answers for each question (RC: A1-A10, RS: B1-B10)
     const correctAnswers = {
       'q1': {
-        'rc': ['Kheer', 'Choorma', 'Gulab Jamun', 'Ice Cream', 'Shrikhand', 'Imarti', 'Moong dal ka halwa', 'Kalakand', 'Nankhatai', 'Moong dal halwa'],
-        'rs': ['Kheer', 'Jalebi', 'Gajar ka halwa', 'Aam', 'Mango', 'Gajar halwa', '___', '___', '___', '___']
+        'rc': ['Kheer', 'Choorma', 'Gulab Jamun', 'Ice Cream', 'Shrikhand', 'Imarti', 'Moong dal ka halwa', 'Kalakand', 'Nankhatai', 'Khir'],
+        'rs': ['Kheer', 'Jalebi', 'Gajar ka halwa', 'Aam', 'Mango', 'Khir', 'Gajar halwa', '___', '___', '___']
       },
       'q2': {
         'rc': ['Social Science', 'Social Studies', 'History', 'Sociology', '___', '___', '___', '___', '___', '___'],
@@ -1453,7 +1453,7 @@
             </div>
 
             <div id="revealConfirm2" style="display: none; text-align: center;">
-              <p>🙄 Come on! try again and get it right!</p>
+              <p>🙄 You sure you want to reveal the answers?</p>
               <button class="reveal-btn" onclick="showRevealConfirm3()">Yes</button>
               <button class="reveal-btn" onclick="cancelReveal()">No</button>
             </div>
@@ -1477,7 +1477,7 @@
                   document.getElementById('codeErrorMsg').style.display = 'block';
                 }
               ">Unlock Answers</button>
-              <button class="reveal-btn" onclick="playAgain()">Fine, I'll guess again 🔄</button>
+              <button class="reveal-btn" onclick="playAgain()">Nope, I'll guess again 🔄</button>
               <p id="codeErrorMsg" style="color: red; display: none; margin-top: 1rem;">❌ Incorrect code. Try again.</p>
             </div>
           </div>
