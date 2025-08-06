@@ -1173,8 +1173,6 @@
     function startQuiz() {
       document.getElementById('musicplayer').style.display = 'none';
       document.getElementById('startDramaBtn').style.display = 'none';
-      document.getElementById('maintitle').style.display = 'none';
-      document.getElementById('mainsubtitle').style.display = 'none';
       quiz.style.display = 'block';
       createConfetti();
       showQuestion('q1', 1);
@@ -1427,8 +1425,6 @@
     function showFinalResult() {
       // Hide rakhi selection screen
       document.getElementById('rakhi').classList.remove('active');
-      document.getElementById('maintitle').style.display = 'block';
-      document.getElementById('mainsubtitle').style.display = 'block';
 
       // Determine the tying images
       let rcTyingImage = `../attached_assets/${selectedRakhis.rc.name}_tying.webp`;
@@ -1646,9 +1642,11 @@
         showQuestion(nextId, num);
       }
 
-      createEmojiBurst('⏭️', '💨', '🎯');
-      // Scroll to top of page
-      window.scrollTo({top: 0, behavior: 'smooth'});
+      createEmojiBurst('⏭️', '💨', '🎯');      
+      // Scroll to top of question
+      const progress = document.getElementById('progress');
+      const startY = waahLine.getBoundingClientRect().top + window.scrollY - 0;      
+      window.scrollTo({top: startY, behavior: 'smooth'});
     }
 
     function skipToEnd() {
