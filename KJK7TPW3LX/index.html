@@ -766,14 +766,12 @@
         Would you like some music?</p>
       <div
         style="position: relative; padding-top: 56.25%; max-width: 90%; margin: auto; margin-top:0rem; margin-bottom:0rem;">
-        <iframe id="youtubePlayer"
-          src="https://www.youtube.com/embed/videoseries?list=PLnOeAhpf-Q3v7tLc71CMAXnWKLgduAT8s&enablejsapi=1"
-          title="YouTube video player"
-          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/videoseries?si=hulTmcR5WXOPBsCY&amp;list=PLnOeAhpf-Q3v7tLc71CMAXnWKLgduAT8s"
+          title="YouTube video player" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen>
-        </iframe>
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
       <p style="text-align: center; font-weight: bold; color: #8e24aa; margin-top:0.5rem; margin-bottom:0rem">
         Hit play before starting the quiz!</p>
@@ -1503,7 +1501,7 @@
           </div>
           <div style="text-align: center; margin-top: 2rem;">       
          
-            <button class="music-btn">Continue music on YouTube 🎵</button>
+            <button class="music-btn" onclick="window.location.href='https://youtube.com/playlist?list=PLnOeAhpf-Q3v7tLc71CMAXnWKLgduAT8s&si=JmeNV8h_sv4lVYls'">Continue music on YouTube 🎵</button>
               
             <button class="reveal-btn" onclick="playAgain()">Try the Quiz Again! 🔄</button>
 
@@ -1686,10 +1684,8 @@
       // Show rakhi selection
       showQuestion('rakhi', 11);
       createEmojiBurst('🚀', '💨', '⚡');
-      // Scroll to top of question
-      const progress_scroll = document.getElementById('progressFill');
-      const startY_scroll = progress_scroll.getBoundingClientRect().top + window.scrollY - 0;
-      window.scrollTo({top: startY_scroll, behavior: 'smooth'});
+      // Scroll to top of page
+      window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
     function showRevealConfirm2() {
@@ -1779,32 +1775,6 @@
       return feedbacks[Math.floor(Math.random() * feedbacks.length)];
     }
   </script>
-
-  <!-- Load YouTube API (must be separate) -->
-  <script src="https://www.youtube.com/iframe_api"></script>
-  <script>
-    let player;
-
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player('youtubePlayer', {
-        events: {
-          'onReady': onPlayerReady
-        }
-      });
-    }
-
-    function onPlayerReady(event) {
-      const btn = document.querySelector('.music-btn');
-      btn.addEventListener('click', () => {
-        const currentTime = player.getCurrentTime();
-        const videoId = player.getVideoData().video_id;
-        const playlistId = "PLnOeAhpf-Q3v7tLc71CMAXnWKLgduAT8s";
-        const youtubeLink = `https://www.youtube.com/watch?v=${videoId}&list=${playlistId}&t=${Math.floor(currentTime)}s`;
-        window.open(youtubeLink, '_blank');
-      });
-    }
-  </script>
-
 </body>
 
 </html>
