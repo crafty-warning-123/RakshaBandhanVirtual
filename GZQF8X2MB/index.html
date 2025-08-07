@@ -255,11 +255,15 @@
       background: linear-gradient(45deg, #9c27b0, #ff9800);
       color: white;
       font-weight: bold;
-      padding: 1rem 2rem; /* Match reveal-btn */
+      padding: 1rem 2rem;
+      /* Match reveal-btn */
       border: none;
-      border-radius: 25px; /* Match reveal-btn */
-      margin: 1rem auto;   /* Match reveal-btn */
-      font-size: 1.1rem;   /* Match reveal-btn */
+      border-radius: 25px;
+      /* Match reveal-btn */
+      margin: 1rem auto;
+      /* Match reveal-btn */
+      font-size: 1.1rem;
+      /* Match reveal-btn */
       cursor: pointer;
       display: block;
       margin-left: auto;
@@ -762,7 +766,7 @@
         Would you like some music?</p>
       <div
         style="position: relative; padding-top: 56.25%; max-width: 90%; margin: auto; margin-top:0rem; margin-bottom:0rem;">
-        <iframe
+        <iframe id="youtubePlayer"
           src="https://www.youtube-nocookie.com/embed/videoseries?si=hulTmcR5WXOPBsCY&amp;list=PLnOeAhpf-Q3v7tLc71CMAXnWKLgduAT8s"
           title="YouTube video player" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
           frameborder="0"
@@ -1497,7 +1501,7 @@
           </div>
           <div style="text-align: center; margin-top: 2rem;">       
          
-            <button class="music-btn" onclick="window.location.href='https://youtube.com/playlist?list=PLnOeAhpf-Q3v7tLc71CMAXnWKLgduAT8s&si=JmeNV8h_sv4lVYls'">Continue music on YouTube 🎵</button>
+            <button class="music-btn">Continue music on YouTube 🎵</button>
               
             <button class="reveal-btn" onclick="playAgain()">Try the Quiz Again! 🔄</button>
 
@@ -1769,6 +1773,36 @@
 
     function getRandomFeedback(feedbacks) {
       return feedbacks[Math.floor(Math.random() * feedbacks.length)];
+    }
+  </script>
+
+  <!-- Load YouTube API (must be separate) -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+
+  <!-- Then your own script (can go in same page, just separate tag) -->
+  <script>
+    let player;
+
+    // YouTube calls this when API is ready
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('youtubePlayer', {
+        events: {
+          'onReady': onPlayerReady
+        }
+      });
+    }
+
+    // When player is ready, attach click handler
+    function onPlayerReady(event) {
+      const btn = document.querySelector('.music-btn');
+      btn.addEventListener('click', () => {
+        const currentTime = player.getCurrentTime();
+        const videoId = player.getVideoData().video_id;
+        const playlistId = "PLnOeAhpf-Q3v7tLc71CMAXnWKLgduAT8s";
+
+        const youtubeLink = `https://www.youtube.com/watch?v=${videoId}&list=${playlistId}&t=${Math.floor(currentTime)}s`;
+        window.open(youtubeLink, '_blank');
+      });
     }
   </script>
 </body>
