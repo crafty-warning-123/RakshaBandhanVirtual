@@ -1782,12 +1782,9 @@
 
   <!-- Load YouTube API (must be separate) -->
   <script src="https://www.youtube.com/iframe_api"></script>
-
-  <!-- Then your own script (can go in same page, just separate tag) -->
   <script>
     let player;
 
-    // YouTube calls this when API is ready
     function onYouTubeIframeAPIReady() {
       player = new YT.Player('youtubePlayer', {
         events: {
@@ -1796,19 +1793,18 @@
       });
     }
 
-    // When player is ready, attach click handler
     function onPlayerReady(event) {
       const btn = document.querySelector('.music-btn');
       btn.addEventListener('click', () => {
         const currentTime = player.getCurrentTime();
         const videoId = player.getVideoData().video_id;
         const playlistId = "PLnOeAhpf-Q3v7tLc71CMAXnWKLgduAT8s";
-
         const youtubeLink = `https://www.youtube.com/watch?v=${videoId}&list=${playlistId}&t=${Math.floor(currentTime)}s`;
         window.open(youtubeLink, '_blank');
       });
     }
   </script>
+
 </body>
 
 </html>
