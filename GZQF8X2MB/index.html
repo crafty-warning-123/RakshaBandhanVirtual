@@ -9,7 +9,7 @@
   <meta property="og:title" content="🎉 रक्षा बंधन की शुभकामनाएं! 🎉">
   <meta property="og:description" content="No Distance Too Big for Rakhi! 💌 With Love from Radhika & Rajat">
   <meta property="og:image"
-    content="https://crafty-warning-123.github.io/RakshaBandhanVirtualCelebration/attached_assets/Graphic_AA.png">
+    content="https://crafty-warning-123.github.io/RakshaBandhanVirtualCelebration/attached_assets/Graphic_G.png">
   <meta property="og:url" content="https://crafty-warning-123.github.io/RakshaBandhanVirtualCelebration/">
   <meta property="og:type" content="website">
 
@@ -751,7 +751,7 @@
           referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
       <p style="text-align: center; font-weight: bold; color: #8e24aa; margin-top:0.5rem; margin-bottom:0rem">
-        Hit Graphic_Gbefore starting the quiz!</p>
+        Hit play before starting the quiz!</p>
     </div>
 
     <button id="startDramaBtn" class="play-btn" onclick="startQuiz()" style="display: none;">Start the Quiz!
@@ -1079,9 +1079,9 @@
       }
 
       // Hide form, show start button
-      document.getElementById('userForm').style.disGraphic_G= 'none';
-      document.getElementById('musicplayer').style.disGraphic_G= 'block';
-      document.getElementById('startDramaBtn').style.disGraphic_G= 'block';
+      document.getElementById('userForm').style.display = 'none';
+      document.getElementById('musicplayer').style.display = 'block';
+      document.getElementById('startDramaBtn').style.display = 'block';
       // Scroll to top of page
       window.scrollTo({top: 0, behavior: 'smooth'});
     });
@@ -1139,7 +1139,7 @@
       },
       'q8': {
         'rc': ['Sleep', 'Painting', 'Embroidery', 'Drawing', 'Writing', 'Reading', 'Reels', 'Craft', 'Paint', 'Scroll reels'],
-        'rs': ['Listen to music', 'Lie down', 'Graphic_Gchess', '420', 'purani aadatein', 'old habits', 'purani aadat', 'Music', 'Rest', 'Chess']
+        'rs': ['Listen to music', 'Lie down', 'Play chess', '420', 'purani aadatein', 'old habits', 'purani aadat', 'Music', 'Rest', 'Chess']
       },
       'q9': {
         'rc': ['Chaiyya chaiyya', 'Kahi aag lage lag jaye', 'Ek pal ka jeena', 'Tunak tunak', 'Jihne mera dil luteya', 'Ay hairathe', 'Gud se meetha ishq', 'Jalla sain', 'Chunri chunri', 'Jag Jeondeyan De Mele'],
@@ -1171,13 +1171,15 @@
     };
 
     function startQuiz() {
-      document.getElementById('musicplayer').style.disGraphic_G= 'none';
-      document.getElementById('startDramaBtn').style.disGraphic_G= 'none';
-      quiz.style.disGraphic_G= 'block';
+      document.getElementById('musicplayer').style.display = 'none';
+      document.getElementById('startDramaBtn').style.display = 'none';
+      quiz.style.display = 'block';
       createConfetti();
       showQuestion('q1', 1);
-      // Scroll to top of page
-      window.scrollTo({top: 0, behavior: 'smooth'});
+      // Scroll to top of question
+      const progress_scroll = document.getElementById('progressFill');
+      const startY_scroll = progress_scroll.getBoundingClientRect().top + window.scrollY - 0;      
+      window.scrollTo({top: startY_scroll, behavior: 'smooth'});
     }
 
     function showQuestion(id, num) {
@@ -1368,10 +1370,10 @@
     function showFeedback(message, isCorrect) {
       feedbackPopup.innerHTML = message;
       feedbackPopup.className = isCorrect ? 'feedback-popup correct-feedback' : 'feedback-popup wrong-feedback';
-      feedbackPopup.style.disGraphic_G= 'block';
+      feedbackPopup.style.display = 'block';
 
       setTimeout(() => {
-        feedbackPopup.style.disGraphic_G= 'none';
+        feedbackPopup.style.display = 'none';
       }, 5000);
     }
 
@@ -1425,7 +1427,7 @@
     function showFinalResult() {
       // Hide rakhi selection screen
       document.getElementById('rakhi').classList.remove('active');
-      // document.getElementById('progressFill').style.disGraphic_G= 'none';
+      // document.getElementById('progressFill').style.display = 'none';
 
       // Determine the tying images
       let rcTyingImage = `../attached_assets/${selectedRakhis.rc.name}_tying.webp`;
@@ -1470,7 +1472,7 @@
           </p>
           <p style="color: #8e24aa;">हमारा प्रेम इसी तरह बना रहे और बढ़ता रहे! 💛</p>
           <div id="photoReveal" style="text-align: center; margin-bottom: 3rem;">
-            <img src="../attached_assets/Graphic_AA.png" 
+            <img src="../attached_assets/Graphic_G.png" 
                  alt="Our photo together" 
                  style="max-width: 90%; height: auto; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.3);">
           </div>
@@ -1500,10 +1502,10 @@
               <button class="reveal-btn" onclick="
                 const code = normalizeAnswer(document.getElementById('secretCodeInput').value.trim());
                 if (code === 'jaoteeplo') {
-                  document.getElementById('codeErrorMsg').style.disGraphic_G= 'none';
+                  document.getElementById('codeErrorMsg').style.display = 'none';
                   revealAnswersFinal();
                 } else {
-                  document.getElementById('codeErrorMsg').style.disGraphic_G= 'block';
+                  document.getElementById('codeErrorMsg').style.display = 'block';
                 }
               ">Unlock Answers</button>              
               <p id="codeErrorMsg" style="color: red; display: none; margin-top: 1rem;">❌ Incorrect code. Try again.</p>
@@ -1661,25 +1663,25 @@
     }
 
     function showRevealConfirm2() {
-      document.getElementById('revealConfirm1').style.disGraphic_G= 'none';
-      document.getElementById('revealConfirm2').style.disGraphic_G= 'block';
+      document.getElementById('revealConfirm1').style.display = 'none';
+      document.getElementById('revealConfirm2').style.display = 'block';
     }
 
     function showRevealConfirm3() {
-      document.getElementById('revealConfirm2').style.disGraphic_G= 'none';
-      document.getElementById('revealConfirm3').style.disGraphic_G= 'block';
+      document.getElementById('revealConfirm2').style.display = 'none';
+      document.getElementById('revealConfirm3').style.display = 'block';
     }
 
     function showRevealConfirm4() {
-      document.getElementById('revealConfirm3').style.disGraphic_G= 'none';
-      document.getElementById('revealConfirm4').style.disGraphic_G= 'block';
+      document.getElementById('revealConfirm3').style.display = 'none';
+      document.getElementById('revealConfirm4').style.display = 'block';
     }
 
     function cancelReveal() {
-      document.getElementById('revealConfirm1').style.disGraphic_G= 'block';
-      document.getElementById('revealConfirm2').style.disGraphic_G= 'none';
-      document.getElementById('revealConfirm3').style.disGraphic_G= 'none';
-      document.getElementById('revealConfirm4').style.disGraphic_G= 'none';
+      document.getElementById('revealConfirm1').style.display = 'block';
+      document.getElementById('revealConfirm2').style.display = 'none';
+      document.getElementById('revealConfirm3').style.display = 'none';
+      document.getElementById('revealConfirm4').style.display = 'none';
     }
 
     function revealAnswersFinal() {
@@ -1708,10 +1710,10 @@
 
       answersHTML += '</div>';
       finalContainer.innerHTML = answersHTML;
-      finalContainer.style.disGraphic_G= 'block';
+      finalContainer.style.display = 'block';
 
       // Hide confirm buttons
-      document.getElementById('revealConfirm4').style.disGraphic_G= 'none';
+      document.getElementById('revealConfirm4').style.display = 'none';
     }
 
     function playAgain() {
@@ -1720,9 +1722,9 @@
       }
       // Restart the quiz
       document.getElementById('final-slide').classList.remove('active');
-      quiz.style.disGraphic_G= 'none';
-      document.getElementById('musicplayer').style.disGraphic_G= 'block';
-      document.getElementById('startDramaBtn').style.disGraphic_G= 'block';
+      quiz.style.display = 'none';
+      document.getElementById('musicplayer').style.display = 'block';
+      document.getElementById('startDramaBtn').style.display = 'block';
       // Scroll to top of page
       window.scrollTo({top: 0, behavior: 'smooth'});
       // Reset the quiz
