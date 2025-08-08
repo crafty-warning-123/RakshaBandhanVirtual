@@ -1389,26 +1389,11 @@
       return distance <= maxAllowedDistance;
     }
 
-
     function showFeedback(message, isCorrect) {
       feedbackPopup.innerHTML = message;
       feedbackPopup.className = isCorrect ? 'feedback-popup correct-feedback' : 'feedback-popup wrong-feedback';
       feedbackPopup.style.display = 'block';
 
-      // Define the handler for click/touch outside the popup
-      const handleOutsideInteraction = (event) => {
-        // If click/touch is outside the popup
-        if (!feedbackPopup.contains(event.target)) {
-          hidePopup();
-        }
-      };
-
-      // Define the handler for keyboard typing
-      const handleKeyPress = () => {
-        hidePopup();
-      };
-
-      // Unified function to hide popup and clean up listeners
       function hidePopup() {
         feedbackPopup.style.display = 'none';
         clearTimeout(timeoutId);
@@ -1417,13 +1402,24 @@
         document.removeEventListener('keydown', handleKeyPress);
       }
 
-      // Auto-hide as fallback after 5s
+      const handleOutsideInteraction = (event) => {
+        if (!feedbackPopup.contains(event.target)) {
+          hidePopup();
+        }
+      };
+
+      const handleKeyPress = () => {
+        hidePopup();
+      };
+
       const timeoutId = setTimeout(hidePopup, 5000);
 
-      // Attach all listeners
-      document.addEventListener('click', handleOutsideInteraction);
-      document.addEventListener('touchstart', handleOutsideInteraction);
-      document.addEventListener('keydown', handleKeyPress);
+      // ✅ Delay the listener attachment slightly
+      setTimeout(() => {
+        document.addEventListener('click', handleOutsideInteraction);
+        document.addEventListener('touchstart', handleOutsideInteraction);
+        document.addEventListener('keydown', handleKeyPress);
+      }, 100); // 100ms is usually enough
     }
 
     function selectRakhi(person, el, rakhiName) {
