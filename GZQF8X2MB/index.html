@@ -519,7 +519,7 @@
       font-style: italic;
       color: #8e24aa;
       font-size: 1.1rem;
-      animation: glow 4s ease-in-out infinite alternate;
+      animation: glow 2s ease-in-out infinite alternate;
     }
 
     @keyframes glow {
@@ -1627,7 +1627,7 @@
           confetti.style.animationDelay = Math.random() * 2 + 's';
           document.body.appendChild(confetti);
 
-          setTimeout(() => confetti.remove(), 6000);
+          setTimeout(() => confetti.remove(), 3000);
         }
       }, 1000);
     }
