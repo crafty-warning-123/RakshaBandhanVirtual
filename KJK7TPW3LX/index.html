@@ -1413,8 +1413,7 @@
       };
 
       const timeoutId = setTimeout(hidePopup, 5000);
-
-      // ✅ Delay the listener attachment slightly
+      
       setTimeout(() => {
         document.addEventListener('click', handleOutsideInteraction);
         document.addEventListener('touchstart', handleOutsideInteraction);
