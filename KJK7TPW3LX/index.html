@@ -517,7 +517,7 @@
       font-style: italic;
       color: white;
       font-size: 1.1rem;
-      animation: glow 4s ease-in-out infinite alternate;      
+      animation: glow 2s ease-in-out infinite alternate;      
     }
 
     @keyframes glow {
@@ -1705,8 +1705,10 @@
       // Show rakhi selection
       showQuestion('rakhi', 11);
       createEmojiBurst('🚀', '💨', '⚡');
-      // Scroll to top of page
-      window.scrollTo({top: 0, behavior: 'smooth'});
+      // Scroll to top of question
+      const progress_scroll = document.getElementById('progressFill');
+      const startY_scroll = progress_scroll.getBoundingClientRect().top + window.scrollY - 0;
+      window.scrollTo({top: startY_scroll, behavior: 'smooth'});
     }
 
     function showRevealConfirm2() {
