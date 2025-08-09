@@ -1479,7 +1479,7 @@
       document.getElementById('final_self_rakhi').value = window.selectedRakhis?.self || '';
 
       // Send data to Google Apps Script
-      fetch("YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL", {
+      fetch("https://script.google.com/macros/s/AKfycbyZJhE_yfLUS8e32QhxmWsG90SEcqellFRwgVNCFw5LDSsiKT9q-34kAIOkaeRQYlaFiQ/exec", {
         method: "POST",
         mode: "no-cors",
         headers: {"Content-Type": "application/x-www-form-urlencoded"},
