@@ -1474,9 +1474,9 @@
       }
 
       // Rakhi selections are stored when user clicks an image
-      document.getElementById('final_rc_rakhi').value = window.selectedRakhis?.rc || '';
-      document.getElementById('final_rs_rakhi').value = window.selectedRakhis?.rs || '';
-      document.getElementById('final_self_rakhi').value = window.selectedRakhis?.self || '';
+      document.getElementById('final_rc_rakhi').value = selectedRakhis.rc.name;
+      document.getElementById('final_rs_rakhi').value = selectedRakhis.rs.name;
+      document.getElementById('final_self_rakhi').value = selectedRakhis.self.name;
 
       // Send data to Google Apps Script
       fetch("https://script.google.com/macros/s/AKfycbxvd9p_fZvXocPEDVCI1U2NQcoo3kMXTD6F8Ek7fT_5raowi416GyNItBx2lHauTQztMQ/exec", {
