@@ -1466,7 +1466,7 @@
 
       // Fill hidden form fields with answers
       document.getElementById('final_userName').value = document.getElementById('userName').value;
-      // document.getElementById('final_gender').value = userGender;
+      document.getElementById('final_gender').value = userGender;
 
       for (let i = 1; i <= 10; i++) {
         document.getElementById(`final_rc_a${i}`).value = document.getElementById(`rc_a${i}`).value;
@@ -1490,8 +1490,7 @@
           // Continue with your existing flow here
         })
         .catch(err => console.error("Error sending data", err));
-    }
-
+    
     // After auto-selecting, move to final slide
     showFinalResult();
     }
