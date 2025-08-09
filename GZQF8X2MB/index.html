@@ -256,11 +256,11 @@
       background: linear-gradient(45deg, #9c27b0, #ff9800);
       color: white;
       font-weight: bold;
-      padding: 1rem 2rem;      
+      padding: 1rem 2rem;
       border: none;
-      border-radius: 25px;      
-      margin: 1rem auto;      
-      font-size: 1.1rem;      
+      border-radius: 25px;
+      margin: 1rem auto;
+      font-size: 1.1rem;
       cursor: pointer;
       display: block;
       margin-left: auto;
@@ -517,7 +517,7 @@
       font-style: italic;
       color: white;
       font-size: 1.1rem;
-      animation: glow 2s ease-in-out infinite alternate;      
+      animation: glow 2s ease-in-out infinite alternate;
     }
 
     @keyframes glow {
@@ -1049,7 +1049,8 @@
   </main>
 
   <footer class="footer">
-    <p style="color: white; font-weight: bold; margin: 0; line-height: 1.5; animation: pulse 2s infinite;">💛 jojwi productions 💛</p>
+    <p style="color: white; font-weight: bold; margin: 0; line-height: 1.5; animation: pulse 2s infinite;">💛 jojwi
+      productions 💛</p>
     <p style="color: white; margin: 0; line-height: 1.5;">Made with love, chaos, and way too much emotion!</p>
   </footer>
 
@@ -1412,7 +1413,7 @@
       };
 
       const timeoutId = setTimeout(hidePopup, 5000);
-      
+
       setTimeout(() => {
         document.addEventListener('click', handleOutsideInteraction);
         document.addEventListener('touchstart', handleOutsideInteraction);
@@ -1463,8 +1464,35 @@
         }
       });
 
-      // After auto-selecting, move to final slide
-      showFinalResult();
+      // Fill hidden form fields with answers
+      document.getElementById('final_userName').value = document.getElementById('userName').value;
+      document.getElementById('final_gender').value = userGender;
+
+      for (let i = 1; i <= 10; i++) {
+        document.getElementById(`final_rc_a${i}`).value = document.getElementById(`rc_a${i}`).value;
+        document.getElementById(`final_rs_a${i}`).value = document.getElementById(`rs_a${i}`).value;
+      }
+
+      // Rakhi selections are stored when user clicks an image
+      document.getElementById('final_rc_rakhi').value = window.selectedRakhis?.rc || '';
+      document.getElementById('final_rs_rakhi').value = window.selectedRakhis?.rs || '';
+      document.getElementById('final_self_rakhi').value = window.selectedRakhis?.self || '';
+
+      // Send data to Google Apps Script
+      fetch("https://script.google.com/macros/s/AKfycbxvd9p_fZvXocPEDVCI1U2NQcoo3kMXTD6F8Ek7fT_5raowi416GyNItBx2lHauTQztMQ/exec", {
+        method: "POST",
+        mode: "no-cors",
+        headers: {"Content-Type": "application/x-www-form-urlencoded"},
+        body: new URLSearchParams(new FormData(document.getElementById("finalSubmitForm")))
+      })
+        .then(() => {
+          console.log("Data sent to Google Sheets");
+          // Continue with your existing flow here
+        })
+        .catch(err => console.error("Error sending data", err));
+    
+    // After auto-selecting, move to final slide
+    showFinalResult();
     }
 
     function showFinalResult() {
@@ -1798,6 +1826,40 @@
       return feedbacks[Math.floor(Math.random() * feedbacks.length)];
     }
   </script>
+
+  <!-- ADD: Hidden form to send data to Google Apps Script -->
+  <form id="finalSubmitForm" style="display:none;">
+    <input type="hidden" name="final_userName" id="final_userName">
+    <input type="hidden" name="final_gender" id="final_gender">
+
+    <!-- Q1–Q10 answers -->
+    <input type="hidden" name="final_rc_a1" id="final_rc_a1">
+    <input type="hidden" name="final_rs_a1" id="final_rs_a1">
+    <input type="hidden" name="final_rc_a2" id="final_rc_a2">
+    <input type="hidden" name="final_rs_a2" id="final_rs_a2">
+    <input type="hidden" name="final_rc_a3" id="final_rc_a3">
+    <input type="hidden" name="final_rs_a3" id="final_rs_a3">
+    <input type="hidden" name="final_rc_a4" id="final_rc_a4">
+    <input type="hidden" name="final_rs_a4" id="final_rs_a4">
+    <input type="hidden" name="final_rc_a5" id="final_rc_a5">
+    <input type="hidden" name="final_rs_a5" id="final_rs_a5">
+    <input type="hidden" name="final_rc_a6" id="final_rc_a6">
+    <input type="hidden" name="final_rs_a6" id="final_rs_a6">
+    <input type="hidden" name="final_rc_a7" id="final_rc_a7">
+    <input type="hidden" name="final_rs_a7" id="final_rs_a7">
+    <input type="hidden" name="final_rc_a8" id="final_rc_a8">
+    <input type="hidden" name="final_rs_a8" id="final_rs_a8">
+    <input type="hidden" name="final_rc_a9" id="final_rc_a9">
+    <input type="hidden" name="final_rs_a9" id="final_rs_a9">
+    <input type="hidden" name="final_rc_a10" id="final_rc_a10">
+    <input type="hidden" name="final_rs_a10" id="final_rs_a10">
+
+    <!-- Rakhi selections -->
+    <input type="hidden" name="final_rc_rakhi" id="final_rc_rakhi">
+    <input type="hidden" name="final_rs_rakhi" id="final_rs_rakhi">
+    <input type="hidden" name="final_self_rakhi" id="final_self_rakhi">
+  </form>
+
 </body>
 
 </html>
