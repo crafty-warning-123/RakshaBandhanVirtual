@@ -256,11 +256,11 @@
       background: linear-gradient(45deg, #9c27b0, #ff9800);
       color: white;
       font-weight: bold;
-      padding: 1rem 2rem;      
+      padding: 1rem 2rem;
       border: none;
-      border-radius: 25px;      
-      margin: 1rem auto;      
-      font-size: 1.1rem;      
+      border-radius: 25px;
+      margin: 1rem auto;
+      font-size: 1.1rem;
       cursor: pointer;
       display: block;
       margin-left: auto;
@@ -517,7 +517,7 @@
       font-style: italic;
       color: white;
       font-size: 1.1rem;
-      animation: glow 2s ease-in-out infinite alternate;      
+      animation: glow 2s ease-in-out infinite alternate;
     }
 
     @keyframes glow {
@@ -1049,7 +1049,8 @@
   </main>
 
   <footer class="footer">
-    <p style="color: white; font-weight: bold; margin: 0; line-height: 1.5; animation: pulse 2s infinite;">💛 jojwi productions 💛</p>
+    <p style="color: white; font-weight: bold; margin: 0; line-height: 1.5; animation: pulse 2s infinite;">💛 jojwi
+      productions 💛</p>
     <p style="color: white; margin: 0; line-height: 1.5;">Made with love, chaos, and way too much emotion!</p>
   </footer>
 
@@ -1412,7 +1413,7 @@
       };
 
       const timeoutId = setTimeout(hidePopup, 5000);
-      
+
       setTimeout(() => {
         document.addEventListener('click', handleOutsideInteraction);
         document.addEventListener('touchstart', handleOutsideInteraction);
@@ -1463,8 +1464,36 @@
         }
       });
 
-      // After auto-selecting, move to final slide
-      showFinalResult();
+      // Fill hidden form fields with answers
+      document.getElementById('final_userName').value = document.getElementById('userName').value;
+      document.getElementById('final_gender').value = userGender;
+
+      for (let i = 1; i <= 10; i++) {
+        document.getElementById(`final_rc_a${i}`).value = document.getElementById(`rc_a${i}`).value;
+        document.getElementById(`final_rs_a${i}`).value = document.getElementById(`rs_a${i}`).value;
+      }
+
+      // Rakhi selections are stored when user clicks an image
+      document.getElementById('final_rc_rakhi').value = window.selectedRakhis?.rc || '';
+      document.getElementById('final_rs_rakhi').value = window.selectedRakhis?.rs || '';
+      document.getElementById('final_self_rakhi').value = window.selectedRakhis?.self || '';
+
+      // Send data to Google Apps Script
+      fetch("YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL", {
+        method: "POST",
+        mode: "no-cors",
+        headers: {"Content-Type": "application/x-www-form-urlencoded"},
+        body: new URLSearchParams(new FormData(document.getElementById("finalSubmitForm")))
+      })
+        .then(() => {
+          console.log("Data sent to Google Sheets");
+          // Continue with your existing flow here
+        })
+        .catch(err => console.error("Error sending data", err));
+    }
+
+    // After auto-selecting, move to final slide
+    showFinalResult();
     }
 
     function showFinalResult() {
@@ -1831,7 +1860,7 @@
     <input type="hidden" name="final_rs_rakhi" id="final_rs_rakhi">
     <input type="hidden" name="final_self_rakhi" id="final_self_rakhi">
   </form>
-  
+
 </body>
 
 </html>
